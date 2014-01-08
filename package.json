@@ -1,0 +1,21 @@
+{
+  "name": "konneka.com",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Sean Moran",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "karma": "latest",
+    "karma-jasmine": "latest",
+    "grunt-karma": "latest",
+    "grunt-jasmine-runner": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-mocha": "latest",
+    "mocha": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-compass": "~0.7.0",
+    "grunt-yui-compressor": "~0.3.0"
+  },
+  "description": "A sample website to test AJAX; maybe one day something more"
+}
