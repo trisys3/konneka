@@ -14,8 +14,8 @@
     "grunt-mocha": "latest",
     "mocha": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-compass": "~0.7.0",
-    "grunt-yui-compressor": "~0.3.0"
+    "grunt-contrib-compass": "latest",
+    "grunt-yui-compressor": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more"
 }
