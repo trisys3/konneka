@@ -3,6 +3,92 @@ module.exports = function(grunt) {
 	// function & property declarations
 	grunt.initConfig({
 
+		// file patterns
+		filePatts: {
+			// file pattern for minifying non-library .js files in app folder into .min.js files in dist's non-library folders
+			jsMinApp: {
+				files: [{
+					expand: true,
+					cwd: 'app',
+					src: ['**/*.js', '!min-libs/**', '!**/*.min.js'],
+					dest: 'dist/app',
+					ext: '.min.js'
+				}]
+			},
+			// file pattern for minifying library .js files in app folder into .min.js files in dist's library folder
+			jsMinLib: {
+				files: [{
+					expand: true,
+					cwd: 'app/min-libs',
+					src: ['**/*.js', '!**/*.min.js'],
+					dest: 'dist/min-libs',
+					ext: '.min.js'
+				}]
+			},
+			// file pattern for minifying non-library .css files in app folder into .min.css files in dist's non-library folders
+			cssMinApp: {
+				files: [{
+					expand: true,
+					cwd: 'app',
+					src: ['**/*.css', '!min-libs/**', '!**/*.min.js'],
+					dest: 'dist/app',
+					ext: '.min.css'
+				}]
+			},
+			// file pattern for minifying library .css files in app folder into .min.css files in dist's library folder
+			cssMinLib: {
+				files: [{
+					expand: true,
+					cwd: 'app/min-libs',
+					src: ['**/*.css', '!**/*.min.css'],
+					dest: 'dist/min-libs',
+					ext: '.min.css'
+				}]
+			},
+			// file pattern for moving already-minified non-library JavaScript & CSS files into dist's non-library folders
+			minnedApp: {
+				files: [{
+					expand: true,
+					cwd: 'app',
+					src: ['**/*.min.js', '**/*.min.css'],
+					dest: 'dist/app'
+				}]
+			},
+			// file pattern for moving already-minified library files in app folder into dist's library folder
+			minnedLibs: {
+				files: [{
+					expand: true,
+					cwd: 'app/min-libs',
+					src: ['**/*.min.js', '**/*.min.css'],
+					dest: 'dist/min-libs'
+				}]
+			},
+			// check non-library JavaScript files
+			checkJs: {
+				src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/**/*.min.js']
+			},
+			checkLibJs: {
+				src: ['app/min-libs/**/*.js', '!app/min-libs/**/*.min.js']
+			}
+			// check non-library CSS files
+			checkCss: {
+				src: ['app/css/**/*.css', '!app/css/**/*.min.css']
+			},
+			checkLibCss: {
+				src: ['app/min-libs/**/*.css', '!app/min-libs/**/*.min.css']
+			},
+			convScss: {
+				files: [{
+					expand: true, // include all subfolders
+					cwd: 'app/scss',
+					src: ['**.scss', '**.sass'], // convert SASS and SCSS
+					dest: 'app/css',
+					ext: '.css', // output CSS
+					cacheLocation: 'app/.sass-cache'
+				}]
+			}
+		},
+
 		pkg: grunt.file.readJSON('package.json'),
 
 		// JSHint options
@@ -37,25 +123,25 @@ module.exports = function(grunt) {
 			},
 			// checks syntax of JavaScript files, but does not care about syntax IE8 & other older browsers complain about
 			check: {
-				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
+				src: '<%= filePatts.checkJs.src %>', // check Gruntfile and all JavaScript files in app folder
 			},
 			// checks syntax of JavaScript files, then posts results to error file
 			log: {
-				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
+				src: '<%= filePatts.checkJs.src %>', // check Gruntfile and all JavaScript files in app folder
 				options: {
 					reporterOutput: 'errs/current-browsers/jsHint.js', // error output file
 				}
 			},
 			// checks syntax of JavaScript files, also warning about syntax errors/bad practice for older browsers like IE8
 			ie8: {
-				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
+				src: '<%= filePatts.checkJs.src %>', // check Gruntfile and all JavaScript files in app folder
 				options: {
 					es3: true, // tests for Internet Explorer and older versions of other browsers
 				}
 			},
 			// posts all syntax errors, including errors for older browsers, to error file
 			ie8log: {
-				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
+				src: '<%= filePatts.checkCss.src %>', // check Gruntfile and all JavaScript files in app folder
 				options: {
 					es3: true, // tests for Internet Explorer and older versions of other browsers
 					reporterOutput: 'errs/old-browsers/jsHintIe8.js', // error output file
@@ -77,7 +163,7 @@ module.exports = function(grunt) {
 			},
 			// check CSS files according to CSSLint rules
 			check: {
-				src: ['app/**/*.css', '!app/min-libs/**/*.css'], // check all files with ".css" extension in app folder
+				src: '<%= filePatts.checkCss.src %>', // check all files with ".css" extension in app folder
 				options: {
 					adjoiningClasses: false, // do not warn on CSS rules with 2 classes on 1 element
 					'box-sizing': false, // do not warn when "box-sizing" selector is used
@@ -88,7 +174,7 @@ module.exports = function(grunt) {
 			},
 			// check CSS files according to CSSLint rules and log results
 			log: {
-				src: ['app/**/*.css', '!app/min-libs/**/*.css'], // check all files with ".css" extension in app folder
+				src: '<%= filePatts.checkCss.src %>', // check all files with ".css" extension in app folder
 				options: {
 					adjoiningClasses: false, // do not warn on CSS rules with 2 classes on 1 element
 					'box-sizing': false, // do not warn when "box-sizing" selector is used
@@ -103,14 +189,14 @@ module.exports = function(grunt) {
 			},
 			// check CSS files for incompatibilities in older browsers according to CSSLint rules
 			checkOld: {
-				src: ['app/**/*.css', '!app/min-libs/**/*.css'], // check all files with ".css" extension in app folder
+				src: '<%= filePatts.checkCss.src %>', // check all files with ".css" extension in app folder
 				adjoiningClasses: 2, // abort with error when defining rules with multiple classes for 1 element
 				'box-sizing': 2, // abort with error when "box-sizing" selector is used
 				'fallback-colors': 2, // abort with error when using multiple font faces in 1 definition would screw up older browsers
 			},
 			// check CSS files for incompatibilities in older browsers according to CSSLint rules and log results
 			logOld: {
-				src: ['app/**/*.css', '!app/min-libs/**/*.css'], // check all files with ".css" extension in app folder
+				src: '<%= filePatts.checkCss.src %>', // check all files with ".css" extension in app folder
 				adjoiningClasses: 2, // abort with error when defining rules with multiple classes for 1 element
 				'box-sizing': 2, // abort with error when "box-sizing" selector is used
 				'fallback-colors': 2, // abort with error when using multiple font faces in 1 definition would screw up older browsers
@@ -137,13 +223,7 @@ module.exports = function(grunt) {
 					sourceMap: '/dist/source-maps/uglify.map', // source map location
 					sourceMapRoot: 'http://konneka.org/app/js/**/*.js', // path to original file for source map to use
 				},
-				files: [{
-					expand: true, // include subfolders
-					cwd: 'app',
-					src: ['**/*.js', '!min-libs/**', '!**.min.js'],
-					dest: 'dist/app',
-					ext: '.min.js' // use ".min.js" to show that these files are minified
-				}],
+				files: '<%= filePatts.jsMinApp.files %>',
 			},
 			// minify files in library folder (min-libs); this shouldn't need to be done as often
 			libs: {
@@ -151,13 +231,7 @@ module.exports = function(grunt) {
 					sourceMap: '/dist/source-maps/uglify-libs.map', // source map location
 					sourceMapRoot: 'http://konneka.org/app/js/**/*.js', // path to original files for source map to use
 				},
-				files: [{
-					expand: true, // include subfolders
-					cwd: 'app',
-					src: ['min-libs/**/*.js', '!**.min.js'],
-					dest: 'dist',
-					ext: '.min.js' // use ".min.js" to show that these files are minified
-				}]
+				files: '<%= filePatts.jsMinLib.files %>'
 			},
 			// minify JavaScript files but keep comments and log results
 			log: {
@@ -169,13 +243,7 @@ module.exports = function(grunt) {
 					exportAll: true, // allow use of global functions & variables, even in closure function
 					preserveComments: 'all' // keep all comments as they are
 				},
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app',
-					src: '**/*.js',
-					dest: 'dist/app',
-					ext: '.min.js' // use ".min.js" to show that these files are minified
-				}],
+				files: '<%= filePatts.jsMinApp.files %>'
 			},
 			// minify JavaScript files but keep comments
 			comm: {
@@ -184,13 +252,7 @@ module.exports = function(grunt) {
 					sourceMapRoot: 'app/js/**/*.js', // path to original file for source map to use
 					preserveComments: true // keep all comments as they are
 				},
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app',
-					src: '**/*.js',
-					dest: 'dist/app',
-					ext: '.min.js' // use ".min.js" to show that these files are minified
-				}],
+				files: '<%= filePatts.jsMinApp.files %>'
 			}
 			// dist: {
 			// 	files: {
@@ -203,40 +265,22 @@ module.exports = function(grunt) {
 		cssmin: {
 			// default option
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner at top of output
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n' // banner at top of output
 			},
 			// minify CSS files
 			def: {
 				options: {
 					keepSpecialComments: 0 // do not keep any comments
 				},
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app',
-					src: ['**/*.css', '!min-libs/**', '!**/*.min.css'],
-					dest: 'dist/app',
-					ext: '.min.css' // use extension ".min.css" for destination files to show they are minified
-				}],
+				files: '<%= filePatts.cssMinApp.files %>'
 			},
 			// minify library folders
 			libs: {
-				files: [{
-					expand: true,
-					cwd: 'app/min-libs',
-					src: ['**/*.css', '!**/*.min.css'],
-					dist: 'dist/min-libs',
-					ext: '.min.css'
-				}]
+				files: '<%= filePatts.cssMinLib.files %>'
 			},
 			// minify already-minified files
 			minned: {
-				files: [{
-					expand: true,
-					cwd: 'app',
-					src: ['**/*.min.css', '!min-libs/**/*.min.css'],
-					dist: 'dist/app',
-					ext: '.min.css'
-				}]
+				files: '<%= filePatts.cssMinApp.files %>'
 			},
 			// minify code, preserving comments, and log results
 			log: {
@@ -245,43 +289,21 @@ module.exports = function(grunt) {
 					benchmark: true, // report on how good CSS minification ends up being
 					debug: true // show minification statistics
 				},
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app',
-					src: '**/*.css',
-					dest: 'dist/app',
-					ext: '.min.css' // use extension ".min.css" for destination files to show they are minified
-				}],
+				files: '<%= filePatts.cssMinApp.files %>'
 			},
 			// minify code, preserving comments
 			comm: {
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app',
-					src: '**/*.css',
-					dest: 'dist/app',
-					ext: '.min.css' // use extension ".min.css" for destination files to show they are minified
-				}],
+				files: '<%= filePatts.cssMinApp.files %>'
 			}
 		},
 
 		// copy already-minified files
 		copy: {
 			libs: {
-				files: [{
-					expand: true,
-					cwd: 'app/min-libs',
-					src: ['**/*.min.css', '**/*.min.js'],
-					dest: 'dist/min-libs'
-				}]
+				files: '<%= filePatts.minnedLibs.files %>'
 			},
 			app: {
-				files: [{
-					expand: true,
-					cwd: 'app',
-					src: ['**/*.min.css', '**/*.min.js', '!min-libs/**'],
-					dest: 'dist/app'
-				}]
+				files: '<%= filePatts.minnedApp.files %>'
 			}
 		},
 
@@ -295,14 +317,7 @@ module.exports = function(grunt) {
 			},
 			// converts SCSS/SASS files to CSS without checking syntax
 			move: {
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app/scss',
-					src: ['*.scss', '*.sass'], // convert SCSS and SASS files
-					dest: 'app/css/',
-					ext: '.css', // output CSS
-					cacheLocation: 'app/.sass-cache'
-				}]
+				files: '<%= filePatts.convScss.files %>'
 			},
 			// checks SASS/SCSS syntax
 			check: {
@@ -319,14 +334,7 @@ module.exports = function(grunt) {
 					trace: true, // trace back to source on error
 					debugInfo: true, // extra debugging info to be used by browser debuggers
 				},
-				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app/scss',
-					src: ['*.scss', '*.sass'], // convert SASS and SCSS
-					dest: 'app/css/',
-					ext: '.css', // output CSS
-					cacheLocation: 'app/.sass-cache'
-				}]
+				files: '<%= filePatts.convScss.files %>'
 			}
 		},
 		

@@ -8,13 +8,14 @@
 </head>
 <body>
 
-  <div ng-view></div>
+  <ng-include src="currUrl"></ng-include>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
   -->
+  <script src="dist/js/routes.js"></script>
   <script src="dist/min-libs/bootstrap-3.0.3/bootstrap.min.js"></script>
   <script src="dist/min-libs/angular-1.2.7/angular.min.js"></script>
   <script src="dist/min-libs/angular-1.2.7/angular-route.min.js"></script>

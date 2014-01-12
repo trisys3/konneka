@@ -15,7 +15,6 @@
     "mocha": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-contrib-compass": "latest",
-    "grunt-yui-compressor": "latest",
     "grunt-contrib-csslint": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-qunit": "latest",
