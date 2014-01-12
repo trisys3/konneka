@@ -7,133 +7,58 @@ module.exports = function(grunt) {
 
 		// JSHint options
 		jshint: {
+			// default JSHint options for this site
+			options: {
+				curly: true, // warn when not using curly braces for blocks
+				eqeqeq: true, // always use ===/!==, never ==/!=
+				immed: true, // always use parentheses in function calls
+				latedef: true, // warn when using variables above where they are defined
+				newcap: true, // always capitalize constructor functions
+				noarg: true, // never use arguments.caller/arguments.callee
+				nonew: true, // never use constructor functions purely for side effects, without assigning to a variable
+				undef: true, // never use undefined variables
+				unused: true, // warn when variables are not used
+				strict: true, // use JavaScript's *strict* mode
+				trailing: true, // no trailing white spaces
+				boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
+				eqnull: true, // suppress warnings about "== null"
+				multistr: true, // multiline strings are allowed
+				browser: true, // browser globals are used
+				jquery: true, // jQuery is used
+				node: true, // Node.js is used
+				force: true, // does not abort due to errors
+				extensions: '', // extensions to check along with ".js"
+				ignores: [], // specific warnings & errors to ignore, by ID number of error
+				globals: {
+					jQuery: true,
+					console: true,
+					module: true
+				}
+			},
 			// checks syntax of JavaScript files, but does not care about syntax IE8 & other older browsers complain about
 			check: {
 				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
-				options: {
-					curly: true, // warn when not using curly braces for blocks
-					eqeqeq: true, // always use ===/!==, never ==/!=
-					immed: true, // always use parentheses in function calls
-					latedef: true, // warn when using variables above where they are defined
-					newcap: true, // always capitalize constructor functions
-					noarg: true, // never use arguments.caller/arguments.callee
-					nonew: true, // never use constructor functions purely for side effects, without assigning to a variable
-					undef: true, // never use undefined variables
-					unused: true, // warn when variables are not used
-					strict: true, // use JavaScript's *strict* mode
-					trailing: true, // no trailing white spaces
-					boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
-					eqnull: true, // suppress warnings about "== null"
-					multistr: true, // multiline strings are allowed
-					browser: true, // browser globals are used
-					jquery: true, // jQuery is used
-					node: true, // Node.js is used
-					force: true, // does not abort due to errors
-					extensions: '', // extensions to check along with ".js"
-					ignores: [], // specific warnings & errors to ignore, by ID number of error
-					globals: {
-						jQuery: true,
-						console: true,
-						module: true
-					}
-				}
 			},
 			// checks syntax of JavaScript files, then posts results to error file
 			log: {
 				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
 				options: {
-					// es3: true, // enable this when testing Internet Explorer or older browser versions
-					curly: true, // warn when not using curly braces for blocks
-					eqeqeq: true, // always use ===/!==, never ==/!=
-					immed: true, // always use parentheses in function calls
-					latedef: true, // warn when using variables above where they are defined
-					newcap: true, // always capitalize constructor functions
-					noarg: true, // never use arguments.caller/arguments.callee
-					nonew: true, // never use constructor functions purely for side effects, without assigning to a variable
-					undef: true, // never use undefined variables
-					unused: true, // warn when variables are not used
-					strict: true, // use JavaScript's *strict* mode
-					trailing: true, // no trailing white spaces
-					boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
-					eqnull: true, // suppress warnings about "== null"
-					multistr: true, // multiline strings are allowed
-					browser: true, // browser globals are used
-					jquery: true, // jQuery is used
-					node: true, // Node.js is used
-					force: true, // does not abort due to errors
-					extensions: '', // extensions to check along with ".js"
-					ignores: [], // specific warnings & errors to ignore, by ID number of error
 					reporterOutput: 'errs/current-browsers/jsHint.js', // error output file
-					globals: {
-						jQuery: true,
-						console: true,
-						module: true
-					}
 				}
 			},
 			// checks syntax of JavaScript files, also warning about syntax errors/bad practice for older browsers like IE8
 			ie8: {
 				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
 				options: {
-					es3: true, // enable this when testing Internet Explorer or older browser versions
-					curly: true, // warn when not using curly braces for blocks
-					eqeqeq: true, // always use ===/!==, never ==/!=
-					immed: true, // always use parentheses in function calls
-					latedef: true, // warn when using variables above where they are defined
-					newcap: true, // always capitalize constructor functions
-					noarg: true, // never use arguments.caller/arguments.callee
-					nonew: true, // never use constructor functions purely for side effects, without assigning to a variable
-					undef: true, // never use undefined variables
-					unused: true, // warn when variables are not used
-					strict: true, // use JavaScript's *strict* mode
-					trailing: true, // no trailing white spaces
-					boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
-					eqnull: true, // suppress warnings about "== null"
-					multistr: true, // multiline strings are allowed
-					browser: true, // browser globals are used
-					jquery: true, // jQuery is used
-					node: true, // Node.js is used
-					force: true, // does not abort due to errors
-					extensions: '', // extensions to check along with ".js"
-					ignores: [], // specific warnings & errors to ignore, by ID number of error
-					globals: {
-						jQuery: true,
-						console: true,
-						module: true
-					}
+					es3: true, // tests for Internet Explorer and older versions of other browsers
 				}
 			},
 			// posts all syntax errors, including errors for older browsers, to error file
 			ie8log: {
 				src: ['Gruntfile.js', 'app/js/**/*.js'], // check Gruntfile and all JavaScript files in app folder
 				options: {
-					es3: true, // enable this when testing Internet Explorer or older browser versions
-					curly: true, // warn when not using curly braces for blocks
-					eqeqeq: true, // always use ===/!==, never ==/!=
-					immed: true, // always use parentheses in function calls
-					latedef: true, // warn when using variables above where they are defined
-					newcap: true, // always capitalize constructor functions
-					noarg: true, // never use arguments.caller/arguments.callee
-					nonew: true, // never use constructor functions purely for side effects, without assigning to a variable
-					undef: true, // never use undefined variables
-					unused: true, // warn when variables are not used
-					strict: true, // use JavaScript's *strict* mode
-					trailing: true, // no trailing white spaces
-					boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
-					eqnull: true, // suppress warnings about "== null"
-					multistr: true, // multiline strings are allowed
-					browser: true, // browser globals are used
-					jquery: true, // jQuery is used
-					node: true, // Node.js is used
-					force: true, // does not abort due to errors
+					es3: true, // tests for Internet Explorer and older versions of other browsers
 					reporterOutput: 'errs/old-browsers/jsHintIe8.js', // error output file
-					extensions: '', // extensions to check along with ".js"
-					ignores: [], // specific warnings & errors to ignore, by ID number of error
-					globals: {
-						jQuery: true,
-						console: true,
-						module: true
-					}
 				}
 			}
 		},
@@ -198,33 +123,48 @@ module.exports = function(grunt) {
 
 		// Uglify options
 		uglify: {
+			// default options
+			options: {
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner shown at top of minified file
+				compress: true, // optimizes & compresses files
+				mangle: { // reduce variable names to as few characters as possible
+					except: ['jQuery, $'] // except jQuery variables, as these are needed for jQuery
+				}
+			},
 			// minify JavaScript files, removing all comments
 			def: {
 				options: {
-					banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner shown at top of minified file
-					compress: true, // optimizes & compresses files
-					sourceMap: 'dist/source-maps/uglify.map', // source map location
-					sourceMapRoot: 'app/js/**/*.js', // path to original file for source map to use
-					// mangle: { // reduce variable names to as few characters as possible
-					// 	except: ['jQuery, AngularJS'] // except jQuery variables, as these are needed for jQuery
-					// }
+					sourceMap: '/dist/source-maps/uglify.map', // source map location
+					sourceMapRoot: 'http://konneka.org/app/js/**/*.js', // path to original file for source map to use
 				},
 				files: [{
 					expand: true, // include subfolders
 					cwd: 'app',
-					['**/*.js', '!min-libs/**']: ['dist/app/**'],
-					['min-libs/**.js']: ['dist/**'],
+					src: ['**/*.js', '!min-libs/**', '!**.min.js'],
+					dest: 'dist/app',
 					ext: '.min.js' // use ".min.js" to show that these files are minified
 				}],
+			},
+			// minify files in library folder (min-libs); this shouldn't need to be done as often
+			libs: {
+				options: {
+					sourceMap: '/dist/source-maps/uglify-libs.map', // source map location
+					sourceMapRoot: 'http://konneka.org/app/js/**/*.js', // path to original files for source map to use
+				},
+				files: [{
+					expand: true, // include subfolders
+					cwd: 'app',
+					src: ['min-libs/**/*.js', '!**.min.js'],
+					dest: 'dist',
+					ext: '.min.js' // use ".min.js" to show that these files are minified
+				}]
 			},
 			// minify JavaScript files but keep comments and log results
 			log: {
 				options: {
-					banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-					compress: true, // optimizes & compresses files
 					report: 'gzip', // report everything
 					wrap: 'wrapper', // wrap all code in closure function
-					sourceMap: 'source-maps/uglify-log.map', // source map location
+					sourceMap: '/dist/source-maps/uglify-log.map', // source map location
 					sourceMapRoot: 'app/js/**/*.js', // path to original file for source map to use
 					exportAll: true, // allow use of global functions & variables, even in closure function
 					preserveComments: 'all' // keep all comments as they are
@@ -240,13 +180,8 @@ module.exports = function(grunt) {
 			// minify JavaScript files but keep comments
 			comm: {
 				options: {
-					banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-					compress: true, // optimizes & compresses files
-					sourceMap: 'source-maps/uglify-comm.map', // source map location
+					sourceMap: '/dist/source-maps/uglify-comm.map', // source map location
 					sourceMapRoot: 'app/js/**/*.js', // path to original file for source map to use
-					mangle: { // reduce variable names to as few characters as possible
-						except: ['jQuery'] // except jQuery variables, as these are needed for jQuery
-					},
 					preserveComments: true // keep all comments as they are
 				},
 				files: [{
@@ -266,24 +201,46 @@ module.exports = function(grunt) {
 
 		// options for CSSMin task
 		cssmin: {
+			// default option
+			options: {
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner at top of output
+			},
 			// minify CSS files
 			def: {
 				options: {
-					banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner at top of output
 					keepSpecialComments: 0 // do not keep any comments
 				},
 				files: [{
 					expand: true, // include all subfolders
-					cwd: 'app/',
-					src: '**/*.css',
+					cwd: 'app',
+					src: ['**/*.css', '!min-libs/**', '!**/*.min.css'],
 					dest: 'dist/app',
 					ext: '.min.css' // use extension ".min.css" for destination files to show they are minified
 				}],
 			},
+			// minify library folders
+			libs: {
+				files: [{
+					expand: true,
+					cwd: 'app/min-libs',
+					src: ['**/*.css', '!**/*.min.css'],
+					dist: 'dist/min-libs',
+					ext: '.min.css'
+				}]
+			},
+			// minify already-minified files
+			minned: {
+				files: [{
+					expand: true,
+					cwd: 'app',
+					src: ['**/*.min.css', '!min-libs/**/*.min.css'],
+					dist: 'dist/app',
+					ext: '.min.css'
+				}]
+			},
 			// minify code, preserving comments, and log results
 			log: {
 				options: {
-					banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner at top of output
 					report: 'gzip', // compress log file with gzip algorithm
 					benchmark: true, // report on how good CSS minification ends up being
 					debug: true // show minification statistics
@@ -298,9 +255,6 @@ module.exports = function(grunt) {
 			},
 			// minify code, preserving comments
 			comm: {
-				options: {
-					banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner at top of output
-				},
 				files: [{
 					expand: true, // include all subfolders
 					cwd: 'app',
@@ -311,8 +265,34 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// copy already-minified files
+		copy: {
+			libs: {
+				files: [{
+					expand: true,
+					cwd: 'app/min-libs',
+					src: ['**/*.min.css', '**/*.min.js'],
+					dest: 'dist/min-libs'
+				}]
+			},
+			app: {
+				files: [{
+					expand: true,
+					cwd: 'app',
+					src: ['**/*.min.css', '**/*.min.js', '!min-libs/**'],
+					dest: 'dist/app'
+				}]
+			}
+		},
+
 		// SCSS options
 		sass: {
+			// default options
+			options: {
+				sourcemap: true,
+				lineNumbers: true,
+				compass: true
+			},
 			// converts SCSS/SASS files to CSS without checking syntax
 			move: {
 				files: [{
@@ -347,11 +327,6 @@ module.exports = function(grunt) {
 					ext: '.css', // output CSS
 					cacheLocation: 'app/.sass-cache'
 				}]
-			},
-			options: {
-				sourcemap: true,
-				lineNumbers: true,
-				compass: true
 			}
 		},
 		
@@ -392,6 +367,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// Grunt tasks, called by calling "grunt *task*" from command line
 	// default task, called with just "grunt"
@@ -399,8 +375,14 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('log', ['sass:movelog', 'jshint:log', 'uglify:def', 'csslint:log', 'cssmin:def']);
 
-	// same as default task, but also checks for older browser compatibility
+	// same as default task, but optimized for older browser compatibility
 	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def']);
+
+	// minify libraries
+	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs']);
+
+	// move already-minified files
+	grunt.registerTask('minned', ['copy:libs', 'copy:app']);
 
 	// testing task
 	grunt.registerTask('test', ['qunit']);
@@ -425,7 +407,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('check', ['sass:check', 'jshint:check', 'csslint:check']);
 
 	// convert all meta-markup languages to markup languages
-	grunt.registerTask('convert', 'sass:move');
+	grunt.registerTask('convert', ['sass:convert']);
 
 	// minification tasks
 	grunt.registerTask('minify', ['sass:move', 'uglify:def', 'cssmin:def']); // just minification

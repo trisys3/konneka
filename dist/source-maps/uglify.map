@@ -1,1 +1,1 @@
-{"version":3,"file":"dist/app/js/services/services.min.js","sources":["app/js/services/services.js"],"names":["angular","module","value"],"mappings":";;AAAA,YAOAA,SAAQC,OAAO,qBACbC,MAAM,UAAW","sourceRoot":"app/js/**/*.js"}
+{"version":3,"file":"dist/app/js/services/services.min.js","sources":["app/js/services/services.js"],"names":["angular","module","value"],"mappings":";;AAAA,YAOAA,SAAQC,OAAO,qBACbC,MAAM,UAAW","sourceRoot":"http://konneka.org/app/js/**/*.js"}

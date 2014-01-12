@@ -1,5 +1,5 @@
 {
-  "name": "konneka.com",
+  "name": "konneka.org",
   "version": "0.0.1",
   "private": true,
   "author": "Sean Moran",
@@ -17,10 +17,34 @@
     "grunt-contrib-compass": "latest",
     "grunt-yui-compressor": "latest",
     "grunt-contrib-csslint": "latest",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-qunit": "~0.3.0",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-uglify": "~0.2.7"
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-qunit": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-copy": "latest"
   },
-  "description": "A sample website to test AJAX; maybe one day something more"
+  "description": "A sample website to test AJAX; maybe one day something more",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/trisys3/konneka.git"
+  },
+  "keywords": [
+    "konneka",
+    "AJAX",
+    "AngularJS",
+    "InternetofThings"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trisys3/konneka/issues"
+  },
+  "homepage": "https://github.com/trisys3/konneka"
 }
