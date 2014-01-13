@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 			jsMinApp: {
 				files: [{
 					expand: true,
-					cwd: 'app',
+					cwd: 'app/modules',
 					src: ['**/*.js', '!min-libs/**', '!**/*.min.js'],
 					dest: 'dist/app',
 					ext: '.min.js'
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 			cssMinApp: {
 				files: [{
 					expand: true,
-					cwd: 'app',
+					cwd: 'app/modules',
 					src: ['**/*.css', '!min-libs/**', '!**/*.min.js'],
 					dest: 'dist/app',
 					ext: '.min.css'
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 			minnedApp: {
 				files: [{
 					expand: true,
-					cwd: 'app',
+					cwd: 'app/modules',
 					src: ['**/*.min.js', '**/*.min.css'],
 					dest: 'dist/app'
 				}]
@@ -65,26 +65,29 @@ module.exports = function(grunt) {
 			},
 			// check non-library JavaScript files
 			checkJs: {
-				src: ['Gruntfile.js', 'app/js/**/*.js', '!app/js/**/*.min.js']
+				src: ['Gruntfile.js', 'app/modules/**/*.js', '!app/modules/**/*.min.js']
 			},
 			checkLibJs: {
 				src: ['app/min-libs/**/*.js', '!app/min-libs/**/*.min.js']
-			}
+			},
 			// check non-library CSS files
 			checkCss: {
-				src: ['app/css/**/*.css', '!app/css/**/*.min.css']
+				src: ['app/modules/**/*.css', '!app/modules/**/*.min.css']
 			},
+			// check library CSS files
 			checkLibCss: {
 				src: ['app/min-libs/**/*.css', '!app/min-libs/**/*.min.css']
 			},
 			convScss: {
 				files: [{
-					expand: true, // include all subfolders
-					cwd: 'app/scss',
-					src: ['**.scss', '**.sass'], // convert SASS and SCSS
-					dest: 'app/css',
-					ext: '.css', // output CSS
-					cacheLocation: 'app/.sass-cache'
+					expand: true,
+					cwd: 'app/modules/',
+					src: ['**/*.scss', '**/*.sass'],
+					dest: '',
+					ext: '.css',
+					rename: function(dest, src) {
+						return 'app/modules/' + src.replace('scss', 'css');
+					}
 				}]
 			}
 		},
@@ -307,13 +310,14 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// SCSS options
+		// SCSS/SASS options
 		sass: {
 			// default options
 			options: {
 				sourcemap: true,
 				lineNumbers: true,
-				compass: true
+				compass: true,
+				cacheLocation: 'app/.sass-cache'
 			},
 			// converts SCSS/SASS files to CSS without checking syntax
 			move: {
