@@ -51,24 +51,36 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'app/modules',
 					src: ['**/*.min.js', '**/*.min.css'],
-					dest: 'dist/app'
+					dest: 'dist/app/modules'
 				}]
 			},
-			// file pattern for moving already-minified library files in app folder into dist's library folder
-			minnedLibs: {
+			// moves all files from app folder to dist folder except .js & .css files (they are minified by uglify &
+			// csslint, respectively), SASS/SCSS files (they are converted to CSS by sass then minified by csslint), library files, & cache
+			// files, if possible
+			OtherExApp: {
+				files: [{
+					expand: true,
+					cwd: 'app/modules',
+					src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**'],
+					dest: 'dist/app/modules'
+				}]
+			},
+			// file pattern for moving already-minified library files, as well as all non-JavaScript &
+			// non-CSS library files, in app folder into dist's library folder
+			minnedLibsOthers: {
 				files: [{
 					expand: true,
 					cwd: 'app/min-libs',
-					src: ['**/*.min.js', '**/*.min.css'],
+					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css'],
 					dest: 'dist/min-libs'
 				}]
 			},
 			// check non-library JavaScript files
 			checkJs: {
-				src: ['Gruntfile.js', 'app/modules/**/*.js', '!app/modules/**/*.min.js']
+				src: ['Gruntfile.js', 'package.json', 'app/modules/**/*.js', 'app/modules/**/*.json', '!app/modules/**/*.min.js', '!app/modules/**/*.min.json']
 			},
 			checkLibJs: {
-				src: ['app/min-libs/**/*.js', '!app/min-libs/**/*.min.js']
+				src: ['app/min-libs/**/*.js', 'app/min-libs/**/*.json', '!app/min-libs/**/*.min.js', '!app/min-libs/**/*.min.json']
 			},
 			// check non-library CSS files
 			checkCss: {
@@ -300,13 +312,16 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// copy already-minified files
+		// copy files that do not need to be minified
 		copy: {
 			libs: {
-				files: '<%= filePatts.minnedLibs.files %>'
+				files: '<%= filePatts.minnedLibsOthers.files %>'
 			},
 			app: {
 				files: '<%= filePatts.minnedApp.files %>'
+			}
+			nonMinned: {
+				files: '<%= filePatts.OtherExApp.files %>'
 			}
 		},
 
@@ -383,18 +398,21 @@ module.exports = function(grunt) {
 
 	// Grunt tasks, called by calling "grunt *task*" from command line
 	// default task, called with just "grunt"
-	grunt.registerTask('default', ['sass:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def']);
+	grunt.registerTask('default', ['sass:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:minnedApp', 'copy:OtherExApp']);
 
 	grunt.registerTask('log', ['sass:movelog', 'jshint:log', 'uglify:def', 'csslint:log', 'cssmin:def']);
 
 	// same as default task, but optimized for older browser compatibility
-	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def']);
+	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def', 'copy:minnedApp', 'copy:OtherExApp']);
 
-	// minify libraries
-	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs']);
+	// minify & move app files
+	grunt.registerTask('app', ['sass:check', 'sass:move', 'uglify:def', 'cssmin:def', 'copy:minnedApp', 'copy:OtherExApp']);
+
+	// minify & move library files
+	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs', 'copy:minnedLibsOthers']);
 
 	// move already-minified files
-	grunt.registerTask('minned', ['copy:libs', 'copy:app']);
+	grunt.registerTask('minned', ['copy:minnedLibsOthers', 'copy:minnedApp']);
 
 	// testing task
 	grunt.registerTask('test', ['qunit']);
@@ -405,15 +423,16 @@ module.exports = function(grunt) {
 	// check syntax of SCSS/SASS files, log results, and, if no errors, convert them to CSS
 	grunt.registerTask('sass:movelog', ['sass:log', 'sass:move']);
 
-	// make "scss" & "sass" the same task
+	// make "scss" & "sass" the same task (because SCSS is just a newer version of SASS)
 	grunt.registerTask('scss', 'sass');
 	grunt.registerTask('scss:move', 'sass:move');
 	grunt.registerTask('scss:check', 'sass:check');
 	grunt.registerTask('scss:log', 'sass:log');
 	grunt.registerTask('scss:convert', 'sass:convert');
+	grunt.registerTask('scss:movelog', 'sass:movelog');
 
 	// check syntax for compatibility with older browsers
-	grunt.registerTask('checkOld', ['jshint:ie8', 'csslint:checkOld'])
+	grunt.registerTask('checkOld', ['sass:check', 'jshint:ie8', 'csslint:checkOld'])
 
 	// syntax-checking task
 	grunt.registerTask('check', ['sass:check', 'jshint:check', 'csslint:check']);
