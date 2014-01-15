@@ -20,7 +20,7 @@
     "grunt-contrib-qunit": "latest",
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-copy": "latest",
+    "grunt-contrib-copy": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",
