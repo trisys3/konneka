@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+	'use strict';
+
 	require('time-grunt')(grunt);
 	
 	// function & property declarations
@@ -59,7 +61,7 @@ module.exports = function(grunt) {
 			// moves all files from app folder to dist folder except .js & .css files (they are minified by uglify &
 			// csslint, respectively), SASS/SCSS files (they are converted to CSS by sass then minified by csslint), library files, & cache
 			// files, if possible
-			OtherExApp: {
+			otherExApp: {
 				files: [{
 					expand: true,
 					cwd: 'app/modules',
@@ -77,12 +79,13 @@ module.exports = function(grunt) {
 					dest: 'dist/min-libs'
 				}]
 			},
-			// copies all non-minified files in app's module folders
+			// copies all non-minified files in app's module folders; same as "minnedApp" + "otherExApp"
 			appAll: {
 				files: [{
 					expand: true,
 					cwd: 'app/modules',
-					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/scss/**', '!**/sass/**']
+					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/scss/**', '!**/sass/**'],
+					dest: 'dist/app/modules'
 				}]
 			},
 			// check non-library JavaScript files
@@ -121,6 +124,7 @@ module.exports = function(grunt) {
 		jshint: {
 			// default JSHint options for this site
 			options: {
+				// options designed to give more warnings & errors
 				curly: true, // warn when not using curly braces for blocks
 				eqeqeq: true, // always use ===/!==, never ==/!=
 				immed: true, // always use parentheses in function calls
@@ -130,47 +134,53 @@ module.exports = function(grunt) {
 				nonew: true, // never use constructor functions purely for side effects, without assigning to a variable
 				undef: true, // never use undefined variables
 				unused: true, // warn when variables are not used
-				strict: true, // use JavaScript's *strict* mode
+				strict: true, // use JavaScript's *strict* mode for functions, prohibit global *strict* mode
 				trailing: true, // no trailing white spaces
+				// options designed to give fewer warnings
 				boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
 				eqnull: true, // suppress warnings about "== null"
 				multistr: true, // multiline strings are allowed
+				force: true, // does not abort due to errors
+				extensions: '.json', // extensions to check along with ".js"
+				// environment global variables
 				browser: true, // browser globals are used
 				jquery: true, // jQuery is used
 				node: true, // Node.js is used
-				force: true, // does not abort due to errors
-				extensions: '', // extensions to check along with ".js"
-				ignores: [], // specific warnings & errors to ignore, by ID number of error
+				// specific warnings & errors to ignore, by ID number of error
+				ignores: [],
+				// global variables not defined in environment area
 				globals: {
-					jQuery: true,
-					console: true,
-					module: true
+					module: true,
+					angular: true // used in AngularJS
 				}
 			},
 			// checks syntax of JavaScript files, but does not care about syntax IE8 & other older browsers complain about
 			check: {
-				src: '<%= filePatts.checkJs.src %>', // check Gruntfile and all JavaScript files in app folder
+				src: '<%= filePatts.checkJs.src %>',
+				options: {
+					// extra environment global variables
+					devel: true // allow development global variables, usually for debugging
+				}
 			},
 			// checks syntax of JavaScript files, then posts results to error file
 			log: {
-				src: '<%= filePatts.checkJs.src %>', // check Gruntfile and all JavaScript files in app folder
+				src: '<%= filePatts.checkJs.src %>',
 				options: {
-					reporterOutput: 'errs/current-browsers/jsHint.js', // error output file
+					reporterOutput: 'errs/dev/jsHint.js', // error output file
+					reporter: 'checkstyle',
+					// extra environment global variables
+					devel: true // allow development global variables, usually for debugging
 				}
 			},
-			// checks syntax of JavaScript files, also warning about syntax errors/bad practice for older browsers like IE8
-			ie8: {
-				src: '<%= filePatts.checkJs.src %>', // check Gruntfile and all JavaScript files in app folder
-				options: {
-					es3: true, // tests for Internet Explorer and older versions of other browsers
-				}
+			// check code for production
+			prodCheck: {
+				src: '<%= filePatts.checkJs.src %>'
 			},
-			// posts all syntax errors, including errors for older browsers, to error file
-			ie8log: {
-				src: '<%= filePatts.checkCss.src %>', // check Gruntfile and all JavaScript files in app folder
+			// check code for production & log results
+			prodLog: {
+				src: '<%= filePatts.checkJs.src %>',
 				options: {
-					es3: true, // tests for Internet Explorer and older versions of other browsers
-					reporterOutput: 'errs/old-browsers/jsHintIe8.js', // error output file
+					reporterOutput: 'errs/prod/jsHint.js', // error output file
 				}
 			}
 		},
@@ -209,7 +219,7 @@ module.exports = function(grunt) {
 					'fallback-colors': false, // do not warn when using rgba, hsla, etc. without regular color
 					formatters: [{
 						id: 'text',
-						dest: 'errs/current-browsers/csslint'
+						dest: 'errs/dev/csslint.js'
 					}]
 				}
 			},
@@ -280,11 +290,6 @@ module.exports = function(grunt) {
 				},
 				files: '<%= filePatts.jsMinApp.files %>'
 			}
-			// dist: {
-			// 	files: {
-			// 		'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
-			// 	}
-			// }
 		},
 
 		// options for CSSMin task
@@ -412,22 +417,26 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// Grunt tasks, called by calling "grunt *task*" from command line
-	// default task, called with just "grunt"
-	grunt.registerTask('default', ['scss:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:app', 'copy:OtherEx']);
+
+	// default task, called with just "grunt": converts all SCSS/SASS files into CSS files, checks syntax of non-library JavaScript & CSS files in app folder,
+	// minifies these files, and moves already-minified files as well as non-.js & non-.css files into dist's app folder
+	grunt.registerTask('default', ['scss:convert', /*'qunit',*/ 'jshint:check', 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']);
 
 	// same as default task, but includes library files, so this task shouldn't be done as often
-	grunt.registerTask('all', ['scss:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:all']);
-
-	grunt.registerTask('all2', ['sass:check', 'sass:move', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:appAll', 'copy:libs']);	
+	grunt.registerTask('all', ['scss:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:appAll']);
 
 	// same as default task, but logs errors to files (except sass, which doesn't allow this)
-	grunt.registerTask('log', ['sass:movelog', 'jshint:log', /*'qunit',*/ 'uglify:def', 'csslint:log', 'cssmin:def', 'copy:app', 'copy:OtherEx']);
+	grunt.registerTask('log', ['scss:movelog', 'jshint:log', /*'qunit',*/ 'uglify:def', 'csslint:log', 'cssmin:def', 'copy:appAll']);
+
+	// same as default task, but optimized for production
+	grunt.registerTask('prod', ['scss:convert', 'jshint:prod', /*'qunit',*/ 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']);
+	grunt.registerTask('prod', ['scss:convert', 'jshint:prodLog', /*'qunit',*/ 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']); // also includes logging
 
 	// same as default task, but optimized for older browser compatibility
 	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def', 'copy:minnedApp', 'copy:OtherExApp']);
 
 	// minify & move app files
-	grunt.registerTask('app', ['sass:check', 'sass:move', 'uglify:def', 'cssmin:def', 'copy:minnedApp', 'copy:otherEx']);
+	grunt.registerTask('app', ['sass:check', 'sass:move', 'uglify:def', 'cssmin:def', 'copy:appAll']);
 
 	// minify & move library files
 	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs', 'copy:minnedLibsOthers']);
@@ -455,8 +464,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('scss:convert', 'sass:convert');
 	grunt.registerTask('scss:movelog', 'sass:movelog');
 
-	// check syntax for compatibility with older browsers
-	grunt.registerTask('checkOld', ['sass:check', 'jshint:ie8', 'csslint:checkOld'])
+	// check syntax for production environments
+	grunt.registerTask('checkProd', ['sass:check', 'jshint:prod', 'csslint:checkOld']);
 
 	// syntax-checking task
 	grunt.registerTask('check', ['sass:check', 'jshint:check', 'csslint:check']);
