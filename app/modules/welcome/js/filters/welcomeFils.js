@@ -1,1 +1,3 @@
-angular.module('iotWelcome.filters');
+'use strict';
+
+angular.module('iotWelcome.filters',[]);

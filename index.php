@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app="iotApp">
 <head>
   <meta charset="utf-8">
@@ -16,7 +16,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   -->
-  <script src="dist/min-libs/jquery-2.0.3/jquery.min.js"></script>
+  <script src="dist/min-libs/jquery-2.0.3/jquery.js"></script>
   <script src="dist/min-libs/bootstrap-3.0.3/bootstrap.min.js"></script>
   <script src="dist/min-libs/angular-1.2.7/angular.js"></script>
   <script src="dist/min-libs/angular-1.2.7/angular-route.min.js"></script>
