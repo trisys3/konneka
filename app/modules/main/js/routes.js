@@ -9,13 +9,9 @@ angular.module('iotRoutes', ['ngRoute'])
 
 		// this rule includes all pages that have an owner & an object
 		$routeProvider.when('/:owner*\/:objName', {module: 'objects'});
-		$routeProvider.when('/:owner*\/:objname*.php', {module: 'objects'});
-		$routeProvider.when('/:owner*\/:objname*.html', {module: 'objects'});
 
 		// this rule includes pages with just an owner
 		$routeProvider.when('/:owner', {module: 'owners'});
-		$routeProvider.when('/:owner*.html', {module: 'owners'});
-		$routeProvider.when('/:owner*.php', {module: 'owners'});
 
 		// this rule includes generic or root pages
 		$routeProvider.when('/', {module: 'welcome'});
@@ -33,7 +29,7 @@ angular.module('iotRoutes', ['ngRoute'])
 	// our controller for routing
 	.controller('RouteCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
 
-		// whenever angular detects a "location" change (whenever our ng-include is the parent)
+		// whenever angular detects a "location" change (usually whenever our ng-include is the parent)
 		$scope.$on('$locationChangeSuccess', function() {
 			$scope.module = $route.current.module;
 			$scope.currUrl = '/dist/app/modules/' + $scope.module + '/index.php';
