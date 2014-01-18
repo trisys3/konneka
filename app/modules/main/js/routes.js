@@ -7,6 +7,11 @@
 angular.module('iotRoutes', ['ngRoute'])
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
+		// these rule makes any "welcome" page into a generic page
+		$routeProvider.when('/welcome', {module: 'welcome'});
+		$routeProvider.when('/welcome.php', {module: 'welcome'});
+		$routeProvider.when('/welcome.html', {module: 'welcome'});
+
 		// this rule includes all pages that have an owner & an object
 		$routeProvider.when('/:owner*\/:objName', {module: 'objects'});
 
@@ -31,7 +36,7 @@ angular.module('iotRoutes', ['ngRoute'])
 
 		// whenever angular detects a "location" change (usually whenever our ng-include is the parent)
 		$scope.$on('$locationChangeSuccess', function() {
-			$scope.module = $route.current.module;
-			$scope.currUrl = '/dist/app/modules/' + $scope.module + '/index.php';
+			$scope.module = $route.current.module; // get the module of our page
+			$scope.currUrl = '/dist/app/modules/' + $scope.module + '/index.php'; // this will be passed to the ng-include on the outer page
 		});
 	}]);

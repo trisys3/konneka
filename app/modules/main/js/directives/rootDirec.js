@@ -1,3 +1,6 @@
 'use strict';
 
-angular.module('iotApp.directives', []);
+angular.module('iotApp.directives', [])
+	.directive('iotSub', [function() {
+		restrict: 'E'
+	}]);
