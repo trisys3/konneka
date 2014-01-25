@@ -21,7 +21,7 @@ angular.module('iotRoutes', ['ngRoute'])
 		// this rule includes generic or root pages
 		$routeProvider.when('/', {module: 'welcome'});
 		$routeProvider.when('', {module: 'welcome'});
-		$routeProvider.when('index.php', {module: 'welcome'});
+		$routeProvider.when('/index.php', {module: 'welcome'});
 
 		// this rule takes any page we haven't created a rule for yet & makes it a generic page
 		$routeProvider.otherwise({module: 'welcome'});
@@ -39,4 +39,10 @@ angular.module('iotRoutes', ['ngRoute'])
 			$scope.module = $route.current.module; // get the module of our page
 			$scope.currUrl = '/dist/app/modules/' + $scope.module + '/index.php'; // this will be passed to the ng-include on the outer page
 		});
+
+		// $scope.$on('$routeChangeSuccess', function() {
+		// 	$scope.changeModule = function(newModule) {
+		// 		return $injector.get('iotWelcome');
+		// 	};
+		// });
 	}]);

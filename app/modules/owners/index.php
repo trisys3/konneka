@@ -1,9 +1,12 @@
-<iot-sub ng-controller="ownersCtrl">
+<iot-sub iot-module="iotOwners" ng-controller="OwnersCtrl">
 
-<script src="/dist/app/modules/owners/js/app.min.js"></script>
+<?php
+// if I ever decide to create nested ng-app, uncomment these
+/*<script src="/dist/app/modules/owners/js/app.min.js"></script>
 <script src="/dist/app/modules/owners/js/controllers/ownersCtrl.min.js"></script>
 <script src="/dist/app/modules/owners/js/filters/ownersFils.min.js"></script>
 <script src="/dist/app/modules/owners/js/directives/ownersDirec.min.js"></script>
-<script src="/dist/app/modules/owners/js/services/ownersServ.min.js"></script>
+<script src="/dist/app/modules/owners/js/services/ownersServ.min.js"></script>*/
+?>
 
 </iot-sub>

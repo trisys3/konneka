@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('iotWelcome.filters',[]);
+angular.module('welcomeApp.filters',[]);

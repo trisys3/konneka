@@ -1,3 +1,6 @@
 'use strict';
 
-angular.module('objectsApp.controllers', []);
+angular.module('objectsApp.controllers', [])
+	.controller('ObjectsCtrl', ['$scope', function($scope) {
+
+	}]);

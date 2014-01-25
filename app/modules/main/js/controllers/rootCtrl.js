@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('iotApp.controllers', [])
-	.controller('RootCtrl', [function() {
+	.controller('RootCtrl', ['$scope', function($scope) {
 
 	}]);

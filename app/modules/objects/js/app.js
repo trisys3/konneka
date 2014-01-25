@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('iotObjects', ['iotApp',
+angular.module('objectsApp', [
+	// 'iotApp',
 	'objectsApp.controllers',
 	'objectsApp.services',
 	'objectsApp.directives',

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('iotWelcome.services', []);
+angular.module('welcomeApp.services', []);

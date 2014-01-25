@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('iotWelcome.directives', []);
+angular.module('welcomeApp.directives', []);

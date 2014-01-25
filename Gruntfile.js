@@ -65,8 +65,17 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'app/modules',
-					src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**'],
+					src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**'/*, '/../index.php'*/],
 					dest: 'dist/app/modules'
+				}]
+			},
+			// moves root index files
+			index: {
+				files: [{
+					expand: true,
+					cwd: 'app',
+					src: ['index*.php'],
+					dest: 'dist'
 				}]
 			},
 			// file pattern for moving already-minified library files, as well as all non-JavaScript &
@@ -77,15 +86,6 @@ module.exports = function(grunt) {
 					cwd: 'app/min-libs',
 					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css'],
 					dest: 'dist/min-libs'
-				}]
-			},
-			// copies all non-minified files in app's module folders; same as "minnedApp" + "otherExApp"
-			appAll: {
-				files: [{
-					expand: true,
-					cwd: 'app/modules',
-					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/scss/**', '!**/sass/**'],
-					dest: 'dist/app/modules'
 				}]
 			},
 			// check non-library JavaScript files
@@ -338,10 +338,7 @@ module.exports = function(grunt) {
 				files: '<%= filePatts.minnedApp.files %>'
 			},
 			otherEx: {
-				files: '<%= filePatts.OtherExApp.files %>'
-			},
-			appAll: {
-				files: '<%= filePatts.appAll.files %>'
+				files: '<%= filePatts.otherExApp.files %>'
 			}
 		},
 
@@ -433,16 +430,19 @@ module.exports = function(grunt) {
 	grunt.registerTask('prod', ['scss:convert', 'jshint:prodLog', /*'qunit',*/ 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']); // also includes logging
 
 	// same as default task, but optimized for older browser compatibility
-	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def', 'copy:minnedApp', 'copy:OtherExApp']);
+	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def', 'copy:appAll']);
+
+	// copies all non-minified files in app's module folders; same as "minnedApp" + "otherExApp"
+	grunt.registerTask('copy:appAll', ['copy:app', 'copy:otherEx']);
 
 	// minify & move app files
 	grunt.registerTask('app', ['sass:check', 'sass:move', 'uglify:def', 'cssmin:def', 'copy:appAll']);
 
 	// minify & move library files
-	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs', 'copy:minnedLibsOthers']);
+	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs', 'copy:libs']);
 
 	// move already-minified files
-	grunt.registerTask('minned', ['copy:minnedLibsOthers', 'copy:minnedApp']);
+	grunt.registerTask('minned', ['copy:libs', 'copy:app']);
 
 	// testing task
 	grunt.registerTask('test', ['qunit']);

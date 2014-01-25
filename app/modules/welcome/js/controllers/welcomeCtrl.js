@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iotWelcome.controllers', [])
-	.controller('WelcomeCtrl', [function() {
+angular.module('welcomeApp.controllers', [])
+	.controller('WelcomeCtrl', ['$scope', function($scope) {
 
 	}]);
