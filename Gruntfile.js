@@ -65,17 +65,8 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'app/modules',
-					src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**'/*, '/../index.php'*/],
+					src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**', '../index.php'],
 					dest: 'dist/app/modules'
-				}]
-			},
-			// moves root index files
-			index: {
-				files: [{
-					expand: true,
-					cwd: 'app',
-					src: ['index*.php'],
-					dest: 'dist'
 				}]
 			},
 			// file pattern for moving already-minified library files, as well as all non-JavaScript &
