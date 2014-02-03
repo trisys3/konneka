@@ -1,48 +1,33 @@
 'use strict';
 
-// This file contains all routing information
-// for the website
+angular.module('iotRoute', ['ngRoute'])
+	.factory('IotRoute', ['$route', '$routeParams', function($route, $routeParams) {
 
-// creates special module for routing, with Angular's "ng-route" routing module as a dependency
-angular.module('iotRoutes', ['ngRoute'])
-	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+		var IotRoute = [];
+		var IotRouteService = {};
 
-		// these rule makes any "welcome" page into a generic page
-		$routeProvider.when('/welcome', {module: 'welcome'});
-		$routeProvider.when('/welcome.php', {module: 'welcome'});
-		$routeProvider.when('/welcome.html', {module: 'welcome'});
+		IotRouteService.getOwner = function() {
+			return iotOwner;
+		};
+		IotRouteService.setOwner = function(owner) {
+			iotOwner = owner;
+		};
 
-		// this rule includes all pages that have an owner & an object
-		$routeProvider.when('/:owner*\/:objName', {module: 'objects'});
+		// IotRouteService.$on('$routeChangeSuccess', function() {
+		// 	IotRouteService.owner = function() {
+		// 		return $routeParams.owner; // if this is an owner or object page, this will be the owner
+		// 	};
 
-		// this rule includes pages with just an owner
-		$routeProvider.when('/:owner', {module: 'owners'});
-
-		// this rule includes generic or root pages
-		$routeProvider.when('/', {module: 'welcome'});
-		$routeProvider.when('', {module: 'welcome'});
-		$routeProvider.when('/index.php', {module: 'welcome'});
-
-		// this rule takes any page we haven't created a rule for yet & makes it a generic page
-		$routeProvider.otherwise({module: 'welcome'});
-
-		// causes URL's to comply with HTML5 rules
-		$locationProvider.html5Mode(true);
-
-	}])
-
-	// our controller for routing
-	.controller('RouteCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
-
-		// whenever angular detects a "location" change (usually whenever our ng-include is the parent)
-		$scope.$on('$locationChangeSuccess', function() {
-			$scope.module = $route.current.module; // get the module of our page
-			$scope.currUrl = '/dist/app/modules/' + $scope.module + '/index.php'; // this will be passed to the ng-include on the outer page
-		});
-
-		// $scope.$on('$routeChangeSuccess', function() {
-		// 	$scope.changeModule = function(newModule) {
-		// 		return $injector.get('iotWelcome');
+		// 	IotRouteService.objName = function() {
+		// 		return $routeParams.objName; // if this is an object page, this will be the object
 		// 	};
 		// });
+
+		return IotRouteService;
+	}])
+
+	.controller('IotRouteCtrl', ['$scope', '$routeParams',/* 'IotRouteService',*/ function($scope, $routeParams/*, IotRouteService*/) {
+		if($routeParams.owner) {
+			console.log($routeParams.owner);
+		}
 	}]);
