@@ -12,7 +12,7 @@ angular.module('iotApp.directives', [])
 	// or rebootstrapped; it also helps to determine
 	// which module a page is in
 	.directive('iotModule', [function() {
-		return function(scope, elem, attrs) {
+		return {
 			restrict: 'A'
 		};
 	}])
@@ -24,13 +24,13 @@ angular.module('iotApp.directives', [])
 				name: '@'
 			},
 			link: function(scope, elem, attrs) {
-				
+
 			}
 		};
 	}])
 
 	.directive('iotObject', [function() {
-		return function(scope, elem, attrs) {
+		return {
 			restrict: 'E'
 		};
 	}]);

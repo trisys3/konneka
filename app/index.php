@@ -10,7 +10,7 @@
 <body data-ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
   <!--ng-include with the page that is actually in the URL-->
-  <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--the URL-interpreting controller is initialized here-->
+  <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 

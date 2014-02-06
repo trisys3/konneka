@@ -1,16 +1,35 @@
 'use strict';
 
 angular.module('iotRoute', ['ngRoute'])
-	.factory('IotRoute', ['$route', '$routeParams', function($route, $routeParams) {
+	.factory('IotRoute', ['$route', function($route) {
 
 		var IotRoute = [];
 		var IotRouteService = {};
 
-		IotRouteService.getOwner = function() {
+		IotRouteService.getUrlOwner = function() {
+			if($route.current.params.owner) {
+				iotOwner = $route.current.params.owner;
+			}
+			else {
+				iotOwner = 'sample';
+			}
 			return iotOwner;
 		};
-		IotRouteService.setOwner = function(owner) {
-			iotOwner = owner;
+		IotRouteService.setUrlOwner = function(owner) {
+			
+		};
+
+		IotRouteService.getUrlObject = function() {
+			if($route.current.params.objName) {
+				iotObject = $route.current.params.objName;
+			}
+			else {
+				iotObject = 'sample';
+			}
+			return iotObject;
+		};
+		IotRouteService.setUrlObject = function(objName) {
+			
 		};
 
 		// IotRouteService.$on('$routeChangeSuccess', function() {
@@ -26,8 +45,8 @@ angular.module('iotRoute', ['ngRoute'])
 		return IotRouteService;
 	}])
 
-	.controller('IotRouteCtrl', ['$scope', '$routeParams',/* 'IotRouteService',*/ function($scope, $routeParams/*, IotRouteService*/) {
-		if($routeParams.owner) {
-			console.log($routeParams.owner);
+	.controller('IotRouteCtrl', ['$scope', '$route',/* 'IotRouteService',*/ function($scope, $route/*, IotRouteService*/) {
+		if($route.current.params.owner) {
+			console.log($route.current.params.owner);
 		}
 	}]);

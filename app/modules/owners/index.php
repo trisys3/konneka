@@ -9,6 +9,6 @@
 	<script src="/dist/app/modules/owners/js/services/ownersServ.min.js"></script>*/
 	?>
 
-	<p>Hello, <iot-owner name="this">{{ owner.name }}</iot-owner>!</p>
+	<p>Hello, <iot-owner name="url">{{ owner.name }}</iot-owner>!</p>
 
 </iot-sub>

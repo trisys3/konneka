@@ -32,7 +32,7 @@ angular.module('iotUrl', ['ngRoute'])
 	}])
 
 	// our controller for routing
-	.controller('IotUrlCtrl', ['$scope', '$location', '$route', '$routeParams', function($scope, $location, $route, $routeParams) {
+	.controller('IotUrlCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
 
 		// whenever angular detects a "location" change (usually whenever our ng-include is the parent)
 		$scope.$on('$locationChangeSuccess', function() {
