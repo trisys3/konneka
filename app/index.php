@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/min-libs/bootstrap-3.0.3/bootstrap.min.css" /><!--Twitter Bootstrap, version 3.0.3-->
   <link rel="stylesheet" href="/modules/main/css/app.min.css" /><!--the root stylesheet-->
 </head>
-<body data-ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
+<body ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
   <!--ng-include with the page that is actually in the URL-->
   <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
