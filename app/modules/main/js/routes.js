@@ -18,7 +18,7 @@ angular.module('iotRoute', ['ngRoute'])
 			return iotOwner;
 		};
 		IotRouteService.setUrlOwner = function(owner) {
-			iotOwner = owner;
+			$route.current.params.owner = owner;
 		};
 
 		IotRouteService.getUrlObject = function() {
@@ -31,7 +31,7 @@ angular.module('iotRoute', ['ngRoute'])
 			return iotObject;
 		};
 		IotRouteService.setUrlObject = function(objName) {
-			iotObject = objName;
+			$route.current.params.objName = objName;
 		};
 
 		// IotRouteService.$on('$routeChangeSuccess', function() {
