@@ -3,6 +3,8 @@
 angular.module('iotRoute', ['ngRoute'])
 	.factory('IotRoute', ['$route', function($route) {
 
+		var iotOwner = "";
+		var iotObject = "";
 		var IotRoute = [];
 		var IotRouteService = {};
 
@@ -16,7 +18,7 @@ angular.module('iotRoute', ['ngRoute'])
 			return iotOwner;
 		};
 		IotRouteService.setUrlOwner = function(owner) {
-			
+			iotOwner = owner;
 		};
 
 		IotRouteService.getUrlObject = function() {
@@ -29,7 +31,7 @@ angular.module('iotRoute', ['ngRoute'])
 			return iotObject;
 		};
 		IotRouteService.setUrlObject = function(objName) {
-			
+			iotObject = objName;
 		};
 
 		// IotRouteService.$on('$routeChangeSuccess', function() {
