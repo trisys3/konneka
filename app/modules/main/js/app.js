@@ -12,7 +12,8 @@ angular.module('iotApp', [
 	'iotApp.controllers',
 	'iotUrl',
 	'iotRoute',
-	'iotHead'
+	'iotHead',
+	'iotAccount'
 ]);
 
 // Declare app level module which depends on filters, and services

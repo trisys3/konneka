@@ -9,8 +9,18 @@
 </head>
 <body ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
-  <!--ng-include with the page that is actually in the URL-->
-  <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
+  <ng-switch on="log-in" ng-controller="IotAccCtrl">
+    <div ng-switch-when="loggedin||loggedout||logout"><!--when the user is not signing up or logging in, go to URL in browser-->
+      <!--ng-include the page that is actually in the URL-->
+      <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
+    </div>
+    <div ng-switch-when="login"><!--while user is logging in, display log-in page-->
+      <ng-include src="/modules/account/login"></ng-include>
+    </div>
+    <div ng-switch-when="signup"><!--while user is signing up, display sign-up page-->
+      <ng-include src="/modules/account/signup"></ng-include>
+    </div>
+  </ng-switch>
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
@@ -35,21 +45,30 @@
   <script src="/modules/main/js/url.min.js"></script><!--the URL-interpreting module for the site-->
   <script src="/modules/main/js/head.min.js"></script><!--the module for the (single-page) site's header-->
   <script src="/modules/main/js/app.min.js"></script><!--the root module for the site-->
+
   <!--scripts for other pages, needed so Angular does not have to be re-bootstrapped-->
   <script src="/modules/objects/js/app.min.js"></script><!--main script for objects module-->
   <script src="/modules/objects/js/controllers/objectsCtrl.min.js"></script><!--controllers for objects module-->
   <script src="/modules/objects/js/services/objectsServ.min.js"></script><!--services for objects module-->
   <script src="/modules/objects/js/filters/objectsFils.min.js"></script><!--filters for objects module-->
   <script src="/modules/objects/js/directives/objectsDirec.min.js"></script><!--directives for objects module-->
+
   <script src="/modules/owners/js/app.min.js"></script><!--main script for owners module-->
   <script src="/modules/owners/js/controllers/ownersCtrl.min.js"></script><!--controllers for owners module-->
   <script src="/modules/owners/js/services/ownersServ.min.js"></script><!--services for owners module-->
   <script src="/modules/owners/js/filters/ownersFils.min.js"></script><!--filters for owners module-->
   <script src="/modules/owners/js/directives/ownersDirec.min.js"></script><!--directives for owners module-->
+
   <script src="/modules/welcome/js/app.min.js"></script><!--main script for welcome module-->
   <script src="/modules/welcome/js/controllers/welcomeCtrl.min.js"></script><!--controllers for welcome module-->
   <script src="/modules/welcome/js/services/welcomeServ.min.js"></script><!--services for welcome module-->
   <script src="/modules/welcome/js/filters/welcomeFils.min.js"></script><!--filters for welcome module-->
   <script src="/modules/welcome/js/directives/welcomeDirec.min.js"></script><!--directives for welcome module-->
+
+  <script src="/modules/account/js/app.min.js"></script><!--main script for account module-->
+  <script src="/modules/account/js/controllers/accountCtrl.min.js"></script><!--controllers for account module-->
+  <script src="/modules/account/js/services/accountServ.min.js"></script><!--services for account module-->
+  <script src="/modules/account/js/filters/accountFils.min.js"></script><!--filters for account module-->
+  <script src="/modules/account/js/directives/accountDirec.min.js"></script><!--directives for account module-->
 </body>
 </html>

@@ -11,4 +11,9 @@
 
 	<p>Hello, <iot-owner name="url">{{ owner.name }}</iot-owner>!</p>
 
+	<ng-switch on="log-in">
+		<ng-include ng-include-when="logged-in" src="modules/account/loggedin/index.php">
+		<ng-include ng-include-when="sign-up" src="modules/account/signup/index.php">
+		<ng-include ng-include-when="log-in" src="modules/account/login/index.php">
+		<ng-include ng-include-when="default" src="modules/account/loggedout/index.php">
 </iot-sub>

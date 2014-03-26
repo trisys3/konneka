@@ -244,39 +244,35 @@ module.exports = function(grunt) {
 					except: ['jQuery, $'] // except jQuery variables, as these are needed for jQuery
 				}
 			},
-			// minify JavaScript files, removing all comments
+			// minify JavaScript app files, removing all comments
 			def: {
 				options: {
-					sourceMap: '/dist/source-maps/uglify.map', // source map location
-					sourceMapRoot: 'http://konneka.org/app/js/**/*.js', // path to original file for source map to use
+					sourceMap: true // create source map to original location
 				},
 				files: '<%= filePatts.jsMinApp.files %>',
 			},
 			// minify files in library folder (min-libs); this shouldn't need to be done as often
 			libs: {
 				options: {
-					sourceMap: '/dist/source-maps/uglify-libs.map', // source map location
-					sourceMapRoot: 'http://konneka.org/app/js/**/*.js', // path to original files for source map to use
+					sourceMap: true // create source map to original location
 				},
 				files: '<%= filePatts.jsMinLib.files %>'
 			},
-			// minify JavaScript files but keep comments and log results
+			// minify JavaScript app files but keep comments and log results
 			log: {
 				options: {
 					report: 'gzip', // report everything
 					wrap: 'wrapper', // wrap all code in closure function
-					sourceMap: '/dist/source-maps/uglify-log.map', // source map location
-					sourceMapRoot: 'app/js/**/*.js', // path to original file for source map to use
+					sourceMap: true, // create source map to original location
 					exportAll: true, // allow use of global functions & variables, even in closure function
 					preserveComments: 'all' // keep all comments as they are
 				},
 				files: '<%= filePatts.jsMinApp.files %>'
 			},
-			// minify JavaScript files but keep comments
+			// minify JavaScript app files but keep comments
 			comm: {
 				options: {
-					sourceMap: '/dist/source-maps/uglify-comm.map', // source map location
-					sourceMapRoot: 'app/js/**/*.js', // path to original file for source map to use
+					sourceMap: true, // create source map to original location
 					preserveComments: true // keep all comments as they are
 				},
 				files: '<%= filePatts.jsMinApp.files %>'
@@ -427,7 +423,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('copy:appAll', ['copy:app', 'copy:otherEx']);
 
 	// minify & move app files
-	grunt.registerTask('app', ['sass:check', 'sass:move', 'uglify:def', 'cssmin:def', 'copy:appAll']);
+	grunt.registerTask('app', ['sass:convert', 'uglify:def', 'cssmin:def', 'copy:appAll']);
 
 	// minify & move library files
 	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs', 'copy:libs']);
