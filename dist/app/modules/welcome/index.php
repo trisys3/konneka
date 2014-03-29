@@ -1,4 +1,4 @@
-<iot-sub iot-module="iotWelcome" ng-controller="WelcomeCtrl">
+<iot-sub iot-module="iotWelcome" ng-controller="WelcomeCtrl" iot-title="iot-title">
 
 	<p>Welcome to the site!</p>
 

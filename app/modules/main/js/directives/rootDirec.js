@@ -33,4 +33,17 @@ angular.module('iotApp.directives', [])
 		return {
 			restrict: 'E'
 		};
+	}])
+
+	.directive('iotTitle', ['IotRoute', function(IotRoute) {
+		return {
+			restrict: 'E',
+			scope: {
+				iotTitle: '=',
+				owner: '@'
+			},
+			link: function(scope, elem, attrs) {
+				angular.element('title').text(scope.iotTitle);
+			}
+		}
 	}]);

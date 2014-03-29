@@ -5,6 +5,8 @@ angular.module('iotRoute', ['ngRoute']) // we need the ng-route module
 
 		var iotOwner = ""; // set the owner to nothing originally
 		var iotObject = ""; // set the object to nothing originally
+		var iotTitle = ""; // set title to nothing originally
+		var iotModule = ""; // set module to nothing originally
 		var IotRoute = []; // set the route to an empty array originally
 		var IotRouteService = {}; // create the route service singleton object
 
@@ -43,6 +45,38 @@ angular.module('iotRoute', ['ngRoute']) // we need the ng-route module
 		IotRouteService.setUrlObject = function(objName) {
 			$route.current.params.objName = objName;
 		};
+
+		// getter for module
+		IotRouteService.getModule = function() {
+			if($route.current.module) {
+				iotModule = $route.current.module;
+			}
+			else {
+				iotModule = "welcome";
+			}
+			return iotModule;
+		}
+
+		// setter for module
+		IotRouteService.setModule = function(iotModule) {
+			$route.current.module = iotModule;
+		}
+
+		// function to get title once page loads
+		IotRouteService.getIotTitle = function() {
+			if($route.current.params.title) {
+				iotTitle = $route.current.params.title;
+			}
+			else {
+				iotTitle = "Loading...";
+			}
+			return iotTitle;
+		}
+
+		// function to set title once routed successfully
+		IotRouteService.setIotTitle = function(iotTitle) {
+			$route.current.params.title = iotTitle;
+		}
 
 		// IotRouteService.$on('$routeChangeSuccess', function() {
 		// 	IotRouteService.owner = function() {

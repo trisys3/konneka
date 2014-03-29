@@ -5,4 +5,6 @@ angular.module('ownersApp.controllers', [])
 		$scope.owner = {};
 		$scope.owner.url = IotRoute.getUrlOwner();
 		$scope.owner.name = IotRoute.getUrlOwner();
+		$scope.iotTitle = IotRoute.getUrlOwner() + "'s page";
+		IotRoute.setIotTitle($scope.iotTitle);
 	}]);
