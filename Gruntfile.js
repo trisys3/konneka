@@ -414,7 +414,7 @@ module.exports = function(grunt) {
 
 	// same as default task, but optimized for production
 	grunt.registerTask('prod', ['scss:convert', 'jshint:prod', /*'qunit',*/ 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']);
-	grunt.registerTask('prod', ['scss:convert', 'jshint:prodLog', /*'qunit',*/ 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']); // also includes logging
+	grunt.registerTask('prodLog', ['scss:convert', 'jshint:prodLog', /*'qunit',*/ 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']); // also includes logging
 
 	// same as default task, but optimized for older browser compatibility
 	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def', 'copy:appAll']);
@@ -423,10 +423,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('copy:appAll', ['copy:app', 'copy:otherEx']);
 
 	// minify & move app files
-	grunt.registerTask('app', ['sass:convert', 'uglify:def', 'cssmin:def', 'copy:appAll']);
+	grunt.registerTask('appMove', ['sass:convert', 'uglify:def', 'cssmin:def', 'copy:appAll']);
 
 	// minify & move library files
-	grunt.registerTask('library', ['uglify:libs', 'cssmin:libs', 'copy:libs']);
+	grunt.registerTask('libMove', ['uglify:libs', 'cssmin:libs', 'copy:libs']);
 
 	// move already-minified files
 	grunt.registerTask('minned', ['copy:libs', 'copy:app']);
