@@ -2,6 +2,8 @@
 
 angular.module('welcomeApp.controllers', [])
 	.controller('WelcomeCtrl', ['$scope', function($scope) {
-		$scope.iotTitle = "Welcome!";
-		IotRoute.setIotTitle($scope.iotTitle);
+
+		// scope properties
+		$scope.iotTitle = "Welcome!"; // title for welcome module
+		
 	}]);

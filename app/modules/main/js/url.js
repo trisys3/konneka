@@ -26,7 +26,7 @@ angular.module('iotUrl', ['ngRoute'])
 		// this rule takes any page we haven't created a rule for yet & makes it a generic page
 		$routeProvider.otherwise({module: 'welcome'});
 
-		// causes URL's to comply with HTML5 rules
+		// make URL's comply with HTML5 rules
 		$locationProvider.html5Mode(true);
 
 	}])
@@ -34,19 +34,14 @@ angular.module('iotUrl', ['ngRoute'])
 	// our controller for routing
 	.controller('IotUrlCtrl', ['$scope', '$location', '$route', function($scope, $location, $route) {
 
-		// whenever angular detects a "location" change (usually whenever our ng-include is the parent)
+		// whenever angular detects a "location" change (usually whenever we use ng-include)
 		$scope.$on('$locationChangeSuccess', function() {
+
 			$scope.module = $route.current.module; // get the module of our page
 			$scope.currUrl = '/modules/' + $scope.module + '/index.php'; // this will be passed to the ng-include on the outer page
+		
 		});
 
-		
-
-		// $scope.$on('$routeChangeSuccess', function() {
-		// 	$scope.changeModule = function(newModule) {
-		// 		return $injector.get('iotWelcome');
-		// 	};
-		// });
 	}]);
 
 	

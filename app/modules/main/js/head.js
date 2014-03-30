@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('iotHead', [])
-	.controller('IotHeadCtrl', ['$scope', '$location', 'IotRoute', function($scope, $location, IotRoute) {
+	.controller('IotHeadCtrl', ['$scope', function($scope) {
 		
 	}]);

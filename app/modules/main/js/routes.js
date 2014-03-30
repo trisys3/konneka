@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iotRoute', ['ngRoute']) // we need the ng-route module
-	.factory('IotRoute', ['$route', function($route) { // we call ng-route's $route service as a dependency
+	.factory('IotRoute', ['$route', function($route) { // call ng-route's $route service as a dependency
 
 		var iotOwner = ""; // set the owner to nothing originally
 		var iotObject = ""; // set the object to nothing originally
@@ -49,10 +49,10 @@ angular.module('iotRoute', ['ngRoute']) // we need the ng-route module
 		// getter for module
 		IotRouteService.getModule = function() {
 			if($route.current.module) {
-				iotModule = $route.current.module;
+				iotModule = $route.current.module; // if we are in a module, get that module
 			}
 			else {
-				iotModule = "welcome";
+				iotModule = "welcome"; // else, get the welcome module as a default
 			}
 			return iotModule;
 		}
@@ -62,37 +62,5 @@ angular.module('iotRoute', ['ngRoute']) // we need the ng-route module
 			$route.current.module = iotModule;
 		}
 
-		// function to get title once page loads
-		IotRouteService.getIotTitle = function() {
-			if($route.current.params.title) {
-				iotTitle = $route.current.params.title;
-			}
-			else {
-				iotTitle = "Loading...";
-			}
-			return iotTitle;
-		}
-
-		// function to set title once routed successfully
-		IotRouteService.setIotTitle = function(iotTitle) {
-			$route.current.params.title = iotTitle;
-		}
-
-		// IotRouteService.$on('$routeChangeSuccess', function() {
-		// 	IotRouteService.owner = function() {
-		// 		return $routeParams.owner; // if this is an owner or object page, this will be the owner
-		// 	};
-
-		// 	IotRouteService.objName = function() {
-		// 		return $routeParams.objName; // if this is an object page, this will be the object
-		// 	};
-		// });
-
 		return IotRouteService;
-	}])
-
-	.controller('IotRouteCtrl', ['$scope', '$route',/* 'IotRouteService',*/ function($scope, $route/*, IotRouteService*/) {
-		if($route.current.params.owner) {
-			console.log($route.current.params.owner);
-		}
 	}]);

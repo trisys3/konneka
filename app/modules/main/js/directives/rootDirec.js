@@ -3,23 +3,13 @@
 angular.module('iotApp.directives', [])
 	.directive('iotSub', [function() {
 		return function(scope) {
-			restrict: 'E'
-		};
-	}])
-
-	// This directive is for if and when Angular
-	// makes modules able to be split apart better
-	// or rebootstrapped; it also helps to determine
-	// which module a page is in
-	.directive('iotModule', [function() {
-		return {
-			restrict: 'A'
+			restrict: 'E' // only use this directive on elements
 		};
 	}])
 
 	.directive('iotOwner', [function() {
 		return {
-			restrict: 'E',
+			restrict: 'E', // only use this directive on elements
 			scope: {
 				name: '@'
 			},
@@ -31,19 +21,16 @@ angular.module('iotApp.directives', [])
 
 	.directive('iotObject', [function() {
 		return {
-			restrict: 'E'
+			restrict: 'E' // only use this directive on elements
 		};
 	}])
 
+	// directive for changing title attribute from another module
 	.directive('iotTitle', ['IotRoute', function(IotRoute) {
 		return {
-			restrict: 'E',
-			scope: {
-				iotTitle: '=',
-				owner: '@'
-			},
+			restrict: 'A', // only use this directive on attributes
 			link: function(scope, elem, attrs) {
-				angular.element('title').text(scope.iotTitle);
+				angular.element('title').text(scope.iotTitle); // change title of page to module's title
 			}
 		}
 	}]);

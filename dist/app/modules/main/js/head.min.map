@@ -1,1 +1,1 @@
-{"version":3,"file":"head.min.js","sources":["..\\..\\..\\..\\..\\app\\modules\\main\\js\\head.js"],"names":["angular","module","controller"],"mappings":";;AAAA,YAEAA,SAAQC,OAAO,cACbC,WAAW,eAAgB,SAAU,YAAa,WAAY"}
+{"version":3,"file":"head.min.js","sources":["..\\..\\..\\..\\..\\app\\modules\\main\\js\\head.js"],"names":["angular","module","controller"],"mappings":";;AAAA,YAEAA,SAAQC,OAAO,cACbC,WAAW,eAAgB,SAAU"}

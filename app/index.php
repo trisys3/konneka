@@ -4,8 +4,8 @@
   <meta charset="utf-8"><!--declares the site's encoding as UTF-8-->
   <title>Loading...</title><!--the title will go here, once the main sub-page is loaded-->
   <!--external CSS stylesheets-->
-  <link rel="stylesheet" href="/min-libs/bootstrap-3.0.3/bootstrap.min.css" /><!--Twitter Bootstrap, version 3.0.3-->
   <link rel="stylesheet" href="/modules/main/css/app.min.css" /><!--the root stylesheet-->
+  <link rel="stylesheet" href="/min-libs/bootstrap-3.0.3/bootstrap.min.css" /><!--Twitter Bootstrap, version 3.0.3-->
 </head>
 <body ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
