@@ -407,7 +407,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['scss:convert', /*'qunit',*/ 'jshint:check', 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']);
 
 	// same as default task, but includes library files, so this task shouldn't be done as often
-	grunt.registerTask('all', ['scss:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:appAll']);
+	grunt.registerTask('all', ['scss:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:all']);
 
 	// same as default task, but logs errors to files (except sass, which doesn't allow this)
 	grunt.registerTask('log', ['scss:movelog', 'jshint:log', /*'qunit',*/ 'uglify:def', 'csslint:log', 'cssmin:def', 'copy:appAll']);

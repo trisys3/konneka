@@ -26,7 +26,7 @@ angular.module('iotApp.directives', [])
 	}])
 
 	// directive for changing title attribute from another module
-	.directive('iotTitle', ['IotRoute', function(IotRoute) {
+	.directive('iotTitle', [function() {
 		return {
 			restrict: 'A', // only use this directive on attributes
 			link: function(scope, elem, attrs) {

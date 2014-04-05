@@ -1,0 +1,37 @@
+{
+  "name": "Sean Moran",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "bootstrap": "latest",
+    "jquery": "latest"
+  },
+  "private": true,
+  "homepage": "https://github.com/trisys3/konneka",
+  "authors": [
+    "trysis@gmail.com"
+  ],
+  "main": "dist/app",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "Internet",
+    "of",
+    "Things"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/min-libs",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:konneka/konneka.git"
+  }
+}

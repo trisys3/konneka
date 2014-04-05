@@ -1,5 +1,5 @@
 {
-  "name": "konneka.org",
+  "name": "konneka",
   "version": "0.0.1",
   "private": true,
   "author": "Sean Moran",
@@ -21,7 +21,8 @@
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-copy": "latest",
-    "time-grunt": "latest"
+    "time-grunt": "latest",
+    "bower": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",
@@ -46,5 +47,9 @@
   "bugs": {
     "url": "https://github.com/trisys3/konneka/issues"
   },
-  "homepage": "https://github.com/trisys3/konneka"
+  "homepage": "https://github.com/trisys3/konneka",
+  "config": {
+    "init.author.name": "Moran",
+    "prefix": "libs"
+   }
 }
