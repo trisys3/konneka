@@ -4,6 +4,11 @@
   "devDependencies": {
     "angular": "latest",
     "angular-route": "latest",
+    "angular-cookies": "latest",
+    "angular-resource": "latest",
+    "angular-mocks": "latest",
+    "angular-bootstrap": "latest",
+    "angular-ui-router": "latest",
     "bootstrap": "latest",
     "jquery": "latest"
   },

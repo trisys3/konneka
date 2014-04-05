@@ -31,7 +31,7 @@
 
   <!--External JavaScript scripts-->
   <script src="/min-libs/jquery-2.0.3/jquery.min.js"></script><!--jQuery, version 2.0.3-->
-  <script src="/min-libs/bootstrap-3.0.3/bootstrap.min.js"></script><!--Twitter Bootstrap's JavaScript coponents-->
+  <script src="/min-libs/bootstrap/dist/js/bootstrap.min.js"></script><!--Twitter Bootstrap's JavaScript coponents-->
   <script src="/min-libs/angular/angular.js"></script><!--AngularJS, version 1.2.7-->
   <script src="/min-libs/angular-route/angular-route.min.js"></script><!--AngularJS's routing page-->
   
