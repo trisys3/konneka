@@ -21,15 +21,18 @@
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-copy": "latest",
-    "time-grunt": "latest",
-    "bower": "latest"
+    "time-grunt": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "latest",
+    "bower": "latest",
+    "assetmanager": "latest"
+  },
   "scripts": {
     "test": "mocha"
   },
@@ -51,5 +54,5 @@
   "config": {
     "init.author.name": "Moran",
     "prefix": "libs"
-   }
+  }
 }
