@@ -5,7 +5,7 @@
   <title>Loading...</title><!--the title will go here, once the main sub-page is loaded-->
   <!--external CSS stylesheets-->
   <link rel="stylesheet" href="/modules/main/css/app.min.css" /><!--the root stylesheet-->
-  <link rel="stylesheet" href="/min-libs/bootstrap/css/bootstrap.min.css" /><!--Twitter Bootstrap, version 3.0.3-->
+  <link rel="stylesheet" href="/min-libs/bootstrap-css/css/bootstrap.min.css" /><!--Twitter Bootstrap, version 3.0.3-->
 </head>
 <body ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
@@ -30,8 +30,8 @@
   -->
 
   <!--External JavaScript scripts-->
-  <script src="/min-libs/jquery-2.0.3/jquery.min.js"></script><!--jQuery, version 2.0.3-->
-  <script src="/min-libs/bootstrap/js/bootstrap.min.js"></script><!--Twitter Bootstrap's JavaScript coponents-->
+  <script src="/min-libs/jquery/dist/jquery.min.js"></script><!--jQuery, version 2.0.3-->
+  <script src="/min-libs/bootstrap-css/js/bootstrap.min.js"></script><!--Twitter Bootstrap's JavaScript coponents-->
   <script src="/min-libs/angular/angular.js"></script><!--AngularJS, version 1.2.7-->
   <script src="/min-libs/angular-route/angular-route.min.js"></script><!--AngularJS's routing page-->
   

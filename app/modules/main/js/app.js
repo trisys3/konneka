@@ -11,7 +11,7 @@ angular.module('iotApp', [
 	'iotApp.directives',
 	'iotApp.controllers',
 	'iotUrl',
-	'iotRouteFactory',
+	'iotRoute',
 	'iotHead',
 	'iotAccount'
 ]);
