@@ -69,13 +69,21 @@ module.exports = function(grunt) {
 					dest: 'dist/app/modules'
 				}]
 			},
-			// file pattern for moving already-minified library files, as well as all non-JavaScript &
-			// non-CSS library files, in app folder into dist's library folder
+			// file pattern for moving all non-library files from app folder to dist folder
+			allApp: {
+				files: [{
+					expand: true,
+					cwd: 'app/modules',
+					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/sass/**', '!**/scss/**', '../index.php'],
+					dest: 'dist/app/modules'
+				}]
+			},
+			// file pattern for moving library files in app folder into dist's library folder
 			minnedLibsOthers: {
 				files: [{
 					expand: true,
 					cwd: 'app/min-libs',
-					src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css'],
+					src: ['**'],
 					dest: 'dist/min-libs'
 				}]
 			},
@@ -321,11 +329,14 @@ module.exports = function(grunt) {
 			libs: {
 				files: '<%= filePatts.minnedLibsOthers.files %>'
 			},
-			app: {
+			appMinned: {
 				files: '<%= filePatts.minnedApp.files %>'
 			},
 			otherEx: {
 				files: '<%= filePatts.otherExApp.files %>'
+			},
+			appAll: {
+				files: '<%= filePatts.allApp.files %>'
 			}
 		},
 
@@ -404,10 +415,10 @@ module.exports = function(grunt) {
 
 	// default task, called with just "grunt": converts all SCSS/SASS files into CSS files, checks syntax of non-library JavaScript & CSS files in app folder,
 	// minifies these files, and moves already-minified files as well as non-.js & non-.css files into dist's app folder
-	grunt.registerTask('default', ['scss:convert', /*'qunit',*/ 'jshint:check', 'uglify:def', 'csslint:check', 'cssmin:def', 'copy:appAll']);
+	grunt.registerTask('default', ['check', 'minify', 'copy:appAll']);
 
 	// same as default task, but includes library files, so this task shouldn't be done as often
-	grunt.registerTask('all', ['scss:convert', /*'qunit',*/ 'jshint:check', 'csslint:check', 'uglify:def', 'cssmin:def', 'copy:all']);
+	grunt.registerTask('all', ['check', 'minify', 'copy:appAll', 'copy:libs']);
 
 	// same as default task, but logs errors to files (except sass, which doesn't allow this)
 	grunt.registerTask('log', ['scss:movelog', 'jshint:log', /*'qunit',*/ 'uglify:def', 'csslint:log', 'cssmin:def', 'copy:appAll']);
@@ -419,23 +430,8 @@ module.exports = function(grunt) {
 	// same as default task, but optimized for older browser compatibility
 	grunt.registerTask('oldBrow', ['sass:check', 'sass:move', 'jshint:ie8', 'csslint:checkOld', 'uglify:def', 'cssmin:def', 'copy:appAll']);
 
-	// copies all non-minified files in app's module folders; same as "minnedApp" + "otherExApp"
-	grunt.registerTask('copy:appAll', ['copy:app', 'copy:otherEx']);
-
-	// minify & move app files
-	grunt.registerTask('appMove', ['sass:convert', 'uglify:def', 'cssmin:def', 'copy:appAll']);
-
-	// minify & move library files
-	grunt.registerTask('libMove', ['uglify:libs', 'cssmin:libs', 'copy:libs']);
-
-	// move already-minified files
-	grunt.registerTask('minned', ['copy:libs', 'copy:app']);
-
 	// testing task
 	grunt.registerTask('test', ['qunit']);
-
-	// copies all non-minified files, except SASS/SCSS files & cache files, from app folder into dist folder
-	grunt.registerTask('copy:all', ['copy:appAll', 'copy:libs']);
 
 	// check syntax of SCSS/SASS files and, if no errors, convert them to CSS
 	grunt.registerTask('sass:convert', ['sass:check', 'sass:move']);
@@ -457,8 +453,8 @@ module.exports = function(grunt) {
 	// syntax-checking task
 	grunt.registerTask('check', ['sass:check', 'jshint:check', 'csslint:check']);
 
-	// convert all meta-markup languages to markup languages
-	grunt.registerTask('convert', ['sass:convert']);
+	// convert all meta-markup languages to markup languages; "preproc" stands for "preprocessor"
+	grunt.registerTask('preproc', ['sass:convert']);
 
 	// minification tasks
 	grunt.registerTask('minify', ['sass:move', 'uglify:def', 'cssmin:def']); // just minification
