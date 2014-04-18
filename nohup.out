@@ -1,3 +1,0 @@
-VBoxManage.exe: error: Could not find a registered machine named 'fedora19'
-VBoxManage.exe: error: Details: code VBOX_E_OBJECT_NOT_FOUND (0x80bb0001), component VirtualBox, interface IVirtualBox, callee IUnknown
-VBoxManage.exe: error: Context: "FindMachine(Bstr(pszVM).raw(), machine.asOutParam())" at line 575 of file VBoxManageMisc.cpp

@@ -5,27 +5,22 @@
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
   padding: 0 0 0.5em; }
-
-/* line 10, ../scss/app_tmp.scss */
-.menu:before {
-  content: "["; }
-
-/* line 14, ../scss/app_tmp.scss */
-.menu:after {
-  content: "]"; }
-
-/* line 18, ../scss/app_tmp.scss */
-.menu > li {
-  display: inline; }
-
-/* line 22, ../scss/app_tmp.scss */
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em; }
-
-/* line 27, ../scss/app_tmp.scss */
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0; }
+  /* line 9, ../scss/app_tmp.scss */
+  .menu :before {
+    content: "["; }
+  /* line 13, ../scss/app_tmp.scss */
+  .menu :after {
+    content: "]"; }
+  /* line 17, ../scss/app_tmp.scss */
+  .menu > li {
+    display: inline; }
+    /* line 21, ../scss/app_tmp.scss */
+    .menu > li :before {
+      content: "|";
+      padding-right: 0.3em; }
+    /* line 26, ../scss/app_tmp.scss */
+    .menu > li :nth-child(1):before {
+      content: "";
+      padding: 0; }
 
 /*# sourceMappingURL=app_tmp.css.map */
