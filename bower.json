@@ -9,7 +9,7 @@
     "angular-mocks": "latest",
     "angular-bootstrap": "latest",
     "angular-ui-router": "latest",
-    "bootstrap": "latest",
+    "bootstrap-css": "latest",
     "jquery": "latest"
   },
   "private": true,
