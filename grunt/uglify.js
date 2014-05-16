@@ -3,7 +3,7 @@ module.exports = {
 
 	// default options
 	options: {
-		banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner shown at top of minified file
+		banner: '/*! <%= grunt.file.readJSON("package.json").name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n', // banner shown at top of minified file
 		compress: true, // optimizes & compresses files
 		mangle: { // reduce variable names to as few characters as possible
 			except: ['jQuery, $'] // except jQuery variables, as these are needed for jQuery

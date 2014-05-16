@@ -3,7 +3,7 @@ module.exports = {
 
 	// default option
 	options: {
-		banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n' // banner at top of output
+		banner: '/*! <%= grunt.file.readJSON("package.json").name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n' // banner at top of output
 	},
 
 	// minify CSS files

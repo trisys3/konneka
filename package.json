@@ -23,9 +23,9 @@
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-copy": "latest",
+    "grunt-contrib-jasmine": "latest",
     "time-grunt": "latest",
     "grunt-concurrent": "latest",
-    "load-grunt-tasks": "latest",
     "load-grunt-config": "latest",
     "grunt-contrib-imagemin": "latest"
   },
@@ -37,6 +37,7 @@
   "dependencies": {
     "mongoose": "latest",
     "bower": "latest",
+    "express": "latest",
     "assetmanager": "latest"
   },
   "scripts": {

@@ -6,7 +6,7 @@ module.exports = {
 
 	dist: {
 		src: ['src**/*.js'],
-		dest: 'dist/<%= pkg.name %>.js'
+		dest: 'dist/<%= grunt.file.readJSON("package.json").name %>.js'
 	}
 
 };
