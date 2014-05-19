@@ -1,15 +1,15 @@
 module.exports = {
 	
 	check: {
-		tasks: ['sass:check', 'jshint:check', 'csslint:check', 'imagemin:app'] // check for errors/warnings, optimized for current browsers
+		tasks: ['sass:check', 'coffeelint:check', 'jshint:check', 'csslint:check', 'imagemin:app'] // check for errors/warnings, optimized for current browsers
 	},
 
 	checkProd: {
-		tasks: ['sass:check', 'jshint:prodCheck', 'csslint:check'] // check for errors/warnings, optimized for production
+		tasks: ['sass:check', 'coffeelint:check', 'jshint:prodCheck', 'csslint:check'] // check for errors/warnings, optimized for production
 	},
 	
 	checkLog: {
-		tasks: ['sass:log', 'jshint:log', 'csslint:log'] // check for errors/warnings, optimized for newer browsers, log results to separate file
+		tasks: ['sass:log', 'coffeelint:check', 'jshint:log', 'csslint:log'] // check for errors/warnings, optimized for newer browsers, log results to separate file
 	},
 	
 	checkOld: {
@@ -17,19 +17,19 @@ module.exports = {
 	},
 	
 	checkOldLog: {
-		tasks: ['sass:log', 'jshint:ie8Log', 'csslint:logOld'] // check for errors/warnings, optimized for browsers older than Internet Explorer 9, logs output
+		tasks: ['sass:log', 'coffeelint:check', 'jshint:ie8Log', 'csslint:logOld'] // check for errors/warnings, optimized for browsers older than Internet Explorer 9, logs output
 	},
 	
 	checkProdLog: {
-		tasks: ['sass:log', 'jshint:prodLog', 'csslint:log'] // check for errors/warnings, optimized for production, log output to another file
+		tasks: ['sass:log', 'coffeelint:check', 'jshint:prodLog', 'csslint:log'] // check for errors/warnings, optimized for production, log output to another file
 	},
 	
 	preproc: {
-		tasks: ['sass:move'] // minify preprocessed code, storing output in code folders
+		tasks: ['sass:move', 'coffee:def'] // minify preprocessed code, storing output in code folders
 	},
 	
 	preprocLog: {
-		tasks: ['sass:log'] //minify preprocessed code, storing output in code folders; log errors & output to log file
+		tasks: ['sass:log', 'coffee:def'] //minify preprocessed code, storing output in code folders; log errors & output to log file
 	},
 	
 	minify: {

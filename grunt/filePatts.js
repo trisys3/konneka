@@ -106,19 +106,31 @@ module.exports = {
 	},
 	// check non-library JavaScript files
 	checkJs: {
-		src: ['Gruntfile.js', 'package.json', 'app/modules/**/*.js', 'app/modules/**/*.json', '!app/modules/**/*.min.js', '!app/modules/**/*.min.json']
+		src: ['Gruntfile.js', 'package.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json']
 	},
-	// check library JavaScript files
+	// check library JavaScript & JSON files
 	checkLibJs: {
-		src: ['app/min-libs/**/*.js', 'app/min-libs/**/*.json', '!app/min-libs/**/*.min.js', '!app/min-libs/**/*.min.json']
+		files: [{
+			expand: true,
+			cwd: 'app/min-libs',
+			src: ['**/*.js', '**/*.json']
+		}]
 	},
 	// check non-library CSS files
 	checkCss: {
-		src: ['app/modules/**/*.css', '!app/modules/**/*.min.css']
+		files: [{
+			expand: true,
+			cwd: 'app/modules',
+			src: ['**/*.css', '!**/*.min.css']
+		}]
 	},
 	// check library CSS files
 	checkLibCss: {
-		src: ['app/min-libs/**/*.css', '!app/min-libs/**/*.min.css']
+		files: [{
+			expand: true,
+			cwd: 'app/min-libs',
+			src: ['**/*.css', '!**/*.min.css']
+		}]
 	},
 	// convert Sass & SCSS files in app folder to CSS files in dist folder
 	convScss: {
@@ -133,6 +145,41 @@ module.exports = {
 			}
 		}]
 	},
+	// check CoffeeScript syntax
+	coffeeCheck: {
+		files: [{
+			expand: true,
+			cwd: 'app',
+			src: ['**.coffee']
+		}]
+	},
+	// convert frontend CoffeeScript files into JavaScript, then store results
+	convCoffee: {
+		files: [{
+			expand: true,
+			cwd: 'app/modules',
+			src: ['**.coffee'],
+			dest: '',
+			ext: '.js',
+			rename: function(dest, src) {
+				return 'app/modules/' + src.replace('coffee', 'js');
+			}
+		}]
+	},
+	// convert backend CoffeeScript files into JavaScript, then store results
+	backCoffee: {
+		files: [{
+			expand: true,
+			cwd: 'app/backend',
+			src: ['**.coffee'],
+			dest: '',
+			ext: '.js',
+			rename: function(dest, src) {
+				return 'app/backend/' + src.replace('coffee', 'js');
+			}
+		}]
+	},
+	// test with QUnit
  	qunitTest: {
  		files: [{
  			expand: true,
@@ -140,6 +187,7 @@ module.exports = {
  			src: ['**/*.html']
  		}]
  	},
+ 	// watch all files
 	watchEvrthg: {
 		files: [{
 			expand: true,

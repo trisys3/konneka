@@ -1,4 +1,4 @@
-// SCSS/SASS options
+// SCSS/SASS tasks
 module.exports = {
 
 	// default options

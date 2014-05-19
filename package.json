@@ -27,7 +27,11 @@
     "time-grunt": "latest",
     "grunt-concurrent": "latest",
     "load-grunt-config": "latest",
-    "grunt-contrib-imagemin": "latest"
+    "grunt-contrib-imagemin": "latest",
+    "grunt-buster": "latest",
+    "buster": "latest",
+    "phantomjs": "latest",
+    "growl": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",

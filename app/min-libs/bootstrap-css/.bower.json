@@ -35,7 +35,6 @@
     "commit": "fcc50745f325ee6f08b11fef85ebe34d852b50ac"
   },
   "_source": "git://github.com/jozefizso/bower-bootstrap-css.git",
-  "_target": "~3.1.1",
-  "_originalSource": "bootstrap-css",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "bootstrap-css"
 }
