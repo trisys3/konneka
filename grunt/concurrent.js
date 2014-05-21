@@ -49,7 +49,7 @@ module.exports = {
 	},
 	
 	test: {
-		tasks: ['qunit'] // testing task
+		tasks: ['qunit:direcTest', 'busterTest:nodeTests'] // testing task
 	},
 	
 	copyAppLibs: {

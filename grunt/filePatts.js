@@ -179,12 +179,22 @@ module.exports = {
 			}
 		}]
 	},
-	// test with QUnit
- 	qunitTest: {
+	// test Angular directives with QUnit
+ 	qunitDirec: {
  		files: [{
- 			expand: true,
- 			cwd: 'test/',
- 			src: ['**/*.html']
+ 			src: ['test/qunit/direc/**/*.html']
+ 		}]
+ 	},
+ 	// test all browser JavaScript files with QUnit
+ 	qunitAll: {
+ 		files: [{
+ 			src: ['test/qunit/all/**/*.html']
+ 		}]
+ 	},
+ 	// test Node files with QUnit
+ 	qunitNode: {
+ 		files: [{
+ 			src: ['test/qunit/backend/**/*.html']
  		}]
  	},
  	// watch all files
