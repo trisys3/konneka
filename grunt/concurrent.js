@@ -49,7 +49,11 @@ module.exports = {
 	},
 	
 	test: {
-		tasks: ['qunit:direcTest', 'busterTest:nodeTests'] // testing task
+		tasks: ['qunit:direcTest', 'buster:def:nodeTests'] // run regular tests
+	},
+
+	testAll: {
+		tasks: ['qunit:direcTest', 'qunit:allTest', 'qunit:nodeTest', 'buster:def:unitTests', 'buster:def:intTests', 'buster:def:nodeTests'] // run all tests
 	},
 	
 	copyAppLibs: {

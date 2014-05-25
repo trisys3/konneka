@@ -9,18 +9,18 @@
 </head>
 <body ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
-  <ng-switch on="log_in" ng-controller="IotAccCtrl">
+  <!--<ng-switch on="log_in" ng-controller="IotAccCtrl">
     <div ng-switch-when="login"><!--while user is logging in, display log-in page-->
-      <ng-include src="/modules/account/login"></ng-include>
+      <!--<ng-include src="/modules/account/login"></ng-include>
     </div>
     <div ng-switch-when="signup"><!--while user is signing up, display sign-up page-->
-      <ng-include src="/modules/account/signup"></ng-include>
+      <!--<ng-include src="/modules/account/signup"></ng-include>
     </div>
     <div ng-switch-default="ng-switch-default"><!--when the user is not signing up or logging in, go to URL in browser-->
       <!--ng-include the page that is actually in the URL-->
       <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
-    </div>
-  </ng-switch>
+    <!--</div>
+  </ng-switch>-->
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 

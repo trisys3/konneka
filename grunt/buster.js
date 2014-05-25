@@ -8,7 +8,7 @@ module.exports = {
 	},
 
 	// testing
-	busterTest: {
+	def: {
 		// defaults for testing subtasks
 		test: {
 			config: "test/buster/config.js"

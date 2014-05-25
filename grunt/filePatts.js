@@ -150,7 +150,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'app',
-			src: ['**.coffee']
+			src: ['**/*.coffee']
 		}]
 	},
 	// convert frontend CoffeeScript files into JavaScript, then store results
@@ -158,7 +158,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'app/modules',
-			src: ['**.coffee'],
+			src: ['**/*.coffee'],
 			dest: '',
 			ext: '.js',
 			rename: function(dest, src) {
