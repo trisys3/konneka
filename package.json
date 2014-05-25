@@ -27,7 +27,6 @@
     "time-grunt": "latest",
     "grunt-concurrent": "latest",
     "load-grunt-config": "latest",
-    "grunt-contrib-imagemin": "latest",
     "grunt-buster": "latest",
     "buster": "latest",
     "phantomjs": "latest",
