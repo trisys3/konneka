@@ -106,7 +106,7 @@ module.exports = {
 	},
 	// check non-library JavaScript files
 	checkJs: {
-		src: ['Gruntfile.js', 'package.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json']
+		src: ['Gruntfile.js', 'package.json', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json']
 	},
 	// check library JavaScript & JSON files
 	checkLibJs: {
@@ -147,11 +147,7 @@ module.exports = {
 	},
 	// check CoffeeScript syntax
 	coffeeCheck: {
-		files: [{
-			expand: true,
-			cwd: 'app',
-			src: ['**/*.coffee']
-		}]
+		src: ['**/*.coffee']
 	},
 	// convert frontend CoffeeScript files into JavaScript, then store results
 	convCoffee: {

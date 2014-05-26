@@ -6,25 +6,31 @@ module.exports = {
 
 	// default task, called with just "grunt": converts all SCSS/SASS files into CSS files, checks syntax of non-library JavaScript & CSS files in app folder,
 	// minifies these files, and moves already-minified files as well as non-.js & non-.css files into dist's app folder
-	default: ['check', 'preproc', 'minify', 'newer:copy:appAll' /*'test'*/],
+	default: ['check', 'preproc', 'minify', 'newer:copy:appAll'],
 	// also includes library files, so this task shouldn't be done as often
-	all: ['check', 'preproc', 'minify', 'copyAppLibs' /*'test'*/],
+	all: ['check', 'preproc', 'minify', 'copyAppLibs'],
 
 	// same as default task, but logs errors/warnings/output to files (except sass, which doesn't allow this)
-	log: ['checkLog', 'preprocLog', 'minifyLog', 'newer:copy:appAll' /*'test'*/],
+	log: ['checkLog', 'preprocLog', 'minifyLog', 'newer:copy:appAll'],
 
 	// same as default task, but optimized for production
-	prod: ['checkProd', 'preproc', 'minify', 'newer:copy:appAll' /*'test'*/],
+	prod: ['checkProd', 'preproc', 'minify', 'newer:copy:appAll'],
 	// also logs output
-	prodLog: ['checkProdLog', 'preproc', 'minifyLog', 'newer:copy:appAll' /*'test'*/],
+	prodLog: ['checkProdLog', 'preproc', 'minifyLog', 'newer:copy:appAll'],
 
 	// same as default task, but optimized for older browser compatibility
-	oldBrow: ['preproc', 'checkOld', 'minify', 'copy:appAll'],
+	oldBrow: ['preproc', 'checkOld', 'minify', 'newer:copy:appAll'],
 	// also logs output
-	oldBrowLog: ['preproc', 'checkOldLog', 'minifyLog', 'copy:appAll'],
+	oldBrowLog: ['preproc', 'checkOldLog', 'minifyLog', 'newer:copy:appAll'],
+
 
 	// testing tasks
+
+	// general testing task
 	test: ['newer:concurrent:test'],
+
+	// use every test specified with each testing framework
+	testAll: ['newer:concurrent:testAll'],
 
 
 	// make "scss" & "sass" the same task (because SCSS is just a newer version of Sass)
@@ -92,17 +98,17 @@ module.exports = {
 
 	// 	// default task, called with just "grunt": converts all SCSS/SASS files into CSS files, checks syntax of non-library JavaScript & CSS files in app folder,
 	// 	// minifies these files, and moves already-minified files as well as non-.js & non-.css files into dist's app folder
-	// 	default: ['check', 'preproc', 'minify', 'newer:copy:appAll' /*'test'*/],
+	// 	default: ['check', 'preproc', 'minify', 'newer:copy:appAll'],
 	// 	// also includes library files, so this task shouldn't be done as often
-	// 	all: ['check', 'preproc', 'minify', 'copyAppLibs' /*'test'*/],
+	// 	all: ['check', 'preproc', 'minify', 'copyAppLibs'],
 		
 	// 	// same as default task, but logs errors/warnings/output to files (except sass, which doesn't allow this)
-	// 	log: ['checkLog', 'preprocLog', 'minifyLog', 'newer:copy:appAll' /*'test'*/],
+	// 	log: ['checkLog', 'preprocLog', 'minifyLog', 'newer:copy:appAll'],
 		
 	// 	// same as default task, but optimized for production
-	// 	prod: ['checkProd', 'preproc', 'minify', 'newer:copy:appAll' /*'test'*/],
+	// 	prod: ['checkProd', 'preproc', 'minify', 'newer:copy:appAll'],
 	// 	// also logs output
-	// 	prodLog: ['checkProdLog', 'preproc', 'minifyLog', 'newer:copy:appAll' /*'test'*/],
+	// 	prodLog: ['checkProdLog', 'preproc', 'minifyLog', 'newer:copy:appAll'],
 		
 	// 	// same as default task, but optimized for older browser compatibility
 	// 	oldBrow: ['preproc', 'checkOld', 'minify', 'copy:appAll'],
