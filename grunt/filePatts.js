@@ -49,13 +49,13 @@ module.exports = {
 		}]
 	},
 	// moves all files from app folder to dist folder except .js & .css files (they are minified by uglify &
-	// csslint, respectively), SASS/SCSS files (they are converted to CSS by sass then minified by csslint), library files, & cache
+	// csslint, respectively), preprocessed files (they are converted to runnable files then minified), library files, & cache
 	// files, if possible
 	otherExApp: {
 		files: [{
 			expand: true,
 			cwd: 'app/modules',
-			src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**', '../index.php'],
+			src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**', '!**/coffee/**', '../index.php'],
 			dest: 'dist/app/modules'
 		}]
 	},
@@ -64,7 +64,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'app/modules',
-			src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/sass/**', '!**/scss/**', '../index.php'],
+			src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/sass/**', '!**/scss/**', '!**/coffee/**', '../index.php'],
 			dest: 'dist/app/modules'
 		}]
 	},
