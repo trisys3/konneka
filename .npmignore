@@ -1,0 +1,8 @@
+test/
+.travis.yml
+.git/
+.git
+.gitmodules
+bower.json
+.bowerrc
+dist/min-libs/

@@ -1,17 +1,19 @@
 // express configuration
-module.exports = function() {
+// module.exports = function() {
 
-	express = require('express');
+	express = require('express'); // express module
+
+	consolidate = require('consolidate'); // consolidation module
 
 	// middleware modules
-	morgan = require('morgan');
-	compress = require('compression');
-	flash = require('connect-flash');
-	helmet = require('helmet');
-	bodyParser = require('body-parser');
-	methodOverride = require('method-override');
+	morgan = require('morgan'); // morgan logging middleware
+	compress = require('compression'); // compression middleware
+	flash = require('connect-flash'); // flash middleware
+	helmet = require('helmet'); // helmet middleware for HTTP header configuration
+	bodyParser = require('body-parser'); // body-parsing middleware
+	methodOverride = require('method-override'); // HTTP method-overriding middleware
 
-	server = express();
+	server = express(); // call express function
 
 	// // compression middleware
 	// server.use(compress);
@@ -19,8 +21,8 @@ module.exports = function() {
 	// express options
 
 	// view options
-	server.set('views', './app/modules' + getModule() + '/views'); // the views folder is in the relevant module folder
-	server.engine('swig', consolidate['swig']); // 
+	// server.set('views', './app/modules/' + getModule() + '/views'); // set the views folder to the relevant module folder
+	server.engine('swig', consolidate['swig']); // use "swig" engines with the ".swig" extension
 	server.set('view engine', 'swig'); // set swig as the default view engine
 	// server.set('env', 'development'); // set the default environment as development
 
@@ -31,6 +33,9 @@ module.exports = function() {
 
 		// disable caching of views
 		server.disable('view cache');
+
+		// show errors onscreen
+		server.enable('showStackError');
 	}
 	else if(process.env.NODE_ENV === 'prod') { // for the "production" environment
 		// enable caching, which is the default anyway
@@ -66,9 +71,12 @@ module.exports = function() {
 	server.use(helmet.xframe('deny')); // don't let content be put in frames or iframes
 	server.use(helmet.iexss()); // X-XSS header for basic protection against XSS (Cross-Site-Scripting)
 	server.use(helmet.ienoopen()); // does not let users of Internet Explorer open files from this site, only save them
-	server.use(contentTypeOptions()); // does not let others sniff the X-Content-Type header
+	server.use(helmet.contentTypeOptions()); // does not let others sniff the X-Content-Type header
+	server.use(helmet.cacheControl()); // does not allow caching or storing of files without checking the server for updates first
 	server.disable('x-powered-by'); // hides the X-Powered-By header
 
 	server.listen(3000);
 
-}
+	module.exports = server;
+
+// };

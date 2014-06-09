@@ -12,6 +12,12 @@ module.exports = {
 	// server, being shown to customers
 	prod: {
 		NODE_ENV: 'prod'
+	},
+
+	// environment for making it easier to test things
+	// on the site
+	test: {
+		NODE_ENV: 'test'
 	}
 
 };

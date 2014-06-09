@@ -87,10 +87,29 @@ module.exports = {
 	// minify, leaving comments, logs output
 	minifyLog: 'newer:concurrent:minifyLog',
 
+
 	// copying tasks
 
 	// copies both app & library files
-	copyAppLibs: 'newer:concurrent:copyAppLibs'
+	copyAppLibs: 'newer:concurrent:copyAppLibs',
+
+
+	// server & environment tasks
+
+	// starts forever-running server with "production" environment
+	server: ['env:prod', 'express:prod'],
+
+	// starts forever-running server with "development" environment
+	serverDev: ['env:dev', 'express:dev'],
+
+	// starts ephemeral server with "development" environment
+	serverEphe: ['env:dev', 'express:ephe'],
+
+	// starts forever-running server with "test" environment
+	serverTest: ['env:test', 'express:test'],
+
+	// starts ephemeral server with "test" environment
+	serverTestEphe: ['env:test', 'express:testEphe']
 
 
 	// // composite grunt tasks

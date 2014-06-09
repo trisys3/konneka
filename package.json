@@ -39,7 +39,12 @@
     "morgan": "latest",
     "compression": "latest",
     "grunt-express": "latest",
-    "vhost": "latest"
+    "vhost": "latest",
+    "consolidate": "latest",
+    "connect-flash": "latest",
+    "helmet": "latest",
+    "body-parser": "latest",
+    "method-override": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",
