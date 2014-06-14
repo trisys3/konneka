@@ -24,7 +24,6 @@
 	// server.set('views', './app/modules/' + getModule() + '/views'); // set the views folder to the relevant module folder
 	server.engine('swig', consolidate['swig']); // use "swig" engines with the ".swig" extension
 	server.set('view engine', 'swig'); // set swig as the default view engine
-	// server.set('env', 'development'); // set the default environment as development
 
 	// environment-specific configuration
 	if(process.env.NODE_ENV === 'dev') { // for the "development" environment,
@@ -40,6 +39,16 @@
 	else if(process.env.NODE_ENV === 'prod') { // for the "production" environment
 		// enable caching, which is the default anyway
 		server.enable('view cache');
+	}
+	else if(process.env.NODE_ENV === 'test') { // for the "test" environment
+		// use express's logging middleware, "morgan"
+		server.use(morgan('dev'));
+
+		// disable caching of views
+		server.enable('view cache');
+
+		// show errors onscreen
+		server.enable('showStackError');
 	}
 
 	// body-parsing middleware
@@ -74,6 +83,11 @@
 	server.use(helmet.contentTypeOptions()); // does not let others sniff the X-Content-Type header
 	server.use(helmet.cacheControl()); // does not allow caching or storing of files without checking the server for updates first
 	server.disable('x-powered-by'); // hides the X-Powered-By header
+
+	// vhosts & routing
+	vhosts = require('../vhost');
+	server.use(vhosts.objects);
+	server.use(vhosts.owners);
 
 	server.listen(3000);
 

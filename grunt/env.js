@@ -17,7 +17,8 @@ module.exports = {
 	// environment for making it easier to test things
 	// on the site
 	test: {
-		NODE_ENV: 'test'
+		NODE_ENV: 'test',
+		DEBUG: 'express:*'
 	}
 
 };

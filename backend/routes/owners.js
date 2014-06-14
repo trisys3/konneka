@@ -1,20 +1,9 @@
-// main route
+// owners route
+express = require('express');
+owners = express();
 
-// module.exports = function() {
+owners.route('/').get(function(req, res) {
+	res.redirect("http://konneka.org:3000/owners/:owner");
+});
 
-	express = require('express');
-	owners = express();
-
-	owners.route('/').get(function(req, res) {
-		res.send('whatever');
-	});
-
-	exports.owners = owners;
-
-	// console.log(module.owners);
-
-	// return owners;
-
-	// owners.listen(3000);
-
-// };
+module.exports = owners;

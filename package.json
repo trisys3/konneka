@@ -39,7 +39,7 @@
     "morgan": "latest",
     "compression": "latest",
     "grunt-express": "latest",
-    "vhost": "latest",
+    "express-vhost": "latest",
     "consolidate": "latest",
     "connect-flash": "latest",
     "helmet": "latest",

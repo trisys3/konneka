@@ -2,13 +2,14 @@
 
 express = require('express');
 server = express();
+vhost = require('express-vhost');
 
-owners = require('./routes/owners').owners;
+vhosts = {};
 
-console.log(owners.toString());
+owners = require('./routes/owners');
+objects = require('./routes/objects');
 
-vhost = require('vhost');
+vhosts.objects = vhost('*.*.konneka.org', objects);
+vhosts.owners = vhost('*.konneka.org', owners);
 
-server.use(vhost('*.konneka.org', owners));
-
-server.listen(3000);
+module.exports = exports = vhosts;
