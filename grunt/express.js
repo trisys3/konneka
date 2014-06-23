@@ -20,7 +20,7 @@ module.exports = {
 		options: {
 			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
 			livereload: true, // automatically reload server when express pages change
-			serverreload: true, // run forever-running server (do not close when finished)
+			// serverreload: true, // run forever-running server (do not close when finished)
 			bases: 'app/' // watch files in app folder for changes
 		}
 	},
@@ -28,7 +28,7 @@ module.exports = {
 	prod: {
 		options: {
 			livereload: true, // automatically reload server when express pages change
-			serverreload: true, // run forever-running server (do not close when finished)
+			// serverreload: true, // run forever-running server (do not close when finished)
 			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
 			bases: 'dist/' // watch files in app folder for changes
 		}
@@ -40,7 +40,7 @@ module.exports = {
 			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
 			open: true, // open default page in browser
 			livereload: true, // automatically reload server when express pages change
-			serverreload: true, // run forever-running server (do not close when finished)
+			// serverreload: true, // run forever-running server (do not close when finished)
 			bases: 'app/' // watch files in app folder for changes
 		}
 	},

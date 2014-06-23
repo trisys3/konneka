@@ -1,15 +1,24 @@
 // virtual hosts for Konneka website
 
 express = require('express');
-server = express();
-vhost = require('express-vhost');
+servers = express();
+vhost = require('vhost');
+glob = require('glob');
+path = require('path');
+_ = require('lodash');
 
+// define vhost middleware
 vhosts = {};
 
-owners = require('./routes/owners');
-objects = require('./routes/objects');
+_.forEach(glob.sync(__dirname + '/routes/*.js'), function(file) {
+	base = path.basename(file, '.js');
+	vhosts[base] = require(path.resolve(__dirname, file));
+	servers.use(vhost(vhosts[base]["domain"], vhosts[base]["definition"]));
+	if(vhosts[base]["domainAlter"]) {
+		_.forOwn(vhosts[base]["domainAlter"], function(alterDomain) {
+			servers.use(vhost(alterDomain, vhosts[base]["definition"]));
+		});
+	}
+});
 
-vhosts.objects = vhost('*.*.konneka.org', objects);
-vhosts.owners = vhost('*.konneka.org', owners);
-
-module.exports = exports = vhosts;
+module.exports = exports = servers;

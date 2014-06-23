@@ -1,11 +1,19 @@
 module.exports = {
 
-	tasks: ['preproc', /*'test',*/ 'minify', 'check'],
-	
-	options: {
-		interrupt: true,
-		spawn: false,
-		reload: true
+	// default watching task
+	def: {
+		// watches proeprocessing, testing, minifying, & checking tasks
+		tasks: ['preproc', 'testWatch', 'minify', 'check'],
+		
+		options: {
+			interrupt: true,
+			spawn: false,
+			reload: true
+		}
+	},
+
+	test: {
+		tasks: ['testWatch']
 	}
 	
 };

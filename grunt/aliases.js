@@ -32,6 +32,9 @@ module.exports = {
 	// use every test specified with each testing framework
 	testAll: ['newer:concurrent:testAll'],
 
+	// special test-watching task for Karma
+	testWatch: ['newer:concurrent:testWatch'],
+
 
 	// make "scss" & "sass" the same task (because SCSS is just a newer version of Sass)
 
@@ -97,16 +100,16 @@ module.exports = {
 	// server & environment tasks
 
 	// starts forever-running server with "production" environment
-	server: ['env:prod', 'express:prod'],
+	server: ['env:prod', 'express:prod', 'express-keepalive'],
 
 	// starts forever-running server with "development" environment
-	serverDev: ['env:dev', 'express:dev'],
+	serverDev: ['env:dev', 'express:dev', 'express-keepalive'],
 
 	// starts ephemeral server with "development" environment
 	serverEphe: ['env:dev', 'express:ephe'],
 
 	// starts forever-running server with "test" environment
-	serverTest: ['env:test', 'express:test'],
+	serverTest: ['env:test', 'express:test', 'express-keepalive'],
 
 	// starts ephemeral server with "test" environment
 	serverTestEphe: ['env:test', 'express:testEphe']

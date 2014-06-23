@@ -1,7 +1,7 @@
 module.exports = {
 	
 	check: {
-		tasks: ['sass:check', 'coffeelint:check', 'jshint:check', 'csslint:check', 'imagemin:app'] // check for errors/warnings, optimized for current browsers
+		tasks: ['sass:check', 'coffeelint:check', 'jshint:check', 'csslint:check'] // check for errors/warnings, optimized for current browsers
 	},
 
 	checkProd: {
@@ -33,18 +33,18 @@ module.exports = {
 	},
 	
 	minify: {
-		tasks: ['uglify:def', 'cssmin:def', 'imagemin:app'] // minify code, stripping all comments, storing output in "dist" folder
+		tasks: ['uglify:def', 'cssmin:def'] // minify code, stripping all comments, storing output in "dist" folder
 	},
 	
 	minifyWComm: {
-		tasks: ['uglify:comm', 'cssmin:comm', 'imagemin:app'] // minify code, keeping all comments, storing output in "dist" folder
+		tasks: ['uglify:comm', 'cssmin:comm'] // minify code, keeping all comments, storing output in "dist" folder
 	},
 	
 	minifyLog: {
-		tasks: ['uglify:log', 'cssmin:log', 'imagemin:app'] // minify code, logging output & errors, storing output in "dist" folder
+		tasks: ['uglify:log', 'cssmin:log'] // minify code, logging output & errors, storing output in "dist" folder
 	},
 	
-	watch: {
+	watchkarma: {
 		tasks: ['watch'] // watching task
 	},
 	
