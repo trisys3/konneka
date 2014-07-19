@@ -1,8 +1,18 @@
-.DS_Store
-app/cache/
-app/.sass-cache
-node_modules/
-npm-debug.log
-.bowerrc
-app/min-libs/
-dist/min-libs/
+## Mac OS X file properties ##
+.DS_Store # proprietary Desktop Store
+
+######### cache files ########
+##############################
+app/cache/ # app cache
+app/.sass-cache # Sass's cache
+
+############ node ############
+##################
+node_modules/ # modules folder
+npm-debug.log # npm debug log
+
+########### bower ############
+##############################
+.bowerrc # bower properties
+app/min-libs/ # development libraries
+dist/min-libs/ # production libraries

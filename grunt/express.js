@@ -12,13 +12,13 @@ module.exports = {
 	// ephemeral server to not reload when express files change
 	ephe: {
 		options: {
-			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
+			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 		}
 	},
 
 	dev: {
 		options: {
-			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
+			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
 			bases: 'app/' // watch files in app folder for changes
@@ -29,7 +29,7 @@ module.exports = {
 		options: {
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
+			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 			bases: 'dist/' // watch files in app folder for changes
 		}
 	},
@@ -37,7 +37,7 @@ module.exports = {
 	test: {
 		options: {
 			showStack: true, // show errors in browser
-			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
+			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 			open: true, // open default page in browser
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
@@ -48,7 +48,7 @@ module.exports = {
 	testEphe: {
 		options: {
 			showStack: true, // show errors in browser
-			server: path.resolve(__dirname, '../backend/config/express.js'), // express server file
+			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 			open: true // open default page in browser
 		}
 	}
