@@ -17,9 +17,18 @@ vhost = require('vhost');
 bodyParser = require('body-parser'); // body-parsing middleware
 methodOverride = require('method-override'); // HTTP method-overriding middleware
 
+// environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js');
+if(process.env.touch_enabled) {
+	touch_env = require('.env/touch.js');
+}
+
 server = express(); // call express function
 
 // local server variables
+server.use(function(req, res, next) {
+	res.locals.url = req.protocol + '://' + req.host + req.url;
+	next();
+});
 
 // compression middleware
 server.use(compress({
@@ -28,8 +37,6 @@ server.use(compress({
 	},
 	level: 9
 }));
-
-// express options
 
 // view options
 // server.set('views', './app/modules/' + getModule() + '/views'); // set the views folder to the relevant module folder
@@ -99,8 +106,13 @@ server.disable('x-powered-by'); // hides the X-Powered-By header
 router = require('./routes.js');
 server.use(vhost('konneka.org', router));
 
+// // external scripts & stylesheets for page
+// server.locals.jsFiles = environ.jsFiles;
+// server.locals.cssFiles = environ.cssFiles;
+// console.log(environ.jsFiles);
+
 // vhosts
-vhosts = require('./routes/main.js');
+vhosts = require('./vhost.js');
 server.use(vhosts);
 
 server.listen(3000);

@@ -9,11 +9,12 @@
     "angular-mocks": "latest",
     "angular-animate": "latest",
     "angular-bootstrap": "latest",
+    "angular-touch": "latest",
     "angular-ui-router": "latest",
     "angular-ui-utils": "latest",
     "bootstrap-css": "latest",
     "jquery": "latest",
-    "angular-touch": "latest"
+    "jquery-ui": "latest"
   },
   "private": true,
   "homepage": "https://github.com/trisys3/konneka",
