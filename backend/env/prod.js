@@ -1,7 +1,8 @@
 module.exports = {
-	port: process.env.port || 3000,
-	appRoot: 'dist',
-	jsFiles: [
+	port: process.env.port || 3001,
+	db: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean-prod',
+	appRoot: 'dist/',
+	getJs: function(module) {
 		'/min-libs/jquery/dist/jquery.min.js',
 
 		'/min-libs/jquery-ui/jquery-ui.min.js',
@@ -23,18 +24,18 @@ module.exports = {
 		'/modules/main/js/routes.min.js',
 		'/modules/main/js/url.min.js',
 
-		'/modules/' + res.locals.module + '/js/app.min.js',
-		'/modules/' + res.locals.module + '/js/controllers/' + res.locals.module + 'Ctrl.min.js',
-		'/modules/' + res.locals.module + '/js/services/' + res.locals.module + 'Serv.min.js',
-		'/modules/' + res.locals.module + '/js/filters/' + res.locals.module + 'Fils.min.js',
-		'/modules/' + res.locals.module + '/js/directives/' + res.locals.module + 'Direc.min.js'
-	],
-	cssFiles: [
+		'/modules/' + module + '/js/app.min.js',
+		'/modules/' + module + '/js/controllers/' + module + 'Ctrl.min.js',
+		'/modules/' + module + '/js/services/' + module + 'Serv.min.js',
+		'/modules/' + module + '/js/filters/' + module + 'Fils.min.js',
+		'/modules/' + module + '/js/directives/' + module + 'Direc.min.js'
+	},
+	getCss: function(module) {
 		'/min-libs/bootstrap-css/css/bootstrap.css',
 		'/min-libs/bootstrap-css/css/bootstrap-theme.css',
 
 		'/min-libs/jquery-ui/themes/base/all.css',
 
-		'/modules/' + res.locals.module + '/css/main.css'
-	]
+		'/modules/' + module + '/css/main.css'
+	}
 };

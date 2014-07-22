@@ -3,7 +3,7 @@
 express = require('express');
 router = express.Router();
 
-// route for owner with an object
+// route for object actions
 router.route('/owners/:owner/objects/:object').get(function(req, res, next) {
 	res.send(req.params['owner'] + ' is the owner of ' + req.params['object'] + '.');
 	res.locals.owner = req.params['owner'];
@@ -32,7 +32,7 @@ router.route('/accounts/:owner/:object').get(function(req, res, next) {
 // route for owner accounts
 router.route('/accounts/:owner').get(function(req, res, next) {
 	res.locals.owner = req.params['owner'];
-	res.locals.object = null
+	res.locals.object = null;
 	res.locals.module = 'account';
 	next();
 });

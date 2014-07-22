@@ -5,19 +5,22 @@ module.exports = {
 	// environment variable values for developers
 	// creating/maintaining site
 	dev: {
-		NODE_ENV: 'dev'
+		NODE_ENV: 'dev',
+		MONGO_PORT: 27017
 	},
 
 	// environment variable values for having site on
 	// server, being shown to customers
 	prod: {
-		NODE_ENV: 'prod'
+		NODE_ENV: 'prod',
+		MONGO_PORT: 27018
 	},
 
 	// environment for making it easier to test things
 	// on the site
 	test: {
 		NODE_ENV: 'test',
+		MONGO_PORT: 27019,
 		DEBUG: 'express:*'
 	}
 

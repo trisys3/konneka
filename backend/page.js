@@ -17,18 +17,15 @@ vhost = require('vhost');
 bodyParser = require('body-parser'); // body-parsing middleware
 methodOverride = require('method-override'); // HTTP method-overriding middleware
 
-// environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js');
-if(process.env.touch_enabled) {
-	touch_env = require('.env/touch.js');
-}
+environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js'); // get more variables/functions based on the environment
 
 server = express(); // call express function
 
-// local server variables
-server.use(function(req, res, next) {
-	res.locals.url = req.protocol + '://' + req.host + req.url;
-	next();
-});
+// // local server variables
+// server.use(function(req, res, next) {
+// 	res.locals.url = req.protocol + '://' + req.host + req.url;
+// 	next();
+// });
 
 // compression middleware
 server.use(compress({
@@ -89,32 +86,35 @@ server.use(helmet.csp({ // Content Security Policy (CSP) headers
 	fontSrc: ['konneka.org', '*.konneka.org'], // only allows scripts from this domain
 	objectSrc: ['konneka.org', '*.konneka.org'], // only allows plugins from this domain
 	mediaSrc: ['konneka.org', '*.konneka.org'], // only allows audio & video from this domain
-	frameSrc: ["'none'"], // does not allow frames inside webpages on this site
+	frameSrc: ['\'none\''], // does not allow frames inside webpages on this site
 	reportUri: ['/csp/report-violation'], // where reports will be sent to
 	reportOnly: false, // generate errors as well as other reports
-	setAllHeaders: false, // do not set all headers
+	setAllHeaders: true, // do not set all headers
 	safari5: false // do not implement CSP on clients served via Safari 5
 }));
 server.use(helmet.xframe('deny')); // don't let content be put in frames or iframes
-server.use(helmet.xssFilter()); // X-XSS header for basic protection against XSS (Cross-Site-Scripting)
+server.use(helmet.xssFilter()); // X-XSS-Protection header for basic protection against XSS (Cross-Site-Scripting)
 server.use(helmet.ienoopen()); // does not let users of Internet Explorer open files from this site, only save them
 server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type header
-server.use(helmet.nocache()); // does not allow caching or storing of files without checking the server for updates first
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
-// routing
-router = require('./routes.js');
-server.use(vhost('konneka.org', router));
+// virtual hosts
+vhosts = require('./vhost.js');
+server.use(vhosts);
+
+// require the routing files
+glob(__dirname + '/routes/*.js', function(err, files) {
+	_.each(files, function(file) {
+		server.use(require(file));
+	});
+});
+
 
 // // external scripts & stylesheets for page
 // server.locals.jsFiles = environ.jsFiles;
 // server.locals.cssFiles = environ.cssFiles;
 // console.log(environ.jsFiles);
 
-// vhosts
-vhosts = require('./vhost.js');
-server.use(vhosts);
-
-server.listen(3000);
+server.listen(environ.port || 3000);
 
 module.exports = server;
