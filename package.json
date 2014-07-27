@@ -50,13 +50,15 @@
     "method-override": "latest",
     "morgan": "latest",
     "body-parser": "latest",
-    "passport": "latest",
     "vhost": "latest",
     "compression": "latest",
     "connect-flash": "latest",
     "consolidate": "latest",
     "helmet": "latest",
     "swig": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "passport-google-oauth": "latest",
 
     "browserify": "latest",
     "watchify": "latest"
