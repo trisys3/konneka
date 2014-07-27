@@ -18,7 +18,7 @@ module.exports = function(config) {
       '../jasmine/**/*.js',
       '../angular-mocks.js',
       '../../app/min-libs/angular-mocks/angular-mocks.js',
-      '!../jasmine/**/directives/**.js' // leave out directives by default to test with QUnit
+      '!../jasmine/**/directives/**.js' // leave out directives by default to test them with QUnit
     ],
 
 

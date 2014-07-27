@@ -4,7 +4,7 @@ express = require('express');
 router = express.Router();
 
 // route for object actions
-router.route('/owners/:owner/objects/:object').get(function(req, res, next) {
+router.route('/owners/:owner/objects/:object').post(function(req, res, next) {
 	res.send(req.params['owner'] + ' is the owner of ' + req.params['object'] + '.');
 	res.locals.owner = req.params['owner'];
 	res.locals.object = req.params['object'];
@@ -13,7 +13,7 @@ router.route('/owners/:owner/objects/:object').get(function(req, res, next) {
 });
 
 // route for owner without an object
-router.route('/owners/:owner').get(function(req, res, next) {
+router.route('/owners/:owner').post(function(req, res, next) {
 	res.send(req.params['owner'] + ' is an owner.');
 	res.locals.owner = req.params['owner'];
 	res.locals.object = null;
@@ -22,7 +22,7 @@ router.route('/owners/:owner').get(function(req, res, next) {
 });
 
 // route for object accounts
-router.route('/accounts/:owner/:object').get(function(req, res, next) {
+router.route('/accounts/:owner/:object').post(function(req, res, next) {
 	res.locals.owner = req.params['owner'];
 	res.locals.object = req.params['object'];
 	res.locals.module = 'account';
@@ -30,7 +30,7 @@ router.route('/accounts/:owner/:object').get(function(req, res, next) {
 });
 
 // route for owner accounts
-router.route('/accounts/:owner').get(function(req, res, next) {
+router.route('/accounts/:owner').post(function(req, res, next) {
 	res.locals.owner = req.params['owner'];
 	res.locals.object = null;
 	res.locals.module = 'account';
@@ -38,7 +38,7 @@ router.route('/accounts/:owner').get(function(req, res, next) {
 });
 
 // route for welcome screen
-router.route('/').get(function(req, res, next) {
+router.route('/').post(function(req, res, next) {
 	res.send('Main route');
 	res.locals.owner = null;
 	res.locals.object = null;

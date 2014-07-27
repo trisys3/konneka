@@ -1,7 +1,9 @@
+'use strict';
+
 // route definitions
 // create express object & its router function
-express = require('express');
-router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 // route for object actions
 router.route('/owners/:owner/objects/:object').get(function(req, res, next) {

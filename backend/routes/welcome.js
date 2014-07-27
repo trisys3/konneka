@@ -1,7 +1,9 @@
+'use strict';
+
 // route definitions
 // create express object & its router function
-express = require('express');
-router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 // route for welcome screen
 router.route('/').get(function(req, res, next) {

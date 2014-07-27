@@ -1,6 +1,6 @@
 module.exports = {
 	port: process.env.port || 3001,
-	db: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean-prod',
+	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean',
 	appRoot: 'dist/',
 	getJs: function(module) {
 		'/min-libs/jquery/dist/jquery.min.js',

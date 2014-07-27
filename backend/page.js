@@ -98,10 +98,6 @@ server.use(helmet.ienoopen()); // does not let users of Internet Explorer open f
 server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type header
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
-// virtual hosts
-vhosts = require('./vhost.js');
-server.use(vhosts);
-
 // require the routing files
 glob(__dirname + '/routes/*.js', function(err, files) {
 	_.each(files, function(file) {
@@ -109,12 +105,11 @@ glob(__dirname + '/routes/*.js', function(err, files) {
 	});
 });
 
+// virtual hosts
+vhosts = require('./vhost.js');
+server.use(vhosts.all);
 
-// // external scripts & stylesheets for page
-// server.locals.jsFiles = environ.jsFiles;
-// server.locals.cssFiles = environ.cssFiles;
-// console.log(environ.jsFiles);
-
+// listen on port related to environment variable
 server.listen(environ.port || 3000);
 
 module.exports = server;
