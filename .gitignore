@@ -13,6 +13,5 @@ npm-debug.log # npm debug log
 
 ########### bower ############
 ##############################
-.bowerrc # bower properties
 app/min-libs/ # development libraries
 dist/min-libs/ # production libraries
