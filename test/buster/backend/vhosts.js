@@ -27,10 +27,10 @@ buster.testCase('vhosts', {
 		// test that we go to the correct location, '/owners/[owner-name]' in the main domain
 		'owners route': function(done) {
 			request(this.vhostServer)
-				.post('http://owners.konneka.org/')
+				.get('http://owners.konneka.org/')
 				.end(function(err, res) {
-					done();
 					console.log(res.headers.host);
+					done();
 				});
 		}
 

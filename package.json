@@ -58,10 +58,7 @@
     "swig": "latest",
     "passport": "latest",
     "passport-local": "latest",
-    "passport-google-oauth": "latest",
-
-    "browserify": "latest",
-    "watchify": "latest"
+    "passport-google-oauth": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",

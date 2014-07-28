@@ -5,6 +5,12 @@
 		<title>{{% block title %}}Loading...{{% endblock %}}</title>
 
 		<meta charset="utf-8" />
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<!--external CSS stylesheets-->
+		{% for extStyle in extStyles %}<link rel="stylesheet" type="text/css" href="{{extStyle}}" />{% endfor %}
 
 		{{% block otherMeta %}}{{% endblock %}}
 
@@ -12,7 +18,7 @@
 	<body class="ng-cloak" ng-controller="IotRootCtrl">
 
 		<header>
-		{{% block header %}}{{% endblock %}}
+			{{% block header %}}{{% endblock %}}
 		</header>
 
 		<section class="content">
@@ -20,8 +26,11 @@
 		</section>
 
 		<footer>
-		{{% block footer %}}{{% endblock %}}
+			{{% block footer %}}{{% endblock %}}
 		</footer>
+
+		<!--external JavaScript scripts-->
+		{% for extScript in extScripts %}<script type="text/javascript" src="{{extScript}}"></script>{% endfor %}
 
 	</body>
 </html>
