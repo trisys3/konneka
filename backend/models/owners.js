@@ -10,10 +10,10 @@ var OwnerSchema = new Schema({
 	objectIds: [{
 		type: Number,
 		ref: 'Object',
-		default: undefined
+		default: null
 	}]
 	
 
 });
 
-module.exports = OwnerSchema;
+mongoose.model('Owner', OwnerSchema);

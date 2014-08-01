@@ -40,7 +40,7 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true,
 		default: ''
-	}
+	},
 
 	// username of user
 	username: {
@@ -55,14 +55,14 @@ var UserSchema = new Schema({
 	email: {
 		type: String,
 		trim: true,
-		default: undefined,
+		default: null,
 		match: [/[\w.%+-]+@[\w.]+\.[a-zA-Z]{2,4}/, 'Please fill in a valid email address']
 	},
 
 	// list of preferred names of user, if any
 	preferredNames: {
 		type: [String],
-		default: undefined
+		default: []
 	},
 
 	// age of user
@@ -81,13 +81,13 @@ var UserSchema = new Schema({
 	// when the user died, if ever
 	died: {
 		type: Date,
-		default: undefined
+		default: null
 	},
 
 	// password of user
 	password: {
 		type: String,
-		default: undefined
+		default: null
 	},
 
 	// salt for user's password
@@ -125,7 +125,7 @@ var UserSchema = new Schema({
 	// date this user was last updated in the database, if ever
 	updated: {
 		type: Date,
-		default: undefined
+		default: null
 	},
 
 	// an array of the user's groups and, more importantly, their access levels
@@ -141,4 +141,4 @@ var UserSchema = new Schema({
 	}
 });
 
-module.exports = UserSchema;
+mongoose.model('User', UserSchema);

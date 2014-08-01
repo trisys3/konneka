@@ -15,7 +15,7 @@ var GroupSchema = new Schema({
 
 	// list of aliases for the group
 	preferredNames: {
-		type: Mixed,
+		type: Schema.Types.Mixed,
 		default: undefined
 	},
 
@@ -24,20 +24,20 @@ var GroupSchema = new Schema({
 		type: String,
 		trim: true,
 		default: ''
-	}
+	},
 
 	// list of members, where each member is a row in the database
 	members: {
 		type: [Schema],
-		default: undefined
+		default: []
 	},
 
 	// Unix-style privacy level for "group"
 	privacy: {
 		type: Number,
-		default: undefined
+		default: null
 	}
 
 });
 
-module.exports = GroupSchema;
+mongoose.model('Group', GroupSchema);

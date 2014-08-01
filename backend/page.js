@@ -1,25 +1,39 @@
+'use strict';
+
 // express configuration
 
-path = require('path');
-glob = require('glob');
+var path = require('path');
+var glob = require('glob');
 
-express = require('express'); // express module
-_ = require('lodash');
+var express = require('express'); // express module
+var _ = require('lodash');
 
-consolidate = require('consolidate'); // consolidation module
+var consolidate = require('consolidate'); // consolidation module
 
 // middleware modules
-morgan = require('morgan'); // morgan logging middleware
-compress = require('compression'); // compression middleware
-flash = require('connect-flash'); // flash middleware
-helmet = require('helmet'); // helmet middleware for HTTP header configuration
-vhost = require('vhost');
-bodyParser = require('body-parser'); // body-parsing middleware
-methodOverride = require('method-override'); // HTTP method-overriding middleware
+var morgan = require('morgan'); // morgan logging middleware
+var compress = require('compression'); // compression middleware
+var flash = require('connect-flash'); // flash middleware
+var helmet = require('helmet'); // helmet middleware for HTTP header configuration
+var vhost = require('vhost'); // virtual hosting middleware
+var bodyParser = require('body-parser'); // body-parsing middleware
+var cookieParser = require('cookie-parser'); // cookie-parsing middleware
+var methodOverride = require('method-override'); // HTTP method-overriding middleware
 
-environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js'); // get more variables/functions based on the environment
+var environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js'); // get more variables/functions based on the environment
 
-server = express(); // call express function
+var mongoose = require('mongoose'); // ORM module
+var session = require('express-session'); // session-configuring software
+var mongoStore = require('connect-mongo')(session);
+
+var server = express(); // call express function
+
+// require the model files
+glob(__dirname + '/models/*.js', function(err, models) {
+	_.each(models, function(model) {
+		require(model);
+	});
+});
 
 // // local server variables
 // server.use(function(req, res, next) {
@@ -73,6 +87,25 @@ server.use(bodyParser.json()); // middleware for parsing JSON-encoded documents
 // HTTP method-overriding middleware
 server.use(methodOverride());
 
+server.use(cookieParser()); // cookie-parsing middleware
+
+var db = mongoose.connect(environ.dbUrl);
+
+// create a client-server session, using a MongoDB collection/table to store its info
+server.use(session({
+	resave: true,
+	saveUninitialized: true,
+	secret: 'Internet of Things',
+	store: new mongoStore({
+		db: db.connections[0].db,
+		port: environ.port,
+	})
+}));
+
+// // initialize passport & have it use the current session
+// server.use(passport.initialize());
+// server.use(passport.session());
+
 // flash-messaging middleware
 server.use(flash());
 
@@ -99,7 +132,7 @@ server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type he
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
 // virtual hosts
-vhosts = require('./vhost.js');
+var vhosts = require('./vhost.js');
 server.use(vhosts.all);
 
 // require the routing files

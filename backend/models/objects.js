@@ -13,4 +13,4 @@ var ObjectSchema = new Schema({
 	}
 });
 
-module.exports = ObjectSchema;
+mongoose.model('Object', ObjectSchema);

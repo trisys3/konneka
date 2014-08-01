@@ -2,7 +2,8 @@
 
 module.exports = {
 	port: process.env.port || 3000,
-	db: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/mean-dev',
+	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/mean-dev',
+	sessionSecret: 'Internet of Things',
 	appRoot: 'app/',
 	getJs: function(module) {
 		var scripts = [
