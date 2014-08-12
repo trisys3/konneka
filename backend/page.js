@@ -23,8 +23,10 @@ var methodOverride = require('method-override'); // HTTP method-overriding middl
 var environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js'); // get more variables/functions based on the environment
 
 var mongoose = require('mongoose'); // ORM module
+var monServer = mongoose.connect(environ.dbUrl); // create the database object
 var session = require('express-session'); // session-configuring software
 var mongoStore = require('connect-mongo')(session);
+var passport = require('passport');
 
 var server = express(); // call express function
 
@@ -87,18 +89,19 @@ server.use(bodyParser.json()); // middleware for parsing JSON-encoded documents
 // HTTP method-overriding middleware
 server.use(methodOverride());
 
-server.use(cookieParser()); // cookie-parsing middleware
+server.enable('jsonp callback');
 
-var db = mongoose.connect(environ.dbUrl);
+server.use(cookieParser()); // cookie-parsing middleware
 
 // create a client-server session, using a MongoDB collection/table to store its info
 server.use(session({
 	resave: true,
 	saveUninitialized: true,
-	secret: 'Internet of Things',
+	secret: environ.sessionSecret,
 	store: new mongoStore({
-		db: db.connections[0].db,
-		port: environ.port,
+		db: monServer.connections[0].db,
+		port: environ.MONGO_PORT,
+		host: 'konneka.org'
 	})
 }));
 
@@ -138,11 +141,11 @@ server.use(vhosts.all);
 // require the routing files
 glob(__dirname + '/routes/*.js', function(err, files) {
 	_.each(files, function(file) {
-		server.use(require(file));
+		server.use(vhost('konneka.org', require(file)));
 	});
 });
 
 // listen on port related to environment variable
-server.listen(environ.port || 3000);
+server.listen(environ.SERVER_PORT || 3000);
 
 module.exports = server;

@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-	port: process.env.port || 3000,
+	port: process.env.SERVER_PORT || 3000,
 	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/mean-dev',
-	sessionSecret: 'Internet of Things',
+	sessionSecret: 'Internet of Monkeys',
 	appRoot: 'app/',
 	getJs: function(module) {
 		var scripts = [
@@ -34,6 +34,7 @@ module.exports = {
 			'/modules/' + module + '/js/filters/' + module + 'Fils.js',
 			'/modules/' + module + '/js/directives/' + module + 'Direc.js'
 		];
+		
 		return scripts;
 	},
 	getCss: function(module) {

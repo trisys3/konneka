@@ -100,19 +100,19 @@ module.exports = {
 	// server & environment tasks
 
 	// starts forever-running server with "production" environment
-	server: ['env:prod', 'express:prod', 'express-keepalive'],
+	server: ['shell:mongod',  'env:prod', 'express:prod', 'express-keepalive'],
 
 	// starts forever-running server with "development" environment
-	serverDev: ['env:dev', 'express:dev', 'express-keepalive'],
+	serverDev: ['shell:mongod',  'env:dev', 'express:dev', 'express-keepalive'],
 
 	// starts ephemeral server with "development" environment
-	serverEphe: ['env:dev', 'express:ephe'],
+	serverEphe: ['shell:mongod',  'env:dev', 'express:ephe'],
 
 	// starts forever-running server with "test" environment
-	serverTest: ['env:test', 'express:test', 'express-keepalive'],
+	serverTest: ['shell:mongod',  'env:test', 'express:test', 'express-keepalive'],
 
 	// starts ephemeral server with "test" environment
-	serverTestEphe: ['env:test', 'express:testEphe']
+	serverTestEphe: ['shell:mongod',  'env:test', 'express:testEphe']
 
 
 	// // composite grunt tasks

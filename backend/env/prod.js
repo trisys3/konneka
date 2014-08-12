@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = {
-	port: process.env.port || 3001,
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean',
+	port: process.env.SERVER_PORT || 3001,
+	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean',
+	sessionSecret: 'Internet of Things',
 	appRoot: 'dist/',
 	getJs: function(module) {
 		var scripts = [
