@@ -5,7 +5,7 @@ module.exports = {
 	// default options
 	options: {
 		hostname: '127.0.0.1', // allow connections from localhost
-		port: 3000, // default port
+		port: (process.env.SERVER_PORT || 3000), // default port
 
 	},
 
