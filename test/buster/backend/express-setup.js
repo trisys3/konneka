@@ -18,15 +18,6 @@ buster.testCase('express setup', {
 		this.konnekaServer = require('../../../backend/page.js');
 	},
 
-	// test that the compression middleware works
-	'compress compresses my data': {
-
-		// set up compression middleware
-		setUp: function() {
-			this.compress = require('compression');
-		},
-	},
-
 	// test helmet middleware to ensure it protects the headers adequately
 	'helmet protects my headers': {
 

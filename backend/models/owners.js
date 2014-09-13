@@ -11,9 +11,14 @@ var OwnerSchema = new Schema({
 		type: Number,
 		ref: 'Object',
 		default: null
-	}]
-	
+	}],
 
+	// the user this owner is associated with
+	userProfile: {
+		type: UserSchema,
+		default: {}
+	}
+	
 });
 
 mongoose.model('Owner', OwnerSchema);

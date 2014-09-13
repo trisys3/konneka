@@ -13,10 +13,10 @@ var request = require('supertest');
 // define our test case
 buster.testCase('vhosts', {
 	setUp: function() {
-		this.vhostServer = require('../../../backend/vhost.js');
+		this.vhostServer = require('../../../backend/page.js');
 	},
 
-	// test what happens when navigating to the '*.owners.konneka' subdomain
+	// test what happens when navigating to the '*.konneka.org' subdomain
 	'owners submodule': {
 
 		// setup function
@@ -24,12 +24,50 @@ buster.testCase('vhosts', {
 
 		},
 
-		// test that we go to the correct location, '/owners/[owner-name]' in the main domain
-		'owners route': function(done) {
+		// test that, when we visit the owner's route ([owner].konneka.org), we are redirected to
+		// the correct domain, 'konneka.org'
+		'owners route domain': function(done) {
 			request(this.vhostServer)
-				.get('http://owners.konneka.org/')
+				.get('/')
+				.set('Host', 'owners.konneka.org')
 				.end(function(err, res) {
-					console.log(res.headers.host);
+					assert.match(res.header.location, /(http(s)?\:)?\/\/konneka.org/);
+					done();
+				});
+		},
+
+		// test that, when we visit the owner's route ([owner].konneka.org), we are redirected to
+		// the correct path on the konneka.org domain, '/owners/[owner]'
+		'owners route path': function(done) {
+			request(this.vhostServer)
+				.get('/')
+				.set('Host', 'owners.konneka.org')
+				.end(function(err, res) {
+					assert.match(res.header.location, /\/owners\/owners$/);
+					done();
+				});
+		},
+
+		// test that, when we visit the object's route ([object].[owner].konneka.org), we are redirected to
+		// the correct domain, 'konneka.org'
+		'objects route domain': function(done) {
+			request(this.vhostServer)
+				.get('/')
+				.set('Host', 'objects.owners.konneka.org')
+				.end(function(err, res) {
+					assert.match(res.header.location, /(http(s)?\:)?\/\/konneka.org/);
+					done();
+				});
+		},
+
+		// test that, when we visit the owner's route ([object].[owner].konneka.org), we are redirected to
+		// the correct path on the konneka.org domain, '/owners/[owner]/objects/[object]'
+		'objects route path': function(done) {
+			request(this.vhostServer)
+				.get('/')
+				.set('Host', 'objects.owners.konneka.org')
+				.end(function(err, res) {
+					assert.match(res.header.location, /\/owners\/owners\/objects\/objects$/);
 					done();
 				});
 		}

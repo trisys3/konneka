@@ -2,7 +2,7 @@
 
 module.exports = {
 	port: process.env.SERVER_PORT || 3000,
-	dbUrl: 'mongodb://127.0.0.1:' + (process.env.MONGO_PORT || 27017) + '/mean-dev?auto_reconnect:true',
+	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/mean-dev',
 	sessionSecret: 'Internet of Monkeys',
 	appRoot: 'app/',
 	getJs: function(module) {

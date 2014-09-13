@@ -21,6 +21,11 @@ var cookieParser = require('cookie-parser'); // cookie-parsing middleware
 var methodOverride = require('method-override'); // HTTP method-overriding middleware
 
 var environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js'); // get more variables/functions based on the environment
+var touch_env = false; // set variable indicating whether we are on a touchscreen to false initially
+// if we are in a touch environment, set it to true
+if(process.env.TOUCH) {
+	touch_env = true;
+}
 
 var mongoose = require('mongoose'); // ORM module
 var session = require('express-session'); // session-configuring software
@@ -66,10 +71,6 @@ if(process.env.NODE_ENV === 'dev') { // for the "development" environment,
 	// show errors onscreen
 	server.enable('showStackError');
 }
-else if(process.env.NODE_ENV === 'prod') { // for the "production" environment
-	// enable caching, which is the default anyway
-	server.enable('view cache');
-}
 else if(process.env.NODE_ENV === 'test') { // for the "test" environment
 	// use express's logging middleware, "morgan"
 	server.use(morgan('dev'));
@@ -88,6 +89,9 @@ server.use(bodyParser.json()); // middleware for parsing JSON-encoded documents
 // HTTP method-overriding middleware
 server.use(methodOverride());
 
+// enable JSONP
+server.enable('jsonp callback');
+
 server.use(cookieParser()); // cookie-parsing middleware
 
 // create the database object
@@ -99,7 +103,7 @@ server.use(session({
 	saveUninitialized: true,
 	secret: environ.sessionSecret,
 	store: new mongoStore({
-		db: monServer.connections[0].db, // specify the database these sessions will be saved into
+		mongoose_connection: monServer.connections[0], // specify the database these sessions will be saved into
 		auto_reconnect: true
 	})
 }));

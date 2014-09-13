@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var GroupSchema = require('./groups.js');
 var Schema = mongoose.Schema;
+var crypto = require('crypto');
 
 // schema for user collection/table
 var UserSchema = new Schema({
@@ -102,14 +103,14 @@ var UserSchema = new Schema({
 		default: ''
 	},
 
-	// what the user is, i.e. "human", "computer", "fridge", etc.
+	// what the user is, i.e. human, computer, fridge, etc.
 	whatIs: {
 		type: String,
 		trim: true,
 		default: 'human'
 	},
 
-	// space-separated list of statuses & roles of user (admin, banned, etc.)
+	// space-separated list of roles of user (user, admin, etc.)
 	status: {
 		type: String,
 		trim: true,
@@ -131,14 +132,58 @@ var UserSchema = new Schema({
 	// an array of the user's groups and, more importantly, their access levels
 	groups: {
 		type: [GroupSchema],
-		default: undefined
+		default: []
 	},
 
 	// Unix-style read, write & execute privacy levels for self, groups without specified privacy level, & world
 	privacy: {
 		type: Number,
 		default: 755
+	},
+
+	// temporary password
+	tempPassword: {
+		type: String,
+		default: null
+	},
+
+	// temporary password expiration date/time
+	tempPasswordExpires: {
+		type: Date,
+		default: null
 	}
 });
+
+// pre-save hook to hash our new password
+UserSchema.pre('save', function(next) {
+	if(this.password) {
+		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		this.password = this.hashPassword(this.password);
+	}
+	next();
+});
+
+// password-hashing function
+UserSchema.methods.hashPassword = function(password) {
+	if(this.salt && password) {
+		return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+	}
+	else {
+		return password;
+	}
+};
+
+// authentication function
+UserSchema.methods.authenticate = function(password) {
+	if(this.password === this.hashPassword(password)) {
+		return true;
+	}
+	else if(this.tempPassword === this.hashPassword(password) && this.tempPasswordExpires > Date.now) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
 
 mongoose.model('User', UserSchema);
