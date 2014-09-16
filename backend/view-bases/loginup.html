@@ -10,6 +10,36 @@
 
 {{% block content %}}
 
+	<form method="post" action="/auth/login" enctype="application/x-www-form-urlencoded" id="loginForm" name="loginForm">
+
+		<fieldset>
+
+			<legend>Log In</legend>
+
+			<input type="text" id="loginUser" name="loginPass" autocomplete="on" placeholder="username@email.com" />
+
+			<input type="password" id="loginPass" name="loginPass" autocomplete="off" placeholder="********" />
+
+		</fieldset>
+
+	</form>
+
+	<form method="post" action="/auth/signup" enctype="application/x-www-form-urlencoded">
+
+		<fieldset>
+
+			<legend>Sign Up</legend>
+
+			<input type="text" id="signupUser" name="signupPass" autocomplete="on" placeholder="username@email.com" />
+
+			<input type="password" id="signupPass" name="signupPass" autocomplete="off" placeholder="********" />
+
+			<input type="password" id="signupConfirmPass" name="signupConfirmPass" autocomplete="off" placeholder="********" />
+
+		</fieldset>
+
+	</form>
+
 {{% endblock %}}
 
 {{% block footer %}}

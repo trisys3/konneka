@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var UserSchema = require('./users');
 
 // schema for owner collection/table
 var OwnerSchema = new Schema({

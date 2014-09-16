@@ -25,7 +25,7 @@ module.exports = exports = function() {
 
 		// do not include salt, password or temporary password
 		// in the result, for security
-		'-salt -password -tempPassword -tempPasswordExpires',
+		'-salt -password',
 
 		// when we are done, return the user and any errors
 		function(err, user) {

@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var UserSchema = require('./users');
 
 var ObjectSchema = new Schema({
 

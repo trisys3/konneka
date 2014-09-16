@@ -140,7 +140,7 @@ buster.testCase('express setup', {
 			},
 
 			// check that the CSP headers are not set on Safari 5
-			'no CSP for Safari 5': function(done) {
+			'// no CSP for Safari 5': function(done) {
 				request(this.konnekaServer)
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 6.3; en-US) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0 Safari/533.16')
