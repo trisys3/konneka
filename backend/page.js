@@ -20,7 +20,7 @@ var bodyParser = require('body-parser'); // body-parsing middleware
 var cookieParser = require('cookie-parser'); // cookie-parsing middleware
 var methodOverride = require('method-override'); // HTTP method-overriding middleware
 
-var environ = require('./env/' + (process.env.NODE_ENV || 'dev') + '.js'); // get more variables/functions based on the environment
+var environ = require('./env/' + (process.env.NODE_ENV || 'dev')); // get more variables/functions based on the environment
 var touch_env = false; // set variable indicating whether we are on a touchscreen to false initially
 // if we are in a touch environment, set it to true
 if(process.env.TOUCH) {
@@ -138,7 +138,7 @@ server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type he
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
 // virtual hosts
-var vhosts = require('./vhost.js');
+var vhosts = require('./vhost');
 server.use(vhosts.all);
 
 // require the routing files
