@@ -142,11 +142,13 @@ var vhosts = require('./vhost');
 server.use(vhosts.all);
 
 // require the routing files
-glob(__dirname + '/routes/*.js', function(err, files) {
-	_.each(files, function(file) {
-		server.use(vhost('konneka.org', require(file)));
+glob(__dirname + '/routes/*.js', function(err, routes) {
+	_.each(routes, function(route) {
+		server.use(vhost('konneka.org', require(route)));
 	});
 });
+
+// require('./signinoutup/passport')();
 
 // listen on port related to environment variable
 server.listen(process.env.SERVER_PORT || 3000);

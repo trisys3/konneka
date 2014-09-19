@@ -7,9 +7,9 @@ var router = express.Router();
 var accounts = require('../controllers/accounts');
 
 // route for owner accounts
-router.route('/accounts/:owner').get(accounts.owner);
+router.route('/owners/:owner/account').get(accounts.owner);
 
 // route for object accounts
-router.route('/accounts/:owner/:object').get(accounts.object);
+router.route('/owners/:owner/objects/:object/account').get(accounts.object);
 
 module.exports = router;

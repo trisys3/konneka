@@ -8,7 +8,7 @@ exports.main = function(req, res, next) {
 	res.locals.owner = req.params['owner'];
 	res.locals.object = null;
 	res.locals.module = 'owner';
-	res.locals.extScripts = env.getJs(res.locals.module);
-	res.locals.extStyles = env.getCss(res.locals.module);
+	res.locals.extScripts = env.getJs();
+	res.locals.extStyles = env.getCss();
 	next();
 };

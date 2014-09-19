@@ -43,7 +43,7 @@ buster.testCase('vhosts', {
 				.get('/')
 				.set('Host', 'owners.konneka.org')
 				.end(function(err, res) {
-					assert.match(res.header.location, /\/owners\/owners$/);
+					assert.match(res.header.location, /\/owners\/owners/);
 					done();
 				});
 		},
@@ -67,7 +67,7 @@ buster.testCase('vhosts', {
 				.get('/')
 				.set('Host', 'objects.owners.konneka.org')
 				.end(function(err, res) {
-					assert.match(res.header.location, /\/owners\/owners\/objects\/objects$/);
+					assert.match(res.header.location, /\/owners\/owners\/objects\/objects/);
 					done();
 				});
 		}

@@ -13,5 +13,4 @@ angular.module 'iotApp', [
 	'iotUrl'
 	'iotRoute'
 	'iotHead'
-	'iotAccount'
 ]

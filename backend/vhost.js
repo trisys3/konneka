@@ -9,18 +9,18 @@ var objects = express.Router();
 
 var vhost = require('vhost');
 
-owners.route('/').get(function(req, res, next) {
+owners.route('/*').get(function(req, res, next) {
 	var owner = req.subdomains[0];
-	res.redirect("http://konneka.org:3000/owners/" + owner);
+	res.redirect("http://konneka.org:3000/owners/" + owner + req.path);
 	next();
 });
 
 module.exports.owners = owners;
 
-objects.route('/').get(function(req, res, next) {
+objects.route('/*').get(function(req, res, next) {
 	var owner = req.subdomains[0];
 	var object = req.subdomains[1];
-	res.redirect("http://konneka.org:3000/owners/" + owner + "/objects/" + object);
+	res.redirect("http://konneka.org:3000/owners/" + owner + "/objects/" + object + req.path);
 	next();
 });
 

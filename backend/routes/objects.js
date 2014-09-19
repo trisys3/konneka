@@ -3,8 +3,10 @@
 // route definitions
 // create express object & its router function
 var express = require('express');
-var objects = require('../controllers/objects');
 var router = express.Router();
+
+// require the relevant controller
+var objects = require('../controllers/objects');
 
 // route for object actions
 router.route('/owners/:owner/objects/:object').get(objects.main);

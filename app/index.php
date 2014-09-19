@@ -9,20 +9,7 @@
 </head>
 <body ng-controller="IotRootCtrl"><!--the root controller is initialized here-->
 
-  <ng-switch on="log_in" ng-controller="IotAccCtrl">
-    <div ng-switch-when="login"><!--while user is logging in, display log-in page-->
-      <ng-include src="/modules/account/login"></ng-include>
-    </div>
-    <div ng-switch-when="signup"><!--while user is signing up, display sign-up page-->
-      <ng-include src="/modules/account/signup"></ng-include>
-    </div>
-    <div ng-switch-default="ng-switch-default"><!--when the user is not signing up or logging in, go to URL in browser-->
-      <!--ng-include the page that is actually in the URL-->
-      <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
-    </div>
-  </ng-switch>
-
-  <!-- <div>Angular seed app: v<span app-version></span></div> -->
+  <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!--this is where the "inside" page is situated-->
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script> AngularJS, version 1.2.7, from Google's CDN
@@ -64,11 +51,6 @@
   <script src="/modules/welcome/js/services/welcomeServ.min.js"></script><!--services for welcome module-->
   <script src="/modules/welcome/js/filters/welcomeFils.min.js"></script><!--filters for welcome module-->
   <script src="/modules/welcome/js/directives/welcomeDirec.min.js"></script><!--directives for welcome module-->
-
-  <script src="/modules/account/js/app.min.js"></script><!--main script for account module-->
-  <script src="/modules/account/js/controllers/accountCtrl.min.js"></script><!--controllers for account module-->
-  <script src="/modules/account/js/services/accountServ.min.js"></script><!--services for account module-->
-  <script src="/modules/account/js/filters/accountFils.min.js"></script><!--filters for account module-->
-  <script src="/modules/account/js/directives/accountDirec.min.js"></script><!--directives for account module-->
+  
 </body>
 </html>
