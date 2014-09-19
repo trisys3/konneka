@@ -36,14 +36,26 @@ buster.testCase('vhosts', {
 				});
 		},
 
-		// test that, when we visit the owner's route ([owner].konneka.org), we are redirected to
-		// the correct path on the konneka.org domain, '/owners/[owner]'
-		'owners route path': function(done) {
+		// test that, when we visit the root path for the owner's route ([owner].konneka.org), we are
+		// redirected to the correct path on the konneka.org domain, '/owners/[owner]/'
+		'owners route root path': function(done) {
 			request(this.vhostServer)
 				.get('/')
 				.set('Host', 'owners.konneka.org')
 				.end(function(err, res) {
-					assert.match(res.header.location, /\/owners\/owners/);
+					assert.match(res.header.location, /\/owners\/owners\/$/);
+					done();
+				});
+		},
+
+		// test that, when we visit a relatively deep path for the owner's route ([owner].konneka.org/[deep path]),
+		// we are redirected to the correct path on the konneka.org domain, 'konneka.org/owners/[owner]/[deep path]'
+		'owners route deep path': function(done) {
+			request(this.vhostServer)
+				.get('/relatively/deep/path')
+				.set('Host', 'owners.konneka.org')
+				.end(function(err, res) {
+					assert.match(res.header.location, /\/owners\/owners\/relatively\/deep\/path$/);
 					done();
 				});
 		},
@@ -60,14 +72,26 @@ buster.testCase('vhosts', {
 				});
 		},
 
-		// test that, when we visit the owner's route ([object].[owner].konneka.org), we are redirected to
-		// the correct path on the konneka.org domain, '/owners/[owner]/objects/[object]'
-		'objects route path': function(done) {
+		// test that, when we visit the root path for the owner's route ([object].[owner].konneka.org),
+		// we are redirected to the correct path on the konneka.org domain, '/owners/[owner]/objects/[object]'
+		'objects route root path': function(done) {
 			request(this.vhostServer)
 				.get('/')
 				.set('Host', 'objects.owners.konneka.org')
 				.end(function(err, res) {
-					assert.match(res.header.location, /\/owners\/owners\/objects\/objects/);
+					assert.match(res.header.location, /\/owners\/owners\/objects\/objects\/$/);
+					done();
+				});
+		},
+
+		// test that, when we visit a relatively deep path for the object's route ([object].[owner].konneka.org/[deep path]),
+		// we are redirected to the correct path on the konneka.org domain, 'konneka.org/owners/[owner]/objects/[object]/[deep path]'
+		'objects route deep path': function(done) {
+			request(this.vhostServer)
+				.get('/relatively/deep/path')
+				.set('Host', 'objects.owners.konneka.org')
+				.end(function(err, res) {
+					assert.match(res.header.location, /\/owners\/owners\/objects\/objects\/relatively\/deep\/path$/);
 					done();
 				});
 		}
