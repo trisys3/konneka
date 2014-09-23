@@ -14,10 +14,10 @@ var OwnerSchema = new Schema({
 		default: null
 	}],
 
-	// the user this owner is associated with
+	// the user(s) this owner is associated with
 	userProfile: {
-		type: UserSchema,
-		default: {}
+		type: [UserSchema],
+		default: []
 	}
 	
 });

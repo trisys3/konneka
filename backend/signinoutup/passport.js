@@ -1,9 +1,11 @@
 'use strict';
 
 var passport = require('passport');
-var User = require('mongoose').model('User');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 var path = require('path');
 var glob = require('glob');
+var _ = require('lodash');
 
 module.exports = exports = function() {
 	// serialize our Passport sessions
@@ -19,9 +21,7 @@ module.exports = exports = function() {
 	passport.deserializeUser(function(id, done) {
 
 		// find a user with the ID we are given
-		User.findOne({
-			_id: id
-		},
+		User.findById(id,
 
 		// do not include salt, password or temporary password
 		// in the result, for security
@@ -32,12 +32,12 @@ module.exports = exports = function() {
 			done(err, user);
 		});
 
-		// include our Passport strategies
-		glob(__dirname + '/strategies/*.js', function(err, files) {
-			_.each(files, function(strategy) {
-				server.use(require(strategy));
-			});
-		});
+	});
 
+	// include our Passport strategies
+	glob(__dirname + '/strategies/*.js', function(err, files) {
+		_.each(files, function(strategy) {
+			require(strategy);
+		});
 	});
 };

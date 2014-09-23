@@ -4,6 +4,7 @@
 
 var path = require('path');
 var glob = require('glob');
+var fs = require('fs');
 
 var express = require('express'); // express module
 var _ = require('lodash');
@@ -29,16 +30,15 @@ if(process.env.TOUCH) {
 
 var mongoose = require('mongoose'); // ORM module
 var session = require('express-session'); // session-configuring software
-var mongoStore = require('connect-mongo')(session);
+var mongoStore = require('connect-mongo')(session); // session storage in our MongoDB database
 var passport = require('passport');
 
 var server = express(); // call express function
 
 // require the model files
-glob(__dirname + '/models/*.js', function(err, models) {
-	_.each(models, function(model) {
-		require(model);
-	});
+var model_path = __dirname + '/models/';
+fs.readdirSync(model_path).forEach(function(model) {
+	require(model_path + model);
 });
 
 // // local server variables
@@ -95,7 +95,7 @@ server.enable('jsonp callback');
 server.use(cookieParser()); // cookie-parsing middleware
 
 // create the database object
-var monServer = mongoose.connect(environ.dbUrl);
+var monServer = mongoose.connect(environ.dbUrl, environ.dbOptions);
 
 // create a client-server session, using a MongoDB collection/table to store its info
 server.use(session({
@@ -108,9 +108,9 @@ server.use(session({
 	})
 }));
 
-// // initialize passport & have it use the current session
-// server.use(passport.initialize());
-// server.use(passport.session());
+// initialize passport & have it use the current session
+server.use(passport.initialize());
+server.use(passport.session());
 
 // flash-messaging middleware
 server.use(flash());
@@ -148,7 +148,9 @@ glob(__dirname + '/routes/*.js', function(err, routes) {
 	});
 });
 
-// require('./signinoutup/passport')();
+var signinoutup = require('./signinoutup/passport'); // our passport configuration
+
+signinoutup();
 
 // listen on port related to environment variable
 server.listen(process.env.SERVER_PORT || 3000);

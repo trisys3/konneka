@@ -3,6 +3,14 @@
 module.exports = {
 	port: process.env.SERVER_PORT || 3000, // port for our server to listen on
 	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/mean-dev', // our database URL for Mongoose
+	dbOptions: {
+		server: {
+			socketOptions: {
+				keepAlive: 1,
+				ipv6: true
+			}
+		}
+	},
 	sessionSecret: 'Internet of Monkeys', // session secret
 	appRoot: 'app/', // root of the client parts of our app
 

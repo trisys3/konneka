@@ -13,10 +13,10 @@ var ObjectSchema = new Schema({
 		required: true
 	},
 
-	// the user associated with this object
+	// the user(s) associated with this object
 	userProfile: {
-		type: UserSchema,
-		default: {}
+		type: [UserSchema],
+		default: []
 	}
 });
 
@@ -32,6 +32,6 @@ ObjectSchema.methods.getOwner = function() {
 	function(err, owner) {
 		done(err, owner.userProfile);
 	});
-}
+};
 
 mongoose.model('Object', ObjectSchema);
