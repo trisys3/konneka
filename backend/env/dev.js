@@ -6,13 +6,12 @@ module.exports = {
 	dbOptions: {
 		server: {
 			socketOptions: {
-				keepAlive: 1,
-				ipv6: true
+				keepAlive: 1
 			}
 		}
 	},
 	sessionSecret: 'Internet of Monkeys', // session secret
-	appRoot: 'app/', // root of the client parts of our app
+	appRoot: 'app/modules', // root of the client parts of our app
 
 	// get the main JavaScript pages for our app, unminified for development
 	getJs: function() {
@@ -51,13 +50,19 @@ module.exports = {
 
 	// get Angular scripts for another one of our modules
 	getModularJs: function(module) {
-		var moduleScripts = [
-			'/modules/' + module + '/js/app.js',
-			'/modules/' + module + '/js/controllers/' + module + 'Ctrl.js',
-			'/modules/' + module + '/js/services/' + module + 'Serv.js',
-			'/modules/' + module + '/js/filters/' + module + 'Fils.js',
-			'/modules/' + module + '/js/directives/' + module + 'Direc.js'
-		];
+		var moduleScripts;
+		if(!module) {
+			moduleScripts = [];
+		}
+		else {
+			moduleScripts = [
+				'/modules/' + module + '/js/app.js',
+				'/modules/' + module + '/js/controllers/' + module + 'Ctrl.js',
+				'/modules/' + module + '/js/services/' + module + 'Serv.js',
+				'/modules/' + module + '/js/filters/' + module + 'Fils.js',
+				'/modules/' + module + '/js/directives/' + module + 'Direc.js'
+			];
+		}
 
 		return moduleScripts;
 	},
@@ -79,9 +84,15 @@ module.exports = {
 
 	// get the stylesheet(s) for the current Angular module
 	getModularCss: function(module) {
-		var moduleStyles = [
-			'/modules/' + module + '/css/main.css'
-		];
+		var moduleStyles;
+		if(!module) {
+			moduleStyles = [];
+		}
+		else {
+			moduleStyles = [
+				'/modules/' + module + '/css/main.css'
+			];
+		}
 
 		return moduleStyles;
 	}

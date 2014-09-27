@@ -41,11 +41,13 @@ fs.readdirSync(model_path).forEach(function(model) {
 	require(model_path + model);
 });
 
-// // local server variables
-// server.use(function(req, res, next) {
-// 	res.locals.url = req.protocol + '://' + req.host + req.url;
-// 	next();
-// });
+// local server variables
+server.use(function(req, res, next) {
+	// res.locals.url = req.protocol + '://' + req.host + req.url;
+	res.locals.extScripts = environ.getJs();
+	res.locals.extStyles = environ.getCss();
+	next();
+});
 
 // compression middleware
 server.use(compress({
@@ -56,9 +58,9 @@ server.use(compress({
 }));
 
 // view options
-// server.set('views', './app/modules/' + getModule() + '/views'); // set the views folder to the relevant module folder
-server.engine('swig', consolidate['swig']); // use "swig" engines with the ".swig" extension
-server.set('view engine', 'swig'); // set swig as the default view engine
+server.set('views', __dirname + '/view-bases'); // set the views folder to the relevant module folder
+server.engine('html', consolidate['swig']); // use "swig" engines with the ".swig" extension
+server.set('view engine', 'html'); // set swig as the default view engine
 
 // environment-specific configuration
 if(process.env.NODE_ENV === 'dev') { // for the "development" environment,
@@ -117,14 +119,14 @@ server.use(flash());
 
 // helmet middleware for headers
 server.use(helmet.csp({ // Content Security Policy (CSP) headers
-	defaultSrc: ['konneka.org', '*.konneka.org'], // only allows anything related to CSP from this domain
-	scriptSrc: ['konneka.org', '*.konneka.org'], // only allows scripts from this domain
-	styleSrc: ['konneka.org', '*.konneka.org'], // only allows styles from this domain
-	imgSrc: ['konneka.org', '*.konneka.org'], // only allows images from this domain
-	connectSrc: ['konneka.org', '*.konneka.org'], // only allows origins from this domain
-	fontSrc: ['konneka.org', '*.konneka.org'], // only allows scripts from this domain
-	objectSrc: ['konneka.org', '*.konneka.org'], // only allows plugins from this domain
-	mediaSrc: ['konneka.org', '*.konneka.org'], // only allows audio & video from this domain
+	defaultSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows anything related to CSP from this domain
+	scriptSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows scripts from this domain
+	styleSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows styles from this domain
+	imgSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows images from this domain
+	connectSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows origins from this domain
+	fontSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows fonts from this domain
+	objectSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows plugins from this domain
+	mediaSrc: ['konneka.org:*', '*.konneka.org:*'], // only allows audio & video from this domain
 	frameSrc: ['\'none\''], // does not allow frames inside webpages on this site
 	reportUri: ['/csp/report-violation'], // where reports will be sent to
 	reportOnly: false, // generate errors as well as other reports
@@ -137,9 +139,7 @@ server.use(helmet.ienoopen()); // does not let users of Internet Explorer open f
 server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type header
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
-// virtual hosts
-var vhosts = require('./vhost');
-server.use(vhosts.all);
+server.use(express.static('../' + environ.views, {extensions: 'html'}));
 
 // require the routing files
 glob(__dirname + '/routes/*.js', function(err, routes) {
@@ -147,6 +147,10 @@ glob(__dirname + '/routes/*.js', function(err, routes) {
 		server.use(vhost('konneka.org', require(route)));
 	});
 });
+
+// virtual hosts
+var vhosts = require('./vhost');
+server.use(vhosts.all);
 
 var signinoutup = require('./signinoutup/passport'); // our passport configuration
 

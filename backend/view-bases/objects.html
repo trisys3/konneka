@@ -1,21 +1,21 @@
-{{% extends 'layout.html' %}}
+{% extends 'layout.html' %}
 
-{{% block title %}}{{ owner }}'s {{ object }}{{% endblock %}}
+{% block title %}{{ owner }}'s {{ object }}'s Page{% endblock %}
 
-{{% block otherMeta %}}
+{% block otherMeta %}
 
-{{% endblock %}}
+{% endblock %}
 
-{{% block header %}}
+{% block header %}
 
-{{% endblock %}}
+{% endblock %}
 
-{{% block content %}}
+{% block content %}
 
-	<!-- <ng-include ng-controller="IotUrlCtrl" src="currUrl"></ng-include><!-- frontend page goes here --> -->
+	<ui-view name="{{objectView}}"></ui-view><!-- frontend object page goes here -->
 
-{{% endblock %}}
+{% endblock %}
 
-{{% block footer %}}
+{% block footer %}
 
-{{% endblock %}}
+{% endblock %}

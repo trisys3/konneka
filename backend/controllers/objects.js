@@ -4,11 +4,15 @@
 var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 
 exports.main = function(req, res, next) {
-	res.send(req.params['owner'] + ' is the owner of ' + req.params['object'] + '.');
 	res.locals.owner = req.params['owner'];
 	res.locals.object = req.params['object'];
 	res.locals.module = 'object';
-	res.locals.extScripts = env.getJs();
-	res.locals.extStyles = env.getCss();
-	next();
+	env.getModularJs(res.locals.module).forEach(function(val, index) {
+		res.locals.extScripts.push(val);
+	});
+	env.getModularCss(res.locals.module).forEach(function(val, index) {
+		res.locals.extStyles.push(val);
+	});
+	res.render('objects');
+	// next();
 };

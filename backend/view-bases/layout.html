@@ -2,7 +2,7 @@
 <html lang="en" data-ng-app="iotApp">
 	<head ng-controller="IotHeadCtrl">
 
-		<title>{{% block title %}}Loading...{{% endblock %}}</title>
+		<title>{% block title %}Loading...{% endblock %}</title>
 
 		<meta charset="utf-8" />
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
@@ -12,21 +12,21 @@
 		<!--external CSS stylesheets-->
 		{% for extStyle in extStyles %}<link rel="stylesheet" type="text/css" href="{{extStyle}}" />{% endfor %}
 
-		{{% block otherMeta %}}{{% endblock %}}
+		{% block otherMeta %}{% endblock %}
 
 	</head>
 	<body class="ng-cloak" ng-controller="IotRootCtrl">
 
 		<header>
-			{{% block header %}}{{% endblock %}}
+			{% block header %}{% endblock %}
 		</header>
 
 		<section class="content">
-			{{% block content %}}
+			{% block content %}{% endblock %}
 		</section>
 
 		<footer>
-			{{% block footer %}}{{% endblock %}}
+			{% block footer %}{% endblock %}
 		</footer>
 
 		<!--external JavaScript scripts-->
