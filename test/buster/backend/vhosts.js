@@ -19,11 +19,6 @@ buster.testCase('vhosts', {
 	// test what happens when navigating to the '*.konneka.org' subdomain
 	'owners submodule': {
 
-		// setup function
-		setUp: function() {
-
-		},
-
 		// test that, when we visit the owner's route ([owner].konneka.org), we are redirected to
 		// the correct domain, 'konneka.org'
 		'owners route domain': function(done) {
@@ -59,6 +54,11 @@ buster.testCase('vhosts', {
 					done();
 				});
 		},
+
+	},
+
+	// test what happens when navigating to the *.*.konneka.org sub-subdomains
+	'object subdomains': {
 
 		// test that, when we visit the object's route ([object].[owner].konneka.org), we are redirected to
 		// the correct domain, 'konneka.org'

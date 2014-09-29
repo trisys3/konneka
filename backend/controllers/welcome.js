@@ -4,11 +4,14 @@
 var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 
 exports.main = function(req, res, next) {
-	res.send('Main route');
 	res.locals.owner = null;
 	res.locals.object = null;
 	res.locals.module = 'welcome';
-	res.locals.extScripts = env.getJs();
-	res.locals.extStyles = env.getCss();
-	next();
+	env.getModularJs(res.locals.module).forEach(function(val, index) {
+		res.locals.extScripts.push(val);
+	});
+	env.getModularCss(res.locals.module).forEach(function(val, index) {
+		res.locals.extStyles.push(val);
+	});
+	res.render('welcome');
 };

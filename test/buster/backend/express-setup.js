@@ -15,7 +15,8 @@ var request = require('supertest');
 // define our tests
 buster.testCase('express setup', {
 	setUp: function() {
-		this.konnekaServer = require('../../../backend/page.js');
+		// start our server before each test
+		this.konnekaServer = require('../../../backend/page');
 	},
 
 	// test helmet middleware to ensure it protects the headers adequately

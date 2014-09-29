@@ -22,21 +22,9 @@
 
 			<input type="password" id="loginPass" name="loginPass" autocomplete="off" placeholder="********" />
 
-		</fieldset>
+			<button class="btn btn-info" type="submit">Log In</button>
 
-	</form>
-
-	<form method="post" action="/auth/signup" enctype="application/x-www-form-urlencoded">
-
-		<fieldset>
-
-			<legend>Sign Up</legend>
-
-			<input type="text" id="signupUser" name="signupPass" autocomplete="on" placeholder="username@email.com" />
-
-			<input type="password" id="signupPass" name="signupPass" autocomplete="off" placeholder="********" />
-
-			<input type="password" id="signupConfirmPass" name="signupConfirmPass" autocomplete="off" placeholder="********" />
+			<a ui-sref="signup"></a>
 
 		</fieldset>
 

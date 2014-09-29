@@ -14,5 +14,4 @@ exports.main = function(req, res, next) {
 		res.locals.extStyles.push(val);
 	});
 	res.render('objects');
-	// next();
 };

@@ -3,7 +3,8 @@
 module.exports = {
 	port: process.env.SERVER_PORT || 3002,
 	db: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27019) + '/mean-test',
-	sessionSecret: 'Internet of Guinea Pigs'
+	sessionSecret: 'Internet of Guinea Pigs',
+	appRoot: 'test',
 	getBuster: function() {
 		var busterFiles = [];
 
@@ -18,10 +19,10 @@ module.exports = {
 
 	getKarma: function() {
 		var karmaFiles = [
-			'../jasmine/**/*.js',
-      '../angular-mocks.js',
-      '../../app/min-libs/angular-mocks/angular-mocks.js',
-      '!../jasmine/**/directives/**.js'
+			'jasmine/**/*.js',
+      'lib/angular/angular-mocks.js',
+      '../app/min-libs/angular-mocks/angular-mocks.js',
+      '!jasmine/**/directives/**.js'
      ];
 
      return karmaFiles;
