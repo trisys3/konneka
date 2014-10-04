@@ -1,9 +1,11 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('iotApp.controllers', []).controller('IotRootCtrl', [
+    '$scope', function($scope) {
+      return $scope.iotTitle = "root";
+    }
+  ]);
 
-angular.module('iotApp.controllers', [])
-	.controller('IotRootCtrl', ['$scope', function($scope) {
+}).call(this);
 
-		// scope properties
-		$scope.iotTitle = "root"; // we should never be in main module, as we do not have a route to it, but set a title anyway
-		
-	}]);
+//# sourceMappingURL=rootCtrl.js.map

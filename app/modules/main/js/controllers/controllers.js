@@ -1,11 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('myApp.controllers', []).controller('MyCtrl1', [function() {}]).controller('MyCtrl2', [function() {}]);
 
-/* Controllers */
+}).call(this);
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
-
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);
+//# sourceMappingURL=controllers.js.map

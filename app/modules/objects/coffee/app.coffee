@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'objectsApp', [
-	# 'iotApp'
+	'iotApp'
 	'objectsApp.controllers'
 	'objectsApp.services'
 	'objectsApp.directives'

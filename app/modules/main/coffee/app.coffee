@@ -1,11 +1,8 @@
 'use strict'
 
-# root-level JavaScript file, provides root-level configuration for entire
-# site
+# root-level Angular module, has all other modules as
+# dependencies
 angular.module 'iotApp', [
-	'objectsApp'
-	'ownersApp'
-	'welcomeApp'
 	'iotApp.filters'
 	'iotApp.services'
 	'iotApp.directives'

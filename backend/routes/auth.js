@@ -8,6 +8,8 @@ var router = express.Router();
 // require the relevant controller
 var auth = require('../controllers/auth');
 
-router.route('/auth/login').get(auth.login);
+router.route('/auth/login').post(auth.login);
+
+router.route('/auth/logout').get(auth.logout);
 
 module.exports = router;

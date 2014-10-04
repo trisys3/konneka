@@ -3,7 +3,7 @@ module.exports = {
 
 	// default options
 	options: {
-		sourcemap: true,
+		sourcemap: 'auto',
 		lineNumbers: true,
 		compass: true,
 		cacheLocation: 'app/cache/.sass-cache'
@@ -19,8 +19,8 @@ module.exports = {
 		options: {
 			check: true, // checks syntax
 			trace: true, // trace back to source on error
-			debugInfo: true, // extra debugging info to be used by browser debuggers
-		}
+		},
+		files: '<%= filePatts.checkScss.files %>'
 	},
 
 	// checks syntax of SCSS/SASS files and reports results
@@ -30,7 +30,7 @@ module.exports = {
 			trace: true, // trace back to source on error
 			debugInfo: true, // extra debugging info to be used by browser debuggers
 		},
-		files: '<%= filePatts.convScss.files %>'
+		files: '<%= filePatts.checkScss.files %>'
 	}
 
 };

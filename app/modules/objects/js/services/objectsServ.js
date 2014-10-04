@@ -1,3 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('objectsApp.services', []);
 
-angular.module('objectsApp.services', []);
+}).call(this);
+
+//# sourceMappingURL=objectsServ.js.map

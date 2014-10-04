@@ -3,7 +3,7 @@
 # main module for welcome sub-app
 # pseudo-extends app
 angular.module 'welcomeApp', [
-	# 'iotApp'
+	'iotApp'
 	'welcomeApp.filters'
 	'welcomeApp.controllers'
 	'welcomeApp.directives'

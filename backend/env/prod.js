@@ -32,7 +32,6 @@ module.exports = {
 			'/min-libs/angular-ui-utils/ui-utils.min.js',
 
 			// our "main" module scripts
-			'/modules/main/js/app.min.js',
 			'/modules/main/js/head.min.js',
 			'/modules/main/js/routes.min.js',
 			'/modules/main/js/url.min.js',

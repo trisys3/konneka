@@ -1,3 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('ownersApp.directives', []);
 
-angular.module('ownersApp.directives', []);
+}).call(this);
+
+//# sourceMappingURL=ownersDirec.js.map

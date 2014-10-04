@@ -1,3 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('welcomeApp.directives', []);
 
-angular.module('welcomeApp.directives', []);
+}).call(this);
+
+//# sourceMappingURL=welcomeDirec.js.map

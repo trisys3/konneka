@@ -11,9 +11,6 @@ angular.module 'iotUrl', ['ngRoute']
 		$routeProvider.when '/welcome',
 			module: 'welcome'
 
-		# $routeProvider.when '/welcome.php',
-		# 	module: 'welcome'
-
 		$routeProvider.when '/welcome.html',
 			module: 'welcome'
 
@@ -32,12 +29,12 @@ angular.module 'iotUrl', ['ngRoute']
 		$routeProvider.when '',
 			module: 'welcome'
 
-		# $routeProvider.when '/index.php',
-		# 	module: 'welcome'
+		$routeProvider.when '/index.html',
+			module: 'welcome'
 
 		# this rule takes any page we haven't created a rule for yet & makes it a generic page
-		$routeProvider.otherwise 
-			module: 'welcome',
+		$routeProvider.otherwise
+		module: 'welcome'
 
 		# make URL's comply with HTML5 rules
 		$locationProvider.html5Mode true

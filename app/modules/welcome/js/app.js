@@ -1,11 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('welcomeApp', ['iotApp', 'welcomeApp.filters', 'welcomeApp.controllers', 'welcomeApp.directives', 'welcomeApp.services']);
 
-// main module for welcome sub-app
-// pseudo-extends app
-angular.module('welcomeApp', [
-	// 'iotApp',
-	'welcomeApp.filters',
-	'welcomeApp.controllers',
-	'welcomeApp.directives',
-	'welcomeApp.services'
-]);
+}).call(this);
+
+//# sourceMappingURL=app.js.map

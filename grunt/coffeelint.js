@@ -3,6 +3,10 @@ module.exports = {
 
 	// general options
 	options: {
+		// only warn when classes are not Pascal-cased
+		"camel_cased_classes": {
+			"level": "warn"
+		},
 		// warn when constructor without arguments does not use parentheses
 		"empty_constructor_needs_parens": {
 			"level": "warn"
@@ -14,6 +18,10 @@ module.exports = {
 		// forbid parentheses in function definitions without arguments
 		"no_empty_param_list": {
 			"level": "ignore"
+		},
+		// only warn when using backticks, as the cited reason is something I never do anyway
+		"no_backticks": {
+			"level": "warn"
 		},
 		// allows tabs when indenting
 		"no_tabs": {
@@ -35,7 +43,7 @@ module.exports = {
 
 	// check syntax of all CoffeeScript files
 	check: {
-		files: "<%= filePatts.coffeeCheck.src %>"
+		files: "<%= filePatts.coffeeCheck.files %>"
 	}
 
 };

@@ -1,26 +1,26 @@
 /* app css stylesheet */
-/* line 3, ../scss/app.scss */
+/* line 3, ../scss/main.scss */
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
   padding: 0 0 0.5em; }
-  /* line 9, ../scss/app.scss */
+  /* line 9, ../scss/main.scss */
   .menu :before {
     content: "["; }
-  /* line 13, ../scss/app.scss */
+  /* line 13, ../scss/main.scss */
   .menu :after {
     content: "]"; }
-  /* line 17, ../scss/app.scss */
+  /* line 17, ../scss/main.scss */
   .menu > li {
     display: inline; }
-    /* line 21, ../scss/app.scss */
+    /* line 21, ../scss/main.scss */
     .menu > li :before {
       content: "|";
       padding-right: 0.3em; }
-    /* line 26, ../scss/app.scss */
+    /* line 26, ../scss/main.scss */
     .menu > li :nth-child(1):before {
       content: "";
       padding: 0; }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=main.css.map */

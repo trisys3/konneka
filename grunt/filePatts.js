@@ -145,15 +145,27 @@ module.exports = {
 			}
 		}]
 	},
+	// check SCSS files
+	checkScss: {
+		files: [{
+			expand: true,
+			cwd: 'app/modules/',
+			src: ['**/*.sass', '**/*.scss']
+		}]
+	},
 	// check CoffeeScript syntax
 	coffeeCheck: {
-		src: ['**/*.coffee']
+		files: [{
+			cwd: 'app/modules/',
+			expand: true,
+			src: ['**/*.coffee']
+		}]
 	},
 	// convert frontend CoffeeScript files into JavaScript, then store results
 	convCoffee: {
 		files: [{
 			expand: true,
-			cwd: 'app/modules',
+			cwd: 'app/modules/',
 			src: ['**/*.coffee'],
 			dest: '',
 			ext: '.js',

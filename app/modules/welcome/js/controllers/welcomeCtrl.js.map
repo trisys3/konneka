@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "welcomeCtrl.js",
+  "sourceRoot": "..\\..\\coffee\\controllers\\",
+  "sources": [
+    "welcomeCtrl.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,wBAAf,EAAyC,EAAzC,CACC,CAAC,UADF,CACa,aADb,EAC4B;IAAC,QAAD,EAAW,SAAC,MAAD,GAAA;aAGrC,MAAM,CAAC,QAAP,GAAkB,WAHmB;IAAA,CAAX;GAD5B,CAFA,CAAA;AAAA"
+}

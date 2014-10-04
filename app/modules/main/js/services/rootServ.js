@@ -1,4 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('iotApp.services', []);
 
-// Includes or references all root services
-angular.module('iotApp.services', []);
+}).call(this);
+
+//# sourceMappingURL=rootServ.js.map

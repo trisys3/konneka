@@ -1,9 +1,11 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('welcomeApp.controllers', []).controller('WelcomeCtrl', [
+    '$scope', function($scope) {
+      return $scope.iotTitle = "Welcome!";
+    }
+  ]);
 
-angular.module('welcomeApp.controllers', [])
-	.controller('WelcomeCtrl', ['$scope', function($scope) {
+}).call(this);
 
-		// scope properties
-		$scope.iotTitle = "Welcome!"; // title for welcome module
-		
-	}]);
+//# sourceMappingURL=welcomeCtrl.js.map

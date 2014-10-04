@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "accountCtrl.js",
+  "sourceRoot": "..\\..\\coffee\\controllers\\",
+  "sources": [
+    "accountCtrl.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAGA,OAAO,CAAC,MAAR,CAAe,wBAAf,EAAyC,EAAzC,CACC,CAAC,UADF,CACa,YADb,EAC2B;IAAC,QAAD,EAAW,SAAC,MAAD,GAAA;aACpC,MAAM,CAAC,MAAP,GAAgB,YADoB;IAAA,CAAX;GAD3B,CAHA,CAAA;AAAA"
+}

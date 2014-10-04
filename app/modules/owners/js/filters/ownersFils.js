@@ -1,3 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
+  angular.module('ownersApp.filters', []);
 
-angular.module('ownersApp.filters', []);
+}).call(this);
+
+//# sourceMappingURL=ownersFils.js.map
