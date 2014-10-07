@@ -15,11 +15,5 @@ exports.main = function(req, res, next) {
 			res.locals.extStyles.push(v);
 		});
 	});
-	env.getModularJs('main').forEach(function(val, index) {
-		res.locals.extScripts.push(val);
-	});
-	env.getModularCss('main').forEach(function(val, index) {
-		res.locals.extStyles.push(val);
-	});
 	res.render('welcome');
 };

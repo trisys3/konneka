@@ -14,6 +14,10 @@ module.exports = {
 
 	nodeTest: {
 		files: '<%= filePatts.qunitNode.src %>'
+	},
+
+	frontendTest: {
+		files: '<%= filePatts.qunitFrontend.src %>'
 	}
 
 };

@@ -21,7 +21,7 @@ module.exports = {
 
 		// testing subtasks
 
-		// unit testing  subtask
+		// unit testing subtask
 		unitTests: {
 			test: {
 				"config-group": "browser-unit"

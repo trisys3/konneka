@@ -46,6 +46,12 @@ server.use(function(req, res, next) {
 	// res.locals.url = req.protocol + '://' + req.host + req.url;
 	res.locals.extScripts = environ.getJs();
 	res.locals.extStyles = environ.getCss();
+	environ.getModularJs('main').forEach(function(val, index) {
+		res.locals.extScripts.push(val);
+	});
+	environ.getModularCss('main').forEach(function(val, index) {
+		res.locals.extStyles.push(val);
+	});
 	next();
 });
 
@@ -142,11 +148,38 @@ server.disable('x-powered-by'); // hides the X-Powered-By header
 server.use(express.static('../' + environ.views, {extensions: 'html'}));
 
 // require the routing files
+var route_path = __dirname + '/routes/';
+fs.readdirSync(route_path).forEach(function(route) {
+	server.use(vhost('konneka.org', require(route_path + route)));
+});
+
 glob(__dirname + '/routes/*.js', function(err, routes) {
 	_.each(routes, function(route) {
 		server.use(vhost('konneka.org', require(route)));
 	});
 });
+
+// if we are testing our views, require the tests
+if(process.env.NODE_ENV === "test") {
+	// root path for our testing files
+	var test_route_path = __dirname + '../test/';
+
+	// require the buster tests of the type we are testing (integration or unit)
+	var buster_path = test_route_path + 'buster/browser/' + (process.env.BUSTER_TYPE || 'unit') + '/*.js';
+	glob(buster_path, function(err, tests) {
+		_.each(tests, function(test) {
+			server.use(vhost('konneka.org', require(test)));
+		});
+	});
+
+	// require the QUnit tests we are testing
+	var qunit_path = test_route_path + 'qunit/' + (process.env.QUNIT_GROUP || 'direc') + '/';
+	glob(qunit_path, function(err, tests) {
+		_.each(function(test) {
+			server.use(vhost('konneka.org', require(test)))
+		});
+	});
+}
 
 // virtual hosts
 var vhosts = require('./vhost');

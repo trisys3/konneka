@@ -205,6 +205,12 @@ module.exports = {
  			src: ['test/qunit/backend/**/*.html']
  		}]
  	},
+ 	// test entire frontend with QUnit
+ 	qunitFrontend: {
+ 		files: [{
+ 			src: ['test/qunit/frontend/**/*.html']
+ 		}]
+ 	},
  	// watch all files
 	watchEvrthg: {
 		files: [{

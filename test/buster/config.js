@@ -1,35 +1,35 @@
 module.exports = {
 
-	// defaults for all tests
-	"def": {
-		tests: "shared/**/*.js"
-	},
+	// // defaults for all tests
+	// "def": {
+	// 	tests: "shared/**/*.js"
+	// },
 	
 	// configuration for Node.js testing
 	"node-tests": {
-		extends: "defaults", // includes default task object
+		// extends: "defaults", // includes default task object
 		env: "node",
-		tests: "backend/**/*.js"
+		tests: ["backend/**/*.js"]
 	},
 
 	// defaults for browser testing
 	"browser-def": {
-		extends: "defaults", // includes default task configuration
+		// extends: "defaults", // includes default task configuration
 		env: "browser",
-		libs: "../app/min-libs/**/*.js",
+		libs: ["../app/min-libs/**/*.js"],
 		extensions: ["buster-coffee", "buster-amd"]
 	},
 
 	// configuration for browser unit tests
 	"browser-unit": {
 		extends: "browser-def", // includes default browser configuration
-		tests: "browser/unit/**/*.js"
+		tests: ["browser/unit/**/*.js"]
 	},
 
 	// configuration for browser integration testing
 	"browser-int": {
 		extends: "browser-def", // includes default browser configuration
-		tests: "browser/int/**/*.js"
+		tests: ["browser/int/**/*.js"]
 	}
 
 };

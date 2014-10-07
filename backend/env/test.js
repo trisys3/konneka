@@ -11,18 +11,68 @@ module.exports = {
 		return busterFiles;
 	},
 
-	getQunit: function() {
-		var qunitFiles = [];
+	getQunit: {
+		frontend: function(module) {
+			var qunitFiles;
 
-		return qunitFiles;
+			var qunitFiles.html = [
+				'qunit/frontend/' + module + '/**/*.html'
+			];
+
+			var qunitFiles.js = [
+				'qunit/frontend/' + module + '/**/*.js'
+			];
+
+			var qunitFiles.css = [
+				'qunit/frontend/' + module + '/**/*.css'
+			];
+
+			return qunitFiles;
+		},
+
+		direc: function(module) {
+			var qunitFiles;
+
+			var qunitFiles.html = [
+				'qunit/direc/' + module + '/**/*.html'
+			];
+
+			var qunitFiles.js = [
+				'qunit/direc/' + module + '/**/*.js'
+			];
+
+			var qunitFiles.css = [
+				'qunit/direc/' + module + '/**/*.css'
+			];
+
+			return qunitFiles;
+		},
+
+		all: function(module) {
+			var qunitFiles;
+
+			var qunitFiles.html = [
+				'qunit/(frontend | direc)/' + module + '/**/*.html'
+			];
+
+			var qunitFiles.js = [
+				'qunit/(frontend | direc)/' + module + '/**/*.js'
+			];
+
+			var qunitFiles.css = [
+				'qunit/(frontend | direc)/' + module + '/**/*.css'
+			];
+
+			return qunitFiles;
+		},
+
 	},
 
-	getKarma: function() {
+	getKarma: function(module) {
 		var karmaFiles = [
-			'jasmine/**/*.js',
+			'jasmine/frontend/' + module + '/**/*.js',
       'lib/angular/angular-mocks.js',
-      '../app/min-libs/angular-mocks/angular-mocks.js',
-      '!jasmine/**/directives/**.js'
+      '../app/min-libs/angular-mocks/angular-mocks.js'
      ];
 
      return karmaFiles;

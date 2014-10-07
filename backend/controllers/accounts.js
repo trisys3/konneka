@@ -7,8 +7,6 @@ exports.owner = function(req, res, next) {
 	res.locals.owner = req.params['owner'];
 	res.locals.object = null;
 	res.locals.module = 'account';
-	res.locals.extScripts = env.getJs();
-	res.locals.extStyles = env.getCss();
 	next();
 };
 
@@ -17,7 +15,5 @@ exports.object = function(req, res, next) {
 	res.locals.object = req.params['object'];
 	res.locals.module = 'account';
 	res.send('This is ' + res.locals.owner + '\'s ' + res.locals.object + '\'s account.');
-	res.locals.extScripts = env.getJs();
-	res.locals.extStyles = env.getCss();
 	next();
 };

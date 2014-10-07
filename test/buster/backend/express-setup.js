@@ -36,7 +36,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'default-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'default-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -47,7 +47,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'script-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'script-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -58,7 +58,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'style-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'style-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -69,7 +69,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'img-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'img-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -80,7 +80,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'connect-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'connect-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -91,7 +91,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'font-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'font-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -102,7 +102,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'object-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'object-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},
@@ -113,7 +113,7 @@ buster.testCase('express setup', {
 					.get('/')
 					.set('User-Agent', 'Mozilla/5.0')
 					.end(function(err, res) {
-						assert.match(res.get('content-security-policy'), 'media-src konneka.org *.konneka.org');
+						assert.match(res.get('content-security-policy'), 'media-src konneka.org:* *.konneka.org:*');
 						done();
 					});
 			},

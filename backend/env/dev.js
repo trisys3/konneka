@@ -75,7 +75,10 @@ module.exports = {
 			'/min-libs/bootstrap-css/css/bootstrap-theme.css',
 
 			// our current jQuery theme
-			'/min-libs/jquery-ui/themes/base/all.css'
+			'/min-libs/jquery-ui/themes/base/all.css',
+
+			// Angular CSP stylesheet
+			'/min-libs/angular/angular-csp.css'
 		];
 
 		return styles;
