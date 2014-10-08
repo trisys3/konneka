@@ -4,9 +4,6 @@
   "private": true,
   "author": "Sean Moran",
   "devDependencies": {
-    "lodash": "latest",
-    "glob": "latest",
-
     "grunt": "latest",
     "grunt-buster": "latest",
     "grunt-coffeelint": "latest",
@@ -43,7 +40,20 @@
     "karma-ie-launcher": "latest",
     "karma-opera-launcher": "latest",
     "karma-safari-launcher": "latest",
-    "should": "latest",
+    "should": "latest"
+  },
+  "description": "A sample website to test AJAX; maybe one day something more",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "mongoose": "latest",
+    "bower": "latest",
+    "express": "latest",
+    "assetmanager": "latest",
+    "lodash": "latest",
+    "glob": "latest",
 
     "request": "latest",
     "connect-mongo": "latest",
@@ -64,17 +74,6 @@
     "passport-local": "latest",
     "passport-google-oauth": "latest"
   },
-  "description": "A sample website to test AJAX; maybe one day something more",
-  "main": "Gruntfile.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "mongoose": "latest",
-    "bower": "latest",
-    "express": "latest",
-    "assetmanager": "latest"
-  },
   "scripts": {
     "test": "mocha"
   },
@@ -84,9 +83,10 @@
   },
   "keywords": [
     "konneka",
-    "AJAX",
     "AngularJS",
-    "InternetofThings"
+    "InternetofThings",
+    "API",
+    "InternetofEverything"
   ],
   "license": "ISC",
   "bugs": {

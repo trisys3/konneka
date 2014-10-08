@@ -145,7 +145,7 @@ server.use(helmet.ienoopen()); // does not let users of Internet Explorer open f
 server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type header
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
-server.use(express.static('../' + environ.views, {extensions: 'html'}));
+server.use(express.static('../' + environ.views));
 
 // require the routing files
 var route_path = __dirname + '/routes/';

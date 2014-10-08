@@ -1,7 +1,7 @@
 {
   "name": "Sean Moran",
   "version": "0.0.1",
-  "devDependencies": {
+  "dependencies": {
     "angular": "latest",
     "angular-route": "latest",
     "angular-cookies": "latest",
