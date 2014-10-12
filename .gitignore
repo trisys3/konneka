@@ -3,8 +3,7 @@
 
 ######### cache files ########
 ##############################
-app/cache/ # app cache
-app/.sass-cache # Sass's cache
+app/.cache/ # app cache
 
 ############ node ############
 ##################

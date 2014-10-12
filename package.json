@@ -2,7 +2,10 @@
   "name": "konneka",
   "version": "0.0.1",
   "private": true,
-  "author": "Sean Moran",
+  "author": {
+    "name": "Sean Moran",
+    "email": "sean_r_moran@msn.com"
+  },
   "devDependencies": {
     "grunt": "latest",
     "grunt-buster": "latest",
@@ -65,7 +68,6 @@
     "cookie-parser": "latest",
     "vhost": "latest",
     "compression": "latest",
-    "express-session": "latest",
     "connect-flash": "latest",
     "consolidate": "latest",
     "helmet": "latest",

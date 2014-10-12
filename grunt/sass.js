@@ -6,7 +6,7 @@ module.exports = {
 		sourcemap: 'auto',
 		lineNumbers: true,
 		compass: true,
-		cacheLocation: 'app/cache/.sass-cache'
+		cacheLocation: 'app/.cache/sass'
 	},
 
 	// converts SCSS/SASS files to CSS without checking syntax

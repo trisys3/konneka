@@ -19,10 +19,16 @@
     "jquery": "latest",
     "jquery-ui": "latest"
   },
+  "devDependencies": {
+    "qunit": "latest"
+  },
   "private": true,
   "homepage": "https://github.com/trisys3/konneka",
   "authors": [
-    "trysis@gmail.com"
+    {
+      "name": "trysis@gmail.com",
+      "email": "sean_r_moran@msn.com"
+    }
   ],
   "main": "dist/app",
   "moduleType": [

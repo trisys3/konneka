@@ -1,5 +1,6 @@
 'use strict';
 
+// variables and functions for production
 module.exports = {
 	port: process.env.SERVER_PORT || 3001, // server port for our app
 	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean', // our database URL for Mongoose
@@ -42,13 +43,16 @@ module.exports = {
 
 	// get Angular scripts for another one of our modules
 	getModularJs: function(module) {
-		var moduleScripts = [
-			'/modules/' + module + '/js/app.min.js',
-			'/modules/' + module + '/js/controllers/' + module + 'Ctrl.min.js',
-			'/modules/' + module + '/js/services/' + module + 'Serv.min.js',
-			'/modules/' + module + '/js/filters/' + module + 'Fils.min.js',
-			'/modules/' + module + '/js/directives/' + module + 'Direc.min.js'
-		];
+		var moduleScripts = [];
+		if(module) {
+			moduleScripts.push(
+				'/modules/' + module + '/js/app.min.js',
+				'/modules/' + module + '/js/controllers/' + module + 'Ctrl.min.js',
+				'/modules/' + module + '/js/services/' + module + 'Serv.min.js',
+				'/modules/' + module + '/js/filters/' + module + 'Fils.min.js',
+				'/modules/' + module + '/js/directives/' + module + 'Direc.min.js'
+			);
+		}
 
 		return moduleScripts;
 	},
@@ -70,9 +74,12 @@ module.exports = {
 
 	// get stylesheets from another one of our modules
 	getModularCss: function(module) {
-		var moduleStyles = [
-			'/modules/' + module + '/css/main.css'
-		];
+		var moduleStyles = [];
+		if(module) {
+			moduleStyles.push(
+				'/modules/' + module + '/css/main.css'
+			);
+		}
 
 		return moduleStyles;
 	}

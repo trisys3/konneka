@@ -1,7 +1,8 @@
 module.exports = {
 	
 	options: {
-		force: true
+		force: true,
+		noGlobals: true
 	},
 
 	direcTest: {

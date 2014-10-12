@@ -159,28 +159,6 @@ glob(__dirname + '/routes/*.js', function(err, routes) {
 	});
 });
 
-// if we are testing our views, require the tests
-if(process.env.NODE_ENV === "test") {
-	// root path for our testing files
-	var test_route_path = __dirname + '../test/';
-
-	// require the buster tests of the type we are testing (integration or unit)
-	var buster_path = test_route_path + 'buster/browser/' + (process.env.BUSTER_TYPE || 'unit') + '/*.js';
-	glob(buster_path, function(err, tests) {
-		_.each(tests, function(test) {
-			server.use(vhost('konneka.org', require(test)));
-		});
-	});
-
-	// require the QUnit tests we are testing
-	var qunit_path = test_route_path + 'qunit/' + (process.env.QUNIT_GROUP || 'direc') + '/';
-	glob(qunit_path, function(err, tests) {
-		_.each(function(test) {
-			server.use(vhost('konneka.org', require(test)))
-		});
-	});
-}
-
 // virtual hosts
 var vhosts = require('./vhost');
 server.use(vhosts.all);
