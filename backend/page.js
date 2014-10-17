@@ -103,7 +103,7 @@ server.enable('jsonp callback');
 server.use(cookieParser()); // cookie-parsing middleware
 
 // create the database object
-var monServer = mongoose.connect(environ.dbUrl, environ.dbOptions);
+var monServer = mongoose.connect(environ.dbUrl);
 
 // create a client-server session, using a MongoDB collection/table to store its info
 server.use(session({
@@ -147,21 +147,15 @@ server.disable('x-powered-by'); // hides the X-Powered-By header
 
 server.use(express.static('../' + environ.views));
 
+// virtual hosts
+var vhosts = require('./vhost');
+server.use(vhosts.all);
+
 // require the routing files
 var route_path = __dirname + '/routes/';
 fs.readdirSync(route_path).forEach(function(route) {
 	server.use(vhost('konneka.org', require(route_path + route)));
 });
-
-glob(__dirname + '/routes/*.js', function(err, routes) {
-	_.each(routes, function(route) {
-		server.use(vhost('konneka.org', require(route)));
-	});
-});
-
-// virtual hosts
-var vhosts = require('./vhost');
-server.use(vhosts.all);
 
 var signinoutup = require('./signinoutup/passport'); // our passport configuration
 

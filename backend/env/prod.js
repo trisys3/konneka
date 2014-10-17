@@ -1,9 +1,11 @@
 'use strict';
 
+var _ = require('lodash');
+
 // variables and functions for production
 module.exports = {
 	port: process.env.SERVER_PORT || 3001, // server port for our app
-	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean', // our database URL for Mongoose
+	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || ('mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean'), // our database URL for Mongoose
 	sessionSecret: 'Internet of Things', // secret for our sessions (change this to something more secure ASAP)
 	appRoot: 'dist/app/modules', // root for the client-side portions of our app
 
@@ -84,3 +86,6 @@ module.exports = {
 		return moduleStyles;
 	}
 };
+
+// get common data for all environments
+_.assign(module.exports, require('./all.js'));

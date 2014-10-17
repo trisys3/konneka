@@ -3,7 +3,7 @@
 // require Buster.js so our tests can run
 var buster = require('buster');// expose Buster's sub-methods so we don't have to specify the entire path each time
 
-// expose Buster's assertion methods so we don't have tospecify the entire path each time
+// expose Buster's assertion methods so we don't have to specify the entire path each time
 var assert = buster.referee.assert;
 var refute = buster.referee.refute;
 
@@ -17,11 +17,11 @@ buster.testCase('vhosts', {
 	},
 
 	// test what happens when navigating to the '*.konneka.org' subdomain
-	'owners submodule': {
+	'owners subdomain': {
 
 		// test that, when we visit the owner's route ([owner].konneka.org), we are redirected to
 		// the correct domain, 'konneka.org'
-		'owners route domain': function(done) {
+		'domain': function(done) {
 			request(this.vhostServer)
 				.get('/')
 				.set('Host', 'owners.konneka.org')
@@ -33,7 +33,7 @@ buster.testCase('vhosts', {
 
 		// test that, when we visit the root path for the owner's route ([owner].konneka.org), we are
 		// redirected to the correct path on the konneka.org domain, '/owners/[owner]/'
-		'owners route root path': function(done) {
+		'root path': function(done) {
 			request(this.vhostServer)
 				.get('/')
 				.set('Host', 'owners.konneka.org')
@@ -45,7 +45,7 @@ buster.testCase('vhosts', {
 
 		// test that, when we visit a relatively deep path for the owner's route ([owner].konneka.org/[deep path]),
 		// we are redirected to the correct path on the konneka.org domain, 'konneka.org/owners/[owner]/[deep path]'
-		'owners route deep path': function(done) {
+		'deep path': function(done) {
 			request(this.vhostServer)
 				.get('/relatively/deep/path')
 				.set('Host', 'owners.konneka.org')
@@ -58,11 +58,11 @@ buster.testCase('vhosts', {
 	},
 
 	// test what happens when navigating to the *.*.konneka.org sub-subdomains
-	'object subdomains': {
+	'object subsubdomains': {
 
 		// test that, when we visit the object's route ([object].[owner].konneka.org), we are redirected to
 		// the correct domain, 'konneka.org'
-		'objects route domain': function(done) {
+		'domain': function(done) {
 			request(this.vhostServer)
 				.get('/')
 				.set('Host', 'objects.owners.konneka.org')
@@ -74,7 +74,7 @@ buster.testCase('vhosts', {
 
 		// test that, when we visit the root path for the owner's route ([object].[owner].konneka.org),
 		// we are redirected to the correct path on the konneka.org domain, '/owners/[owner]/objects/[object]'
-		'objects route root path': function(done) {
+		'root path': function(done) {
 			request(this.vhostServer)
 				.get('/')
 				.set('Host', 'objects.owners.konneka.org')
@@ -86,7 +86,7 @@ buster.testCase('vhosts', {
 
 		// test that, when we visit a relatively deep path for the object's route ([object].[owner].konneka.org/[deep path]),
 		// we are redirected to the correct path on the konneka.org domain, 'konneka.org/owners/[owner]/objects/[object]/[deep path]'
-		'objects route deep path': function(done) {
+		'deep path': function(done) {
 			request(this.vhostServer)
 				.get('/relatively/deep/path')
 				.set('Host', 'objects.owners.konneka.org')

@@ -21,7 +21,7 @@ module.exports = {
 			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			bases: ['app', 'dist', 'backend'] // watch files in app folder for changes
+			bases: ['app/', 'dist/', 'backend/'] // watch files in app folder for changes
 		}
 	},
 
@@ -30,7 +30,7 @@ module.exports = {
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
 			server: path.resolve(__dirname, '../backend/page.js'), // express server file
-			bases: 'dist/' // watch files in app folder for changes
+			bases: ['dist/', 'backend/'] // watch files in app folder for changes
 		}
 	},
 
@@ -38,10 +38,9 @@ module.exports = {
 		options: {
 			showStack: true, // show errors in browser
 			server: path.resolve(__dirname, '../backend/page.js'), // express server file
-			open: true, // open default page in browser
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			bases: 'app/' // watch files in app folder for changes
+			bases: ['app/', 'test/', 'backend/'] // watch files in app folder for changes
 		}
 	},
 

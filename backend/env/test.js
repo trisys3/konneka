@@ -6,59 +6,33 @@ var fs = require('fs');
 
 module.exports = {
 	port: process.env.SERVER_PORT || 3002,
-	db: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27019) + '/mean-test',
+	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27019) + '/mean-test',
 	sessionSecret: 'Internet of Guinea Pigs',
 	appRoot: 'test',
-	// get the main JavaScript pages for our app, unminified for testing
-	getJs: function() {
-		var scripts = [
-			
-			// jQuery
-			'/min-libs/jquery/dist/jquery.js',
-
-			// jQuery UI
-			'/min-libs/jquery-ui/jquery-ui.js',
-
-			// JavaScript functionality for Bootstrap
-			'/min-libs/bootstrap-css/js/bootstrap.js',
-
-			// main Angular scripts
-			'/min-libs/angular/angular.js',
-			'/min-libs/angular-route/angular-route.js',
-			'/min-libs/angular-resource/angular-resource.js',
-			'/min-libs/angular-animate/angular-animate.js',
-			'/min-libs/angular-cookies/angular-cookies.js',
-
-			// Angular UI
-			'/min-libs/angular-bootstrap/ui-bootstrap.js',
-			'/min-libs/angular-ui-router/release/angular-ui-router.js',
-			'/min-libs/angular-ui-utils/ui-utils.js',
-
-			// our core Angular scripts, in our "main" module
-			'/modules/main/js/head.js',
-			'/modules/main/js/routes.js',
-			'/modules/main/js/url.js'
-		];
-		
-		return scripts;
-	},
 
 	// get our "test" scripts, separated by testing framework and environment
 	getModularJs: function(fram, env, test) {
+		// make an empty array to hold our test files
 		var moduleScripts = [];
+		// if the user passes the test file in as a string, make it an array first
 		if(_.isString(test)) {
 			test = [test];
 		}
+		// if the user did not pass in a test, include all tests in the passed-in framework
+		// & environment
 		if(!test) {
-			var test_path = path.normalize(__dirname + '../../test/' + fram + '/' + env);
+			var test_path = path.normalize(__dirname + '/../../test/' + fram + '/' + env);
 			fs.readdirSync(test_path).forEach(function(test) {
 				moduleScripts.push(
 					'/' + fram + '/' + env + '/' + test
 				);
 			});
 		}
+		// otherwise, include all passed-in tests in the framework & environment
 		else {
 			test.forEach(function(val, test) {
+				// if the test parameter has a forward slash at the end, assume it is a folder &
+				// include all tests in this folder
 				if(test.match(/\/$/)) {
 					var test_path = path.normalize(__dirname + '../../test/' + fram + '/' + env + '/' + test);
 					fs.readdirSync(test_path).forEach(function(test) {
@@ -92,3 +66,6 @@ module.exports = {
 		return jasmineFiles;
 	}
 };
+
+// get common data for all environments
+_.assign(module.exports, require('./all.js'));
