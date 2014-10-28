@@ -2,7 +2,7 @@
 
 var passport = require('passport');
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var UserModel = mongoose.model('User');
 var path = require('path');
 var glob = require('glob');
 var _ = require('lodash');
@@ -21,7 +21,7 @@ module.exports = exports = function() {
 	passport.deserializeUser(function(id, done) {
 
 		// find a user with the ID we are given
-		User.findById(id,
+		UserModel.findById(id,
 
 		// do not include salt, password or temporary password
 		// in the result, for security

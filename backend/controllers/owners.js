@@ -15,5 +15,5 @@ exports.main = function(req, res, next) {
 			res.locals.extStyles.push(v);
 		});
 	});
-	res.render('owners');
+	res.render('layout');
 };

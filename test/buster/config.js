@@ -16,9 +16,7 @@ module.exports = {
 	// defaults for browser testing
 	"browser-def": {
 		extends: "def", // includes default task configuration
-		env: "browser",
-		// libs: ["app/min-libs/**/*.js"]
-		// extensions: ["buster-coffee", "buster-amd"]
+		env: "browser"
 	},
 
 	// configuration for browser unit tests

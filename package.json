@@ -68,10 +68,9 @@
     "cookie-parser": "latest",
     "vhost": "latest",
     "compression": "latest",
-    "connect-flash": "latest",
     "consolidate": "latest",
     "helmet": "latest",
-    "swig": "latest",
+    "dust": "latest",
     "passport": "latest",
     "passport-local": "latest",
     "passport-google-oauth": "latest"

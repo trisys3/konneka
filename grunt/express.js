@@ -6,7 +6,6 @@ module.exports = {
 	options: {
 		hostname: '127.0.0.1', // allow connections from localhost
 		port: (process.env.SERVER_PORT || 3000), // default port
-
 	},
 
 	// ephemeral server to not reload when express files change

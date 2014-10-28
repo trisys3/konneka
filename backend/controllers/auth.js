@@ -3,9 +3,14 @@
 // get functions from environment file(s)
 var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 
+// require passport for our authentication functions
+var passport = require('passport');
+
 exports.login = function(req, res, next) {
-	passport.authenticate('local', function(err, user, info) {
-		console.log(user);
+	passport.authenticate('local', {
+		failureRedirect: '/auth/login',
+		failureFlash: 'Incorrect username or password. Please try again.'
+		// function(err, user, info) {
 		// if(err || !user) {
 		// 	res.status(400).send(info);
 		// }
@@ -18,6 +23,11 @@ exports.login = function(req, res, next) {
 		// }
 	});
 };
+
+exports.loginPage = function(req, res, next) {
+	res.locals.module = 'accounts';
+	res.render('login');
+}
 
 exports.logout = function(req, res) {
 	req.logout();

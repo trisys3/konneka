@@ -1,9 +1,9 @@
+'use strict';
+
 // test our virtual hosts
 
-// require Buster.js so our tests can run
-var buster = require('buster');// expose Buster's sub-methods so we don't have to specify the entire path each time
-
-// expose Buster's assertion methods so we don't have to specify the entire path each time
+// require Buster.js & its assertion methods so our tests can run
+var buster = require('buster');
 var assert = buster.referee.assert;
 var refute = buster.referee.refute;
 
@@ -13,7 +13,7 @@ var request = require('supertest');
 // define our test case
 buster.testCase('vhosts', {
 	setUp: function() {
-		this.vhostServer = require('../../../backend/page.js');
+		this.vhostServer = require('../../../backend/page');
 	},
 
 	// test what happens when navigating to the '*.konneka.org' subdomain

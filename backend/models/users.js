@@ -73,7 +73,7 @@ var UserSchema = new Schema({
 		default: '0'
 	},
 
-	// when the user was born/created
+	// when the user was born (if living) or created (if robot, etc.)
 	born: {
 		type: Date,
 		default: Date.now

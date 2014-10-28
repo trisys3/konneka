@@ -14,7 +14,6 @@ var consolidate = require('consolidate'); // consolidation module
 // middleware modules
 var morgan = require('morgan'); // morgan logging middleware
 var compress = require('compression'); // compression middleware
-var flash = require('connect-flash'); // flash middleware
 var helmet = require('helmet'); // helmet middleware for HTTP header configuration
 var vhost = require('vhost'); // virtual hosting middleware
 var bodyParser = require('body-parser'); // body-parsing middleware
@@ -43,7 +42,7 @@ fs.readdirSync(model_path).forEach(function(model) {
 
 // local server variables
 server.use(function(req, res, next) {
-	// res.locals.url = req.protocol + '://' + req.host + req.url;
+	res.locals.url = req.protocol + '://' + req.hostname + (req.url || '/');
 	res.locals.extScripts = environ.getJs();
 	res.locals.extStyles = environ.getCss();
 	environ.getModularJs('main').forEach(function(val, index) {
@@ -65,8 +64,8 @@ server.use(compress({
 
 // view options
 server.set('views', __dirname + '/view-bases'); // set the views folder to the relevant module folder
-server.engine('html', consolidate['swig']); // use "swig" engines with the ".swig" extension
-server.set('view engine', 'html'); // set swig as the default view engine
+server.engine('html', consolidate['dust']); // use "dust" view engines with the ".html" extension
+server.set('view engine', 'html'); // set dust (extension ".html") as the default view engine
 
 // environment-specific configuration
 if(process.env.NODE_ENV === 'dev') { // for the "development" environment,
@@ -119,9 +118,6 @@ server.use(session({
 // initialize passport & have it use the current session
 server.use(passport.initialize());
 server.use(passport.session());
-
-// flash-messaging middleware
-server.use(flash());
 
 // helmet middleware for headers
 server.use(helmet.csp({ // Content Security Policy (CSP) headers

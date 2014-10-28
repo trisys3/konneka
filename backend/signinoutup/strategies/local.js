@@ -2,7 +2,7 @@
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('mongoose').model('User');
+var UserModel = require('mongoose').model('User');
 
 module.exports = function() {
 
@@ -10,15 +10,15 @@ module.exports = function() {
 	passport.use(new LocalStrategy({
 		
 		// use the default names for the username & password fields
-		usernameField: 'username',
-		passwordField: 'password'
+		usernameField: 'loginUser',
+		passwordField: 'loginPass'
 		},
 
 		// main strategy function
 		function(username, password, done) {
 
 			// find user with given username
-			User.findOne({
+			UserModel.findOne({
 				username: username
 			},
 

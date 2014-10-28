@@ -2,10 +2,8 @@
 
 // test our functions that set up the Express environment
 
-// require Buster.js so our tests can run
+// require Buster.js & its assertion methods so our tests can run
 var buster = require('buster');
-
-// expose Buster's sub-methods so we don't have to specify the entire path each time
 var assert = buster.referee.assert;
 var refute = buster.referee.refute;
 
