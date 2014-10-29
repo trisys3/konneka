@@ -6,6 +6,14 @@ var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 // require passport for our authentication functions
 var passport = require('passport');
 
+exports.signup = function(req, res, next) {
+
+};
+
+exports.signupPage = function(req, res, next) {
+	res.locals.module = 'accounts';
+};
+
 exports.login = function(req, res, next) {
 	passport.authenticate('local', {
 		failureRedirect: '/auth/login',
@@ -27,8 +35,9 @@ exports.login = function(req, res, next) {
 exports.loginPage = function(req, res, next) {
 	res.locals.module = 'accounts';
 	res.render('login');
-}
+};
 
 exports.logout = function(req, res) {
 	req.logout();
+	res.redirect(res.locals.url);
 };
