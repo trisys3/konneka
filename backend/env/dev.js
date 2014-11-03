@@ -15,6 +15,7 @@ module.exports = {
 		if(module) {
 			moduleScripts.push(
 				'/modules/' + module + '/js/app.js',
+				'/modules/' + module + '/js/config/' + module + 'Rte.js',
 				'/modules/' + module + '/js/controllers/' + module + 'Ctrl.js',
 				'/modules/' + module + '/js/services/' + module + 'Serv.js',
 				'/modules/' + module + '/js/filters/' + module + 'Fils.js',

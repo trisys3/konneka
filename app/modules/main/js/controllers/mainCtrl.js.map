@@ -1,10 +1,10 @@
 {
   "version": 3,
   "file": "mainCtrl.js",
-  "sourceRoot": "..\\..\\coffee\\controllers\\",
+  "sourceRoot": "../../coffee/controllers/",
   "sources": [
     "mainCtrl.coffee"
   ],
   "names": [],
-  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,oBAAf,EAAqC,EAArC,CACC,CAAC,UADF,CACa,aADb,EAC4B;IAAC,QAAD,EAAW,SAAC,MAAD,GAAA;aAGrC,MAAM,CAAC,QAAP,GAAkB,OAHmB;IAAA,CAAX;GAD5B,CAFA,CAAA;AAAA"
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,oBAAf,EAAqC,EAArC,CACC,CAAC,UADF,CACa,UADb,EACyB;IAAC,QAAD,EAAW,SAAC,MAAD,GAAA;aAGlC,MAAM,CAAC,QAAP,GAAkB,OAHgB;IAAA,CAAX;GADzB,CAFA,CAAA;AAAA"
 }

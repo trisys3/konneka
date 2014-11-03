@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "ownersDirec.js",
-  "sourceRoot": "..\\..\\coffee\\directives\\",
+  "sourceRoot": "../../coffee/directives/",
   "sources": [
     "ownersDirec.coffee"
   ],

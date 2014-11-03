@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "config.js",
-  "sourceRoot": "..\\coffee\\",
+  "sourceRoot": "../coffee/",
   "sources": [
     "config.coffee"
   ],

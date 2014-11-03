@@ -70,7 +70,8 @@
     "compression": "latest",
     "consolidate": "latest",
     "helmet": "latest",
-    "dust": "latest",
+    "dustjs-linkedin": "latest",
+    "dustjs-helpers": "latest",
     "passport": "latest",
     "passport-local": "latest",
     "passport-google-oauth": "latest"

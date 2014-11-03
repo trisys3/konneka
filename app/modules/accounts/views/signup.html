@@ -1,0 +1,29 @@
+<form data-ng-submit="signup()" id="signupForm" name="signupForm">
+	<fieldset>
+		<legend>Signup Information</legend>
+		<input type="text" data-ng-model="newUser.username" autocomplete="on" id="username" name="username" placeholder="username" ng-required="true" />
+		<input type="email" data-ng-model="newUser.email" autocomplete="on" id="email" name="email" placeholder="person@email.com" ng-required="false" />
+		<input type="password" data-ng-model="newUser.password" autocomplete="off" id="password" name="password" placeholder="********" ng-required="true" />
+	</fieldset>
+
+	<fieldset>
+		<legend>Name</legend>
+		<input type="text" data-ng-model="newUser.prefix" autocomplete="on" id="prefix" name="prefix" placeholder="Honorific" ng-required="false" />
+		<input type="text" data-ng-model="newUser.firstName" autocomplete="on" id="firstName" name="firstName" placeholder="First Name" ng-required="false" />
+		<input type="text" data-ng-model="newUser.middleName" autocomplete="on" id="middleName" name="middleName" placeholder="Middle Name" ng-required="false" />
+		<input type="text" data-ng-model="newUser.lastName" autocomplete="on" id="lastName" name="lastName" placeholder="Last Name" ng-required="false" />
+		<input type="text" data-ng-model="newUser.suffix" autocomplete="on" id="suffix" name="suffix" placeholder="Jr., III..." ng-required="false" />
+	</fieldset>
+
+	<fieldset>
+		<legend>Other Information</legend>
+		<input type="date" data-ng-model="newUser.born" autocomplete="on" id="birthDate" name="birthDate" placeholder="Date of Birth" ng-required="false" />
+	</fieldset>
+
+	<fieldset>
+		<legend>About Me</legend>
+		<textarea data-ng-model="newUser.aboutMe" autocomplete="on" id="aboutMe" name="aboutMe" placeholder="About Me" ng-required="off"></textarea>
+	</fieldset>
+
+	<button type="submit" class="btn btn-info">Create User</button>
+</form>

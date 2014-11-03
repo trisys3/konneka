@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "objectsCtrl.js",
-  "sourceRoot": "..\\..\\coffee\\controllers\\",
+  "sourceRoot": "../../coffee/controllers/",
   "sources": [
     "objectsCtrl.coffee"
   ],

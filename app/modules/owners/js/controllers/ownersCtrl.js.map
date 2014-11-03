@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "ownersCtrl.js",
-  "sourceRoot": "..\\..\\coffee\\controllers\\",
+  "sourceRoot": "../../coffee/controllers/",
   "sources": [
     "ownersCtrl.coffee"
   ],

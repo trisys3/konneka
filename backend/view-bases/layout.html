@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="{module}App" data-ng-csp>
+<html lang="en" data-ng-app="{module}App" data-ng-csp="" data-ng-strict-di="">
 	<head data-ng-controller="IotHeadCtrl">
 
 		<title>{#title}Loading...{/title}</title>
@@ -15,13 +15,13 @@
 		{!{>head/}!}
 
 	</head>
-	<body data-ng-controller="IotRootCtrl">
+	<body data-ng-controller="mainCtrl">
 
 		<header>
 			{!{% block header %}{% endblock %}!}
 		</header>
 
-		<section class="content">
+		<section class="content" ng-controller="{module}Ctrl">
 			{>"{module}.html"/}
 		</section>
 

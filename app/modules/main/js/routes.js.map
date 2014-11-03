@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "routes.js",
-  "sourceRoot": "..\\coffee\\",
+  "sourceRoot": "../coffee/",
   "sources": [
     "routes.coffee"
   ],

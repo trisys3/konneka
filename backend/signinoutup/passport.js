@@ -4,7 +4,7 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var UserModel = mongoose.model('User');
 var path = require('path');
-var glob = require('glob');
+var fs = require('fs');
 var _ = require('lodash');
 
 module.exports = exports = function() {
@@ -36,10 +36,8 @@ module.exports = exports = function() {
 
 	});
 
-	// include our Passport strategies
-	glob(__dirname + '/strategies/*.js', function(err, files) {
-		_.each(files, function(strategy) {
-			require(strategy);
-		});
+	var strat_path = __dirname + '/strategies/';
+	fs.readdirSync(strat_path).forEach(function(strat) {
+		require(strat_path + strat);
 	});
 };

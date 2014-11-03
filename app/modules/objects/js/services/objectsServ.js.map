@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "objectsServ.js",
-  "sourceRoot": "..\\..\\coffee\\services\\",
+  "sourceRoot": "../../coffee/services/",
   "sources": [
     "objectsServ.coffee"
   ],

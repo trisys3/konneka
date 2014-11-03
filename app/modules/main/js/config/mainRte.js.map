@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "mainRte.js",
+  "sourceRoot": "../../coffee/config/",
+  "sources": [
+    "mainRte.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAGA,OAAO,CAAC,MAAR,CAAe,gBAAf,EAAiC,EAAjC,CACC,CAAC,MADF,CACS,SADT,EACoB,CAAC,eAAD,EAAkB,SAAC,cAAD,GAAA,CAAlB,CADpB,CAHA,CAAA;AAAA"
+}

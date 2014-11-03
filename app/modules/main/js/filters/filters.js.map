@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "filters.js",
-  "sourceRoot": "..\\..\\coffee\\filters\\",
+  "sourceRoot": "../../coffee/filters/",
   "sources": [
     "filters.coffee"
   ],

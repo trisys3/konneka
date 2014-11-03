@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('ownersApp', ['iotApp', 'ownersApp.controllers', 'ownersApp.services', 'ownersApp.directives', 'ownersApp.filters']);
+  angular.module('ownersApp', ['iotApp', 'ownersApp.routes', 'ownersApp.controllers', 'ownersApp.services', 'ownersApp.directives', 'ownersApp.filters']);
 
 }).call(this);
 

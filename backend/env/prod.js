@@ -64,8 +64,8 @@ module.exports = {
 		var styles = [
 
 			// Bootstrap
-			'/min-libs/bootstrap-css/css/bootstrap.css',
-			'/min-libs/bootstrap-css/css/bootstrap-theme.css',
+			'/min-libs/bootstrap-css/css/bootstrap.min.css',
+			'/min-libs/bootstrap-css/css/bootstrap-theme.min.css',
 
 			// jQuery UI themes
 			'/min-libs/jquery-ui/themes/base/all.css',
@@ -79,7 +79,7 @@ module.exports = {
 		var moduleStyles = [];
 		if(module) {
 			moduleStyles.push(
-				'/modules/' + module + '/css/main.css'
+				'/modules/' + module + '/css/main.min.css'
 			);
 		}
 

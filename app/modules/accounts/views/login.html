@@ -1,0 +1,17 @@
+<form data-ng-submit="login()" id="loginForm" name="loginForm">
+
+	<fieldset>
+
+		<legend>Log In</legend>
+
+		<input type="text" data-ng-model="loginUser.username" id="username" name="username" autocomplete="on" placeholder="username@email.com" />
+
+		<input type="password" data-ng-model="loginUser.password" id="password" name="password" autocomplete="off" placeholder="********" />
+
+		<button class="btn btn-info" type="submit">Log In</button>
+
+		<a href="/signup"></a>
+
+	</fieldset>
+
+</form>

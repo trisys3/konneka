@@ -70,7 +70,7 @@ var UserSchema = new Schema({
 	age: {
 		type: String,
 		trim: true,
-		default: '0'
+		default: 0
 	},
 
 	// when the user was born (if living) or created (if robot, etc.)
@@ -178,7 +178,7 @@ UserSchema.methods.authenticate = function(password) {
 	if(this.password === this.hashPassword(password)) {
 		return true;
 	}
-	else if(this.tempPassword === this.hashPassword(password) && this.tempPasswordExpires > Date.now) {
+	else if(this.tempPassword === this.hashPassword(password) && this.tempPassword && this.tempPasswordExpires > Date.now) {
 		return true;
 	}
 	else {

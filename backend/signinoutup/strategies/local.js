@@ -6,12 +6,12 @@ var UserModel = require('mongoose').model('User');
 
 module.exports = function() {
 
-	// use our "local" passport strategy
+	// create our local passport strategy & use it
 	passport.use(new LocalStrategy({
 		
-		// use the default names for the username & password fields
-		usernameField: 'loginUser',
-		passwordField: 'loginPass'
+			// use the default names for the username & password fields
+			usernameField: 'username',
+			passwordField: 'password'
 		},
 
 		// main strategy function
@@ -32,16 +32,14 @@ module.exports = function() {
 
 				// if the username and/or password is incorrect, return an error
 				// along with a message
-				else if(!user || !user.authenticate(password)) {
+				if(!user || !user.authenticate(password)) {
 					return done(null, false, {
 						message: 'Invalid username and/or password'
 					});
 				}
 
 				// if everything is correct, return the user document from the database
-				else {
-					return done(null, user);
-				}
+				return done(null, user);
 
 			});
 		}

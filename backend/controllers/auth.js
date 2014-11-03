@@ -6,35 +6,64 @@ var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 // require passport for our authentication functions
 var passport = require('passport');
 
-exports.signup = function(req, res, next) {
+// specify model
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
-};
-
-exports.signupPage = function(req, res, next) {
-	res.locals.module = 'accounts';
-};
-
-exports.login = function(req, res, next) {
-	passport.authenticate('local', {
-		failureRedirect: '/auth/login',
-		failureFlash: 'Incorrect username or password. Please try again.'
-		// function(err, user, info) {
-		// if(err || !user) {
-		// 	res.status(400).send(info);
-		// }
-		// else {
-		// 	// remove sensitive data
-		// 	user.password = undefined;
-		// 	user.salt = undefined;
-
-		// 	req.login()
-		// }
+exports.signup = function(req, res) {
+	console.log(req.body);
+	var user = new User(req.body);
+	user.save(function(err) {
+		if(err) {
+			return res.status(400).send(err);
+		}
+		else {
+			req.login(user, function(err) {
+				if(err) {
+					res.status(400).send(err);
+				}
+			});
+		}
 	});
+	console.log(req.session);
+	console.log(req.user);
 };
 
-exports.loginPage = function(req, res, next) {
-	res.locals.module = 'accounts';
-	res.render('login');
+exports.signupPage = function(req, res) {
+	res.locals.module = ['accounts'];
+	res.locals.module.forEach(function(val, index) {
+		env.getModularJs(res.locals.module).forEach(function(v, i) {
+			res.locals.extScripts.push(v);
+		});
+		env.getModularCss(res.locals.module).forEach(function(v, i) {
+			res.locals.extStyles.push(v);
+		});
+	});
+	res.render('layout');
+};
+
+exports.login = function(req, res) {
+	console.log(req.body);
+	passport.authenticate('local', {
+		successRedirect: '/',
+		failureRedirect: '/login',
+		failureFlash: 'Incorrect username or password. Please try again.'
+	});
+	console.log(req.user);
+	console.log(req.session);
+};
+
+exports.loginPage = function(req, res) {
+	res.locals.module = ['accounts'];
+	res.locals.module.forEach(function(val, index) {
+		env.getModularJs(res.locals.module).forEach(function(v, i) {
+			res.locals.extScripts.push(v);
+		});
+		env.getModularCss(res.locals.module).forEach(function(v, i) {
+			res.locals.extStyles.push(v);
+		});
+	});
+	res.render('layout');
 };
 
 exports.logout = function(req, res) {
