@@ -25,8 +25,9 @@ module.exports = function() {
 			// with this username, do this
 			function(err, user) {
 
-				// if there's an error, pass it along
+				// if there's an error, log it then pass it along
 				if(err) {
+					console.log("Error during login: " + err);
 					return done(err);
 				}
 

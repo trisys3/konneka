@@ -1,14 +1,18 @@
 (function() {
   'use strict';
   angular.module('accountsApp.controllers', []).controller('accountsCtrl', [
-    '$scope', '$http', function($scope, $http) {
+    '$scope', '$http', '$location', function($scope, $http, $location) {
       $scope.newUser = {};
       $scope.loginUser = {};
       $scope.signup = function() {
-        return $http.put('/signup', $scope.newUser);
+        return $http.put('/signup', $scope.newUser).success(function() {
+          return $location.path('/');
+        });
       };
       return $scope.login = function() {
-        return $http.post('/login', $scope.loginUser);
+        return $http.post('/login', $scope.loginUser).success(function() {
+          return $location.path('/');
+        });
       };
     }
   ]);

@@ -38,6 +38,6 @@ module.exports = exports = function() {
 
 	var strat_path = __dirname + '/strategies/';
 	fs.readdirSync(strat_path).forEach(function(strat) {
-		require(strat_path + strat);
+		require(strat_path + strat)();
 	});
 };

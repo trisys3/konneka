@@ -2,7 +2,7 @@
 
 # account controller(s)
 angular.module 'accountsApp.controllers', []
-	.controller 'accountsCtrl', ['$scope', '$http', ($scope, $http) ->
+	.controller 'accountsCtrl', ['$scope', '$http', '$location', ($scope, $http, $location) ->
 
 		# initialize variables
 		$scope.newUser = {};
@@ -10,8 +10,12 @@ angular.module 'accountsApp.controllers', []
 		
 		$scope.signup = ->
 			$http.put '/signup', $scope.newUser
+			.success ->
+				$location.path '/'
 
 		$scope.login = ->
 			$http.post '/login', $scope.loginUser
+			.success ->
+				$location.path '/'
 
 	]

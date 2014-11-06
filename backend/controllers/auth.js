@@ -10,23 +10,22 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-exports.signup = function(req, res) {
-	console.log(req.body);
-	var user = new User(req.body);
-	user.save(function(err) {
-		if(err) {
-			return res.status(400).send(err);
+exports.signup = function(req, res, next) {
+	passport.authenticate('local-signup', function(err, user, info) {
+		if(err || !user) {
+			res.status(400).send(info);
 		}
 		else {
 			req.login(user, function(err) {
 				if(err) {
-					res.status(400).send(err);
+					res.status(400).send(info);
+				}
+				else {
+					res.send(null)
 				}
 			});
 		}
-	});
-	console.log(req.session);
-	console.log(req.user);
+	})(req, res, next);
 };
 
 exports.signupPage = function(req, res) {
@@ -42,15 +41,22 @@ exports.signupPage = function(req, res) {
 	res.render('layout');
 };
 
-exports.login = function(req, res) {
-	console.log(req.body);
-	passport.authenticate('local', {
-		successRedirect: '/',
-		failureRedirect: '/login',
-		failureFlash: 'Incorrect username or password. Please try again.'
+exports.login = function(req, res, next) {
+	passport.authenticate('local', function(err, user, info) {
+		if(err || !user) {
+			res.status(401).send(info);
+		}
+		else {
+			req.login(user, function(err) {
+				if(err) {
+					res.status(400).send(err);
+				}
+				else {
+					res.send(null);
+				}
+			});
+		}
 	});
-	console.log(req.user);
-	console.log(req.session);
 };
 
 exports.loginPage = function(req, res) {
@@ -66,7 +72,7 @@ exports.loginPage = function(req, res) {
 	res.render('layout');
 };
 
-exports.logout = function(req, res) {
+exports.logout = function(req, res, next) {
 	req.logout();
-	res.redirect(res.locals.url);
+	res.redirect('/');
 };
