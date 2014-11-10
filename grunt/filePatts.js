@@ -106,7 +106,7 @@ module.exports = {
 	},
 	// check non-library JavaScript files
 	checkJs: {
-		src: ['Gruntfile.js', 'package.json', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json']
+		src: ['Gruntfile.js', 'package.json', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json', '!app/min-libs/**']
 	},
 	// check library JavaScript & JSON files
 	checkLibJs: {

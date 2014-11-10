@@ -1,10 +1,12 @@
 (function() {
   'use strict';
-  angular.module('ownersApp.routes', []).config('OwnersRte', [
-    '$stateProvider', $stateProvider, $stateProvider.state('owners', {
-      url: '/owners',
-      templateUrl: ''
-    })
+  angular.module('ownersApp.routes', ['ui.router']).config([
+    '$stateProvider', function($stateProvider) {
+      return $stateProvider.state('owners', {
+        url: '/owners',
+        templateUrl: ''
+      });
+    }
   ]);
 
 }).call(this);

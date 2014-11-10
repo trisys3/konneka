@@ -13,7 +13,7 @@ var User = mongoose.model('User');
 exports.signup = function(req, res, next) {
 	passport.authenticate('local-signup', function(err, user, info) {
 		if(err || !user) {
-			res.status(400).send(info);
+			res.status(401).send(info);
 		}
 		else {
 			req.login(user, function(err) {
@@ -56,7 +56,7 @@ exports.login = function(req, res, next) {
 				}
 			});
 		}
-	});
+	})(req, res, next);
 };
 
 exports.loginPage = function(req, res) {

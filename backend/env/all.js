@@ -39,7 +39,6 @@ module.exports = {
 
 			// our core Angular scripts, in our "main" module
 			'/modules/main/js/head' + getMin + '.js',
-			'/modules/main/js/routes' + getMin + '.js',
 			'/modules/main/js/url' + getMin + '.js'
 		];
 		

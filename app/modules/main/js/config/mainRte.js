@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('mainApp.routes', []).config('mainRte', ['stateProvider', function($stateProvider) {}]);
+  angular.module('iotApp.routes', []).config('mainRte', ['stateProvider', function($stateProvider) {}]);
 
 }).call(this);
 

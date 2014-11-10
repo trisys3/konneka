@@ -2,7 +2,7 @@
   'use strict';
   angular.module('welcomeApp.controllers', []).controller('WelcomeCtrl', [
     '$scope', function($scope) {
-      return $scope.iotTitle = "Welcome!";
+      return $scope.iotTitle = 'Welcome!';
     }
   ]);
 

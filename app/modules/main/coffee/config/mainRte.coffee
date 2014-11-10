@@ -1,6 +1,6 @@
 'use strict';
 
 # routes for our main module
-angular.module 'mainApp.routes', []
+angular.module 'iotApp.routes', []
 	.config 'mainRte', ['stateProvider', ($stateProvider) ->
 	]

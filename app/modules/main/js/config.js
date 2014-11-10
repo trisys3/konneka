@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   var addModule;
 
   addModule = function(name, parent, deps) {

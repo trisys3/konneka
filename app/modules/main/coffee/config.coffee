@@ -1,3 +1,5 @@
+'use strict'
+
 # non-Angular configuration
 
 # add new module, optionally with dependencies,

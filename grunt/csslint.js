@@ -14,7 +14,7 @@ module.exports = {
 	
 	// check CSS files according to CSSLint rules
 	check: {
-		src: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
+		files: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
 		options: {
 			adjoiningClasses: false, // do not warn on CSS rules with 2 classes on 1 element
 			'box-sizing': false, // do not warn when "box-sizing" selector is used
@@ -26,7 +26,7 @@ module.exports = {
 	
 	// check CSS files according to CSSLint rules and log results
 	log: {
-		src: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
+		files: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
 		options: {
 			adjoiningClasses: false, // do not warn on CSS rules with 2 classes on 1 element
 			'box-sizing': false, // do not warn when "box-sizing" selector is used
@@ -42,7 +42,7 @@ module.exports = {
 	
 	// check CSS files for incompatibilities in older browsers according to CSSLint rules
 	checkOld: {
-		src: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
+		files: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
 		adjoiningClasses: 2, // abort with error when defining rules with multiple classes for 1 element
 		'box-sizing': 2, // abort with error when "box-sizing" selector is used
 		'fallback-colors': 2, // abort with error when using multiple font faces in 1 definition would screw up older browsers
@@ -50,7 +50,7 @@ module.exports = {
 	
 	// check CSS files for incompatibilities in older browsers according to CSSLint rules and log results
 	logOld: {
-		src: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
+		files: '<%= filePatts.checkCss.files %>', // check all files with ".css" extension in app folder
 		adjoiningClasses: 2, // abort with error when defining rules with multiple classes for 1 element
 		'box-sizing': 2, // abort with error when "box-sizing" selector is used
 		'fallback-colors': 2, // abort with error when using multiple font faces in 1 definition would screw up older browsers

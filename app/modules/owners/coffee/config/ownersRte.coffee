@@ -1,7 +1,8 @@
 'use strict'
 
-angular.module 'ownersApp.routes', []
-	.config 'OwnersRte', ['$stateProvider', ($stateProvider)
+# our owner routes
+angular.module 'ownersApp.routes', ['ui.router']
+	.config ['$stateProvider', ($stateProvider) ->
 		$stateProvider
 			.state 'owners',
 				url: '/owners'

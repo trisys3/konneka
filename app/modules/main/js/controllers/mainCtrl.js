@@ -1,10 +1,6 @@
 (function() {
   'use strict';
-  angular.module('iotApp.controllers', []).controller('mainCtrl', [
-    '$scope', function($scope) {
-      return $scope.iotTitle = "root";
-    }
-  ]);
+  angular.module('iotApp.controllers', []).controller('mainCtrl', ['$scope', function($scope) {}]);
 
 }).call(this);
 

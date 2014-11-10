@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('objectsApp.routes', []).config('objectsRte', ['stateProvider', function($stateProvider) {}]);
+  angular.module('objectsApp.routes', ['ui.router']).config(['$stateProvider', function($stateProvider) {}]);
 
 }).call(this);
 

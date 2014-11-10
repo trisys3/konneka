@@ -5,8 +5,8 @@ angular.module 'accountsApp.controllers', []
 	.controller 'accountsCtrl', ['$scope', '$http', '$location', ($scope, $http, $location) ->
 
 		# initialize variables
-		$scope.newUser = {};
-		$scope.loginUser = {};
+		$scope.newUser = {}
+		$scope.loginUser = {}
 		
 		$scope.signup = ->
 			$http.put '/signup', $scope.newUser

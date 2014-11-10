@@ -1,5 +1,5 @@
 {
-  "name": "Sean Moran",
+  "name": "konneka",
   "version": "0.0.1",
   "dependencies": {
     "angular": "latest",
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/trisys3/konneka",
   "authors": [
     {
-      "name": "trysis@gmail.com",
+      "name": "Sean Moran",
       "email": "sean_r_moran@msn.com"
     }
   ],
@@ -45,8 +45,7 @@
     "**/.*",
     "node_modules",
     "app/min-libs",
-    "test",
-    "tests"
+    "test"
   ],
   "repository": {
     "type": "git",
