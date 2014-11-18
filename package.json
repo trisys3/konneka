@@ -57,6 +57,7 @@
     "assetmanager": "latest",
     "lodash": "latest",
     "glob": "latest",
+    "scrypt": "latest",
 
     "request": "latest",
     "connect-mongo": "latest",
@@ -77,7 +78,7 @@
     "passport-google-oauth": "latest"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "buster"
   },
   "repository": {
     "type": "git",

@@ -6,6 +6,8 @@ var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 // require passport for our authentication functions
 var passport = require('passport');
 
+var _ = require('lodash');
+
 // specify model
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -18,7 +20,7 @@ exports.signup = function(req, res, next) {
 		else {
 			req.login(user, function(err) {
 				if(err) {
-					res.status(400).send(info);
+					res.status(401).send(info);
 				}
 				else {
 					res.send(null)
@@ -31,12 +33,8 @@ exports.signup = function(req, res, next) {
 exports.signupPage = function(req, res) {
 	res.locals.module = ['accounts'];
 	res.locals.module.forEach(function(val, index) {
-		env.getModularJs(res.locals.module).forEach(function(v, i) {
-			res.locals.extScripts.push(v);
-		});
-		env.getModularCss(res.locals.module).forEach(function(v, i) {
-			res.locals.extStyles.push(v);
-		});
+		res.locals.extScripts = _.union(res.locals.extScripts, env.getModularJs(res.locals.module));
+		res.locals.extStyles = _.union(res.locals.extStyles, env.getModularCss(res.locals.module));
 	});
 	res.render('layout');
 };
@@ -49,7 +47,7 @@ exports.login = function(req, res, next) {
 		else {
 			req.login(user, function(err) {
 				if(err) {
-					res.status(400).send(err);
+					res.status(401).send(err);
 				}
 				else {
 					res.send(null);

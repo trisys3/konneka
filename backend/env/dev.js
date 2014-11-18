@@ -5,22 +5,27 @@ var _ = require('lodash');
 // variables and functions to be used in our development environment
 module.exports = {
 	port: process.env.SERVER_PORT || 3000, // port for our server to listen on
-	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/mean-dev', // our database URL for Mongoose
+	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27017) + '/konneka-dev', // our database URL for Mongoose
 	sessionSecret: 'Internet of Monkeys', // session secret
-	appRoot: 'app/modules', // root of the client parts of our app
+	appRoot: 'app/', // root of the client parts of our app
 
 	// get Angular scripts for another one of our modules
 	getModularJs: function(module) {
 		var moduleScripts = [];
-		if(module) {
-			moduleScripts.push(
-				'/modules/' + module + '/js/app.js',
-				'/modules/' + module + '/js/config/' + module + 'Rte.js',
-				'/modules/' + module + '/js/controllers/' + module + 'Ctrl.js',
-				'/modules/' + module + '/js/services/' + module + 'Serv.js',
-				'/modules/' + module + '/js/filters/' + module + 'Fils.js',
-				'/modules/' + module + '/js/directives/' + module + 'Direc.js'
-			);
+		if(_.isString(module)) {
+			module = [module];
+		}
+		if(_.isArray(module)) {
+			_.forOwn(module, function(val) {
+				moduleScripts.push(
+					'/modules/' + val + '/js/app.js',
+					'/modules/' + val + '/js/config/' + val + 'Rte.js',
+					'/modules/' + val + '/js/controllers/' + val + 'Ctrl.js',
+					'/modules/' + val + '/js/services/' + val + 'Serv.js',
+					'/modules/' + val + '/js/filters/' + val + 'Fils.js',
+					'/modules/' + val + '/js/directives/' + val + 'Direc.js'
+				);
+			});
 		}
 
 		return moduleScripts;
@@ -29,10 +34,15 @@ module.exports = {
 	// get the stylesheet(s) for the current Angular module
 	getModularCss: function(module) {
 		var moduleStyles = [];
-		if(module) {
-			moduleStyles.push(
-				'/modules/' + module + '/css/main.css'
-			);
+		if(_.isString(module)) {
+			module = [module];
+		}
+		if(_.isArray(module)) {
+			_.forOwn(module, function(val) {
+				moduleStyles.push(
+					'/modules/' + val + '/css/main.css'
+				);
+			});
 		}
 
 		return moduleStyles;

@@ -8,6 +8,5 @@ angular.module 'iotApp', [
 	'iotApp.services'
 	'iotApp.directives'
 	'iotApp.controllers'
-	'iotUrl'
 	'iotHead'
 ]

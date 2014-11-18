@@ -20,7 +20,7 @@ module.exports = {
 			server: path.resolve(__dirname, '../backend/page.js'), // express server file
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			bases: ['app/', 'dist/', 'backend/'] // watch files in app folder for changes
+			bases: ['app/', 'backend/'] // watch files in app folder for changes
 		}
 	},
 

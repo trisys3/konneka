@@ -38,8 +38,7 @@ module.exports = {
 			'/min-libs/angular-ui-utils/ui-utils' + getMin + '.js',
 
 			// our core Angular scripts, in our "main" module
-			'/modules/main/js/head' + getMin + '.js',
-			'/modules/main/js/url' + getMin + '.js'
+			'/modules/main/js/head' + getMin + '.js'
 		];
 		
 		return scripts;

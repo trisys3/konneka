@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var GroupSchema = require('./groups.js');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
+var scrypt = require('scrypt');
 
 // schema for user collection/table
 var UserSchema = new Schema({
@@ -87,13 +88,8 @@ var UserSchema = new Schema({
 
 	// password of user
 	password: {
-		type: String,
+		type: Buffer,
 		default: null
-	},
-
-	// salt for user's password
-	salt: {
-		type: String
 	},
 
 	// description of user
@@ -110,7 +106,7 @@ var UserSchema = new Schema({
 		default: 'human'
 	},
 
-	// space-separated list of roles of user (user, admin, etc.)
+	// space-separated list of roles of user (user, admin, banned, etc.)
 	status: {
 		type: String,
 		trim: true,
@@ -157,7 +153,7 @@ var UserSchema = new Schema({
 // pre-save hook to hash our new password
 UserSchema.pre('save', function(next) {
 	if(this.password) {
-		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+		// this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
 	}
 	next();
@@ -165,8 +161,8 @@ UserSchema.pre('save', function(next) {
 
 // password-hashing function
 UserSchema.methods.hashPassword = function(password) {
-	if(this.salt && password) {
-		return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+	if(password) {
+		return scrypt.hash(new Buffer(password), scrypt.params(0.5));
 	}
 	else {
 		return password;
@@ -175,13 +171,19 @@ UserSchema.methods.hashPassword = function(password) {
 
 // authentication function
 UserSchema.methods.authenticate = function(password) {
-	if(this.password === this.hashPassword(password)) {
-		return true;
+	try {
+		if(scrypt.verify(this.password, new Buffer(password))) {
+			return true;
+		}
+		else if(this.tempPassword && this.tempPasswordExpires > Date.now && scrypt.verify(this.tempPassword, new Buffer(password))) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	else if(this.tempPassword === this.hashPassword(password) && this.tempPassword && this.tempPasswordExpires > Date.now) {
-		return true;
-	}
-	else {
+	catch(err) {
+		console.log('Error during login: ' + err);
 		return false;
 	}
 };

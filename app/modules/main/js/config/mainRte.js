@@ -1,6 +1,13 @@
 (function() {
   'use strict';
-  angular.module('iotApp.routes', []).config('mainRte', ['stateProvider', function($stateProvider) {}]);
+  angular.module('iotApp.routes', ['ui.router']).config(['$stateProvider', function($stateProvider) {}]).config([
+    '$locationProvider', function($locationProvider) {
+      return $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
+    }
+  ]);
 
 }).call(this);
 

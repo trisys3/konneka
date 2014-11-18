@@ -6,7 +6,7 @@ var fs = require('fs');
 
 module.exports = {
 	port: process.env.SERVER_PORT || 3002,
-	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27019) + '/mean-test',
+	dbUrl: 'mongodb://konneka.org:' + (process.env.MONGO_PORT || 27019) + '/konneka-test',
 	sessionSecret: 'Internet of Guinea Pigs',
 	appRoot: 'test',
 

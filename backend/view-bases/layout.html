@@ -12,13 +12,13 @@
 		<!--external CSS stylesheets-->
 		{#extStyles}<link rel="stylesheet" type="text/css" href="{.}" />{/extStyles}
 
-		{>head/}
+		{>"head.html"/}
 
 	</head>
 	<body data-ng-controller="mainCtrl">
 
 		<header>
-			{>header/}
+			{>"header.html"/}
 		</header>
 
 		<section class="content" ng-controller="{module}Ctrl">
@@ -26,7 +26,7 @@
 		</section>
 
 		<footer>
-			{>footer/}
+			{>"footer.html"/}
 		</footer>
 
 		<!--external JavaScript scripts-->

@@ -34,6 +34,7 @@ module.exports = function() {
 				// if the username and/or password is incorrect, return an error
 				// along with a message
 				if(!user || !user.authenticate(password)) {
+					console.log(user.authenticate(password));
 					return done(null, false, {
 						message: 'Invalid username and/or password'
 					});

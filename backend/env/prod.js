@@ -5,9 +5,9 @@ var _ = require('lodash');
 // variables and functions for production
 module.exports = {
 	port: process.env.SERVER_PORT || 3001, // server port for our app
-	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || ('mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/mean'), // our database URL for Mongoose
+	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || ('mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/konneka'), // our database URL for Mongoose
 	sessionSecret: 'Internet of Things', // secret for our sessions (change this to something more secure ASAP)
-	appRoot: 'dist/app/modules', // root for the client-side portions of our app
+	appRoot: 'dist/app', // root for the client-side portions of our app
 
 	// get the main JavaScript pages for our app, minified for production
 	getJs: function() {
@@ -35,9 +35,7 @@ module.exports = {
 			'/min-libs/angular-ui-utils/ui-utils.min.js',
 
 			// our "main" module scripts
-			'/modules/main/js/head.min.js',
-			'/modules/main/js/routes.min.js',
-			'/modules/main/js/url.min.js',
+			'/modules/main/js/head.min.js'
 		];
 
 		return scripts;

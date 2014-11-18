@@ -2,8 +2,6 @@
 
 // express configuration
 
-var path = require('path');
-var glob = require('glob');
 var fs = require('fs');
 
 var express = require('express'); // express module
@@ -21,11 +19,7 @@ var cookieParser = require('cookie-parser'); // cookie-parsing middleware
 var methodOverride = require('method-override'); // HTTP method-overriding middleware
 
 var environ = require('./env/' + (process.env.NODE_ENV || 'dev')); // get more variables/functions based on the environment
-var touch_env = false; // set variable indicating whether we are on a touchscreen to false initially
-// if we are in a touch environment, set it to true
-if(process.env.TOUCH) {
-	touch_env = true;
-}
+var touch_env = require('./env/touch'); // require file for touch-related things
 
 var mongoose = require('mongoose'); // ORM module
 var session = require('express-session'); // session-configuring software
@@ -43,14 +37,8 @@ fs.readdirSync(model_path).forEach(function(model) {
 // local server variables
 server.use(function(req, res, next) {
 	res.locals.url = req.protocol + '://' + req.hostname + (req.url || '/');
-	res.locals.extScripts = environ.getJs();
-	res.locals.extStyles = environ.getCss();
-	environ.getModularJs('main').forEach(function(val, index) {
-		res.locals.extScripts.push(val);
-	});
-	environ.getModularCss('main').forEach(function(val, index) {
-		res.locals.extStyles.push(val);
-	});
+	res.locals.extScripts = _.union(environ.getJs(), environ.getModularJs('main'));
+	res.locals.extStyles = _.union(environ.getCss(), environ.getModularCss('main'));
 	next();
 });
 
@@ -67,23 +55,13 @@ server.set('views', __dirname + '/view-bases'); // set the views folder to the r
 server.engine('html', consolidate['dust']); // use "dust" view engines with the ".html" extension
 server.set('view engine', 'html'); // set dust (extension ".html") as the default view engine
 
-// environment-specific configuration
-if(process.env.NODE_ENV === 'dev') { // for the "development" environment,
+// logging & debugging for testing & development environments
+if(process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'test' || !process.env.NODE_ENV) {
 	// use express's logging middleware, "morgan"
 	server.use(morgan('dev'));
 
 	// disable caching of views
 	server.disable('view cache');
-
-	// show errors onscreen
-	server.enable('showStackError');
-}
-else if(process.env.NODE_ENV === 'test') { // for the "test" environment
-	// use express's logging middleware, "morgan"
-	server.use(morgan('dev'));
-
-	// enable caching of views
-	server.enable('view cache');
 
 	// show errors onscreen
 	server.enable('showStackError');
@@ -141,7 +119,7 @@ server.use(helmet.ienoopen()); // does not let users of Internet Explorer open f
 server.use(helmet.nosniff()); // does not let others sniff the X-Content-Type header
 server.disable('x-powered-by'); // hides the X-Powered-By header
 
-server.use(express.static('../' + environ.views));
+server.use(express.static(environ.appRoot));
 
 // virtual hosts
 var vhosts = require('./vhost');

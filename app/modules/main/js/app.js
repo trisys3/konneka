@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('iotApp', ['iotApp.routes', 'iotApp.filters', 'iotApp.services', 'iotApp.directives', 'iotApp.controllers', 'iotUrl', 'iotHead']);
+  angular.module('iotApp', ['iotApp.routes', 'iotApp.filters', 'iotApp.services', 'iotApp.directives', 'iotApp.controllers', 'iotHead']);
 
 }).call(this);
 
