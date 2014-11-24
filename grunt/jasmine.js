@@ -1,3 +1,7 @@
+'use strict';
+
+// Jasmine JavaScript-testing tasks for Angular,
+// minus the directives
 module.exports = {
 	
 	options: {

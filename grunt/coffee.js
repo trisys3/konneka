@@ -1,9 +1,10 @@
+'use strict';
+
 // CoffeeScript-to-JavaScript tasks
 module.exports = {
 
 	// extra options
 	options: {
-		bare: false,
 		sourceMap: true
 	},
 

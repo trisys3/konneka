@@ -1,3 +1,6 @@
+'use strict';
+
+// file-watching tasks
 module.exports = {
 
 	// default watching task

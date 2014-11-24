@@ -6,5 +6,6 @@ angular.module 'welcomeApp.routes', ['ui.router']
 		$stateProvider
 		.state 'welcome',
 			url: '/'
+			controller: 'welcomeCtrl'
 			templateUrl: '/modules/welcome/views/welcome.html'
 	]

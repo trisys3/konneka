@@ -1,4 +1,6 @@
-// Karma.js tests
+'use strict';
+
+// Karma.js tests, for Angular
 module.exports = {
 
 	// options shared among all tasks

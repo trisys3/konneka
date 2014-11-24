@@ -6,5 +6,6 @@ angular.module 'ownersApp.routes', ['ui.router']
 		$stateProvider
 			.state 'owners',
 				url: '/owners'
+				controller: 'ownersCtrl'
 				templateUrl: ''
 		]

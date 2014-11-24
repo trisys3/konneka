@@ -4,6 +4,7 @@
     '$stateProvider', function($stateProvider) {
       return $stateProvider.state('welcome', {
         url: '/',
+        controller: 'welcomeCtrl',
         templateUrl: '/modules/welcome/views/welcome.html'
       });
     }

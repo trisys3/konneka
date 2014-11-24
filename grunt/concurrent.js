@@ -1,3 +1,6 @@
+'use strict';
+
+// tasks meant to be run at the same time
 module.exports = {
 	
 	check: {

@@ -8,10 +8,6 @@ var passport = require('passport');
 
 var _ = require('lodash');
 
-// specify model
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
-
 exports.signup = function(req, res, next) {
 	passport.authenticate('local-signup', function(err, user, info) {
 		if(err || !user) {
@@ -23,7 +19,7 @@ exports.signup = function(req, res, next) {
 					res.status(401).send(info);
 				}
 				else {
-					res.send(null)
+					res.send(null);
 				}
 			});
 		}
@@ -32,9 +28,9 @@ exports.signup = function(req, res, next) {
 
 exports.signupPage = function(req, res) {
 	res.locals.module = ['accounts'];
-	res.locals.module.forEach(function(val, index) {
-		res.locals.extScripts = _.union(res.locals.extScripts, env.getModularJs(res.locals.module));
-		res.locals.extStyles = _.union(res.locals.extStyles, env.getModularCss(res.locals.module));
+	res.locals.module.forEach(function(val) {
+		res.locals.extScripts = _.union(res.locals.extScripts, env.getModularJs(val));
+		res.locals.extStyles = _.union(res.locals.extStyles, env.getModularCss(val));
 	});
 	res.render('layout');
 };
@@ -59,18 +55,14 @@ exports.login = function(req, res, next) {
 
 exports.loginPage = function(req, res) {
 	res.locals.module = ['accounts'];
-	res.locals.module.forEach(function(val, index) {
-		env.getModularJs(res.locals.module).forEach(function(v, i) {
-			res.locals.extScripts.push(v);
-		});
-		env.getModularCss(res.locals.module).forEach(function(v, i) {
-			res.locals.extStyles.push(v);
-		});
+	res.locals.module.forEach(function(val) {
+		res.locals.extScripts = _.union(res.locals.extScripts, env.getModularJs(val));
+		res.locals.extStyles = _.union(res.locals.extStyles, env.getModularCss(val));
 	});
 	res.render('layout');
 };
 
-exports.logout = function(req, res, next) {
+exports.logout = function(req, res) {
 	req.logout();
 	res.redirect('/');
 };

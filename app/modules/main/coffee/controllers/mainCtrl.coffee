@@ -1,6 +1,10 @@
 'use strict'
 
 angular.module 'iotApp.controllers', []
-	.controller 'mainCtrl', ['$scope', ($scope) ->
+	.controller 'MainCtrl', ['$scope', ($scope) ->
 		
+	]
+
+	.controller 'HeadCtrl', ['$scope', ($scope) ->
+
 	]

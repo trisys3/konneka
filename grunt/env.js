@@ -1,4 +1,6 @@
-// environment variable setting/replacing/unsetting tasks
+'use strict';
+
+// environment variable configuration tasks
 
 module.exports = {
 

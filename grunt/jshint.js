@@ -1,3 +1,6 @@
+'use strict';
+
+// JavaScript syntax-checking tasks
 module.exports = {
 
 	// default JSHint options for this site
@@ -15,7 +18,7 @@ module.exports = {
 		undef: true, // never use undefined variables
 		unused: true, // warn when variables are not used
 		strict: true, // use JavaScript's *strict* mode for functions, prohibit global *strict* mode
-		trailing: true, // no trailing white spaces
+
 		// options designed to give fewer warnings
 		boss: true, // ignore warnings about assignment (x = y) when comparison (x === y) is expected
 		eqnull: true, // suppress warnings about "== null"
@@ -23,16 +26,18 @@ module.exports = {
 		multistr: true, // multiline strings are allowed
 		sub: true, // does not warn when accessing array members with [] instead of dots (e.g. author['name'] instead of author.name)
 		force: true, // does not abort due to errors
+
 		extensions: '.json', // extensions to check along with ".js"
+		
 		// environment global variables
 		browser: true, // browser globals are used
 		jquery: true, // jQuery is used
-		node: true, // Node.js is used
+		
 		// specific warnings & errors to ignore, by ID number of error
 		ignores: [],
+		
 		// global variables not defined in environment area
 		globals: {
-			module: true,
 			angular: true // used in AngularJS
 		}
 	},
@@ -96,7 +101,30 @@ module.exports = {
 		src: '<%= filePatts.checkJs.src %>',
 		options: {
 			reporterOutput: 'errs/prod/jsHint.js', // error output file
+			reporter: 'checkstyle' // use "checkstyle" JSHint reporter
+		}
+	},
+
+	// check backend JavaScript files
+	nodeCheck: {
+		src: '<%= filePatts.checkNodeJs.src %>',
+		options: {
+			node: true,
+			jquery: false,
+			browser: false
+		}
+	},
+
+	// check backend JavaScript files & log results
+	nodeLog: {
+		src: '<%= filePatts.checkNodeJs.src %>',
+		options: {
+			node: true,
+			jquery: false,
+			browser: false,
+
 			reporter: 'checkstyle', // use "checkstyle" JSHint reporter
+			reporterOutput: 'errs/node/jsHint.js' // error output file
 		}
 	}
 

@@ -1,9 +1,10 @@
+'use strict';
+
 // SCSS/SASS tasks
 module.exports = {
 
 	// default options
 	options: {
-		sourcemap: 'auto',
 		lineNumbers: true,
 		compass: true,
 		cacheLocation: 'app/.cache/sass'

@@ -3,7 +3,7 @@
 // get functions from environment file(s)
 var env = require('../env/' + (process.env.NODE_ENV || 'dev'));
 
-exports.qunit = function(req, res, next) {
+exports.qunit = function(req, res) {
 	res.locals.testFram = 'qunit';
 	res.locals.testEnv = 'direc';
 	res.locals.extScripts.push('../app/min-libs/qunit/qunit/qunit.js');

@@ -27,7 +27,7 @@ module.exports = function() {
 
 				// if there's an error, log it then pass it along
 				if(err) {
-					console.log("Error during login: " + err);
+					console.log('Error during login: ' + err);
 					return done(err);
 				}
 

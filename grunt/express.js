@@ -1,5 +1,6 @@
-path = require('path'); // get path module
+'use strict';
 
+// express tasks
 module.exports = {
 
 	// default options
@@ -11,16 +12,16 @@ module.exports = {
 	// ephemeral server to not reload when express files change
 	ephe: {
 		options: {
-			server: path.resolve(__dirname, '../backend/page.js'), // express server file
+			server: 'backend/page', // express server file
 		}
 	},
 
 	dev: {
 		options: {
-			server: path.resolve(__dirname, '../backend/page.js'), // express server file
+			server: 'backend/page', // express server file
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			bases: ['app/', 'backend/'] // watch files in app folder for changes
+			bases: ['app', 'backend'] // watch files in app folder for changes
 		}
 	},
 
@@ -28,25 +29,25 @@ module.exports = {
 		options: {
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			server: path.resolve(__dirname, '../backend/page.js'), // express server file
-			bases: ['dist/', 'backend/'] // watch files in app folder for changes
+			server: 'backend/page', // express server file
+			bases: ['dist', 'backend'] // watch files in app folder for changes
 		}
 	},
 
 	test: {
 		options: {
 			showStack: true, // show errors in browser
-			server: path.resolve(__dirname, '../backend/page.js'), // express server file
+			server: 'backend/page', // express server file
 			livereload: true, // automatically reload server when express pages change
 			// serverreload: true, // run forever-running server (do not close when finished)
-			bases: ['app/', 'test/', 'backend/'] // watch files in app folder for changes
+			bases: ['app', 'test', 'backend'] // watch files in app folder for changes
 		}
 	},
 
 	testEphe: {
 		options: {
 			showStack: true, // show errors in browser
-			server: path.resolve(__dirname, '../backend/page.js'), // express server file
+			server: 'backend/page', // express server file
 			open: true // open default page in browser
 		}
 	}

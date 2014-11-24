@@ -21,13 +21,13 @@ module.exports = function() {
 
 					// if there is an error, log it then return it
 					if(err) {
-						console.log("Error finding a user in the database: " + err);
+						console.log('Error finding a user in the database: ' + err);
 						return done(err);
 					}
 
 					// if a user was already found
 					if(user) {
-						return done(null, false, "User already exists");
+						return done(null, false, 'User already exists');
 					}
 
 					// if we get this far, create a new user from the request body
@@ -36,7 +36,7 @@ module.exports = function() {
 					// save it and sign it in
 					newUser.save(function(err) {
 						if(err) {
-							console.log("Error during signup: " + err);
+							console.log('Error during signup: ' + err);
 							return done(err);
 						}
 						return done(null, newUser);

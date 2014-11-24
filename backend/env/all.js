@@ -35,10 +35,7 @@ module.exports = {
 			// Angular UI
 			'/min-libs/angular-bootstrap/ui-bootstrap' + getMin + '.js',
 			'/min-libs/angular-ui-router/release/angular-ui-router' + getMin + '.js',
-			'/min-libs/angular-ui-utils/ui-utils' + getMin + '.js',
-
-			// our core Angular scripts, in our "main" module
-			'/modules/main/js/head' + getMin + '.js'
+			'/min-libs/angular-ui-utils/ui-utils' + getMin + '.js'
 		];
 		
 		return scripts;

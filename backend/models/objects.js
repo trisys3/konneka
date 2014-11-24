@@ -21,7 +21,7 @@ var ObjectSchema = new Schema({
 });
 
 // get the owner of this object
-ObjectSchema.methods.getOwner = function() {
+ObjectSchema.methods.getOwner = function(done) {
 
 	// find the owner with ID of this object's owner-id
 	mongoose.model('Owner').findOne({

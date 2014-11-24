@@ -1,3 +1,6 @@
+'use strict';
+
+// concatenation tasks
 module.exports = {
 	
 	options: {

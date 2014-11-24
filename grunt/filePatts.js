@@ -1,3 +1,6 @@
+'use strict';
+
+// file globbing patterns for other Grunt tasks
 module.exports = {
 	// file pattern for minifying non-library .js files in app folder into .min.js files in dist's non-library folders
 	jsMinApp: {
@@ -106,7 +109,7 @@ module.exports = {
 	},
 	// check non-library JavaScript files
 	checkJs: {
-		src: ['Gruntfile.js', 'package.json', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json', '!app/min-libs/**']
+		src: ['package.json', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json', '!app/min-libs/**']
 	},
 	// check library JavaScript & JSON files
 	checkLibJs: {
@@ -115,6 +118,9 @@ module.exports = {
 			cwd: 'app/min-libs',
 			src: ['**/*.js', '**/*.json']
 		}]
+	},
+	checkNodeJs: {
+		src: ['Gruntfile.js', 'grunt/**/*.js', 'backend/**/*.js', 'backend/**/*.json', 'test/**/*.js']
 	},
 	// check non-library CSS files
 	checkCss: {

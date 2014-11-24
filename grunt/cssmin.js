@@ -1,4 +1,6 @@
-// CSSMin options
+'use strict';
+
+// CSS minification tasks
 module.exports = {
 
 	// default option

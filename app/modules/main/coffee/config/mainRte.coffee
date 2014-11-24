@@ -3,11 +3,12 @@
 # routes for our main module
 angular.module 'iotApp.routes', ['ui.router']
 	.config ['$stateProvider', ($stateProvider) ->
+		
 	]
 
 	.config ['$locationProvider', ($locationProvider) ->
 		# make URL's comply with HTML5 rules
-		$locationProvider.html5Mode 
+		$locationProvider.html5Mode
 			enabled: true
 			requireBase: false # if we need to support IE9, remove this line
 	]

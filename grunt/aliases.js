@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
 
 	// Grunt tasks, called by calling "grunt *task*" from command line

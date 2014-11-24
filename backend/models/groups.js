@@ -13,10 +13,10 @@ var GroupSchema = new Schema({
 		default: ''
 	},
 
-	// list of aliases for the group
+	// array of aliases for the group
 	preferredNames: {
-		type: Schema.Types.Mixed,
-		default: undefined
+		type: [String],
+		default: []
 	},
 
 	// user-defined description of group

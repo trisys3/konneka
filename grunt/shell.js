@@ -1,3 +1,5 @@
+'use strict';
+
 // shell command tasks
 module.exports = {
 

@@ -4,6 +4,7 @@
     '$stateProvider', function($stateProvider) {
       return $stateProvider.state('owners', {
         url: '/owners',
+        controller: 'ownersCtrl',
         templateUrl: ''
       });
     }

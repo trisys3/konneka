@@ -1,3 +1,6 @@
+'use strict';
+
+// file-copying tasks
 module.exports = {
 	
 	libs: {

@@ -14,13 +14,13 @@ var request = require('supertest');
 // get mongoose database abstraction library
 var mongoose = require('mongoose');
 
+// define the user model
+var UserModel = '../../../backend/models/users';
+
 buster.testCase('authentication and authorization', {
 	setUp: function() {
 		// define our test server
 		this.authServer = require('../../../backend/page');
-
-		// define the user model
-		this.UserModel = mongoose.model('User');
 	},
 
 	// test signing in
@@ -56,7 +56,7 @@ buster.testCase('authentication and authorization', {
 			this.wrongUser = {
 				username: 'wrongname',
 				password: 'wrongword'
-			}
+			};
 
 			// delete all users in the "mean-dev" database so they don't conflict
 			// with the ones we create for these tests
@@ -141,7 +141,7 @@ buster.testCase('authentication and authorization', {
 					});
 			},
 
-			'able to log in with full user': function(done) {
+			'unable to log in with incorrect user': function(done) {
 				this.loginUser = new UserModel(this.fullUser);
 
 				request(this.authServer)
@@ -154,7 +154,7 @@ buster.testCase('authentication and authorization', {
 					});
 			}
 
-		}
+		},
 
 		tearDown: function() {
 			// delete all the users in these tests

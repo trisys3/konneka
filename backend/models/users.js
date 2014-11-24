@@ -3,7 +3,6 @@
 var mongoose = require('mongoose');
 var GroupSchema = require('./groups.js');
 var Schema = mongoose.Schema;
-var crypto = require('crypto');
 var scrypt = require('scrypt');
 
 // schema for user collection/table
@@ -61,7 +60,7 @@ var UserSchema = new Schema({
 		match: [/[\w.%+-]+@[\w.]+\.[a-zA-Z]{2,4}/, 'Please fill in a valid email address']
 	},
 
-	// list of preferred names of user, if any
+	// array of preferred names of user, if any
 	preferredNames: {
 		type: [String],
 		default: []
@@ -106,9 +105,9 @@ var UserSchema = new Schema({
 		default: 'human'
 	},
 
-	// space-separated list of roles of user (user, admin, banned, etc.)
+	// array of roles of user (user, admin, banned, etc.)
 	status: {
-		type: String,
+		type: [String],
 		trim: true,
 		default: 'user'
 	},
@@ -153,7 +152,6 @@ var UserSchema = new Schema({
 // pre-save hook to hash our new password
 UserSchema.pre('save', function(next) {
 	if(this.password) {
-		// this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
 	}
 	next();
@@ -188,4 +186,4 @@ UserSchema.methods.authenticate = function(password) {
 	}
 };
 
-module.exports = exports = mongoose.model('User', UserSchema);
+mongoose.model('User', UserSchema);

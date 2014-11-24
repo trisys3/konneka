@@ -1,3 +1,6 @@
+'use strict';
+
+// QUnit DOM-testing tasks, mostly for Angular directives
 module.exports = {
 	
 	options: {
