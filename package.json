@@ -66,6 +66,8 @@
     "method-override": "latest",
     "morgan": "latest",
     "body-parser": "latest",
+    "keygrip": "latest",
+    "cookies": "latest",
     "cookie-parser": "latest",
     "vhost": "latest",
     "compression": "latest",

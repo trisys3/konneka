@@ -5,6 +5,7 @@
 var fs = require('fs');
 
 var express = require('express'); // express module
+var https = require('https');
 var _ = require('lodash');
 
 var consolidate = require('consolidate'); // consolidation module
@@ -15,7 +16,8 @@ var compress = require('compression'); // compression middleware
 var helmet = require('helmet'); // helmet middleware for HTTP header configuration
 var vhost = require('vhost'); // virtual hosting middleware
 var bodyParser = require('body-parser'); // body-parsing middleware
-var cookieParser = require('cookie-parser'); // cookie-parsing middleware
+var Keygrip = require('keygrip'); // cookie signing/validation middleware
+var Cookies = require('cookies'); // cookie-parsing middleware
 var methodOverride = require('method-override'); // HTTP method-overriding middleware
 
 var environ = require('./env/' + (process.env.NODE_ENV || 'dev')); // get more variables/functions based on the environment
@@ -77,7 +79,8 @@ server.use(methodOverride());
 // enable JSONP
 server.enable('jsonp callback');
 
-server.use(cookieParser()); // cookie-parsing middleware
+var keys = new Keygrip([environ.sessionSecret]);
+server.use(Cookies.express(keys)); // cookie-parsing middleware
 
 // create the database object
 var monServer = mongoose.connect(environ.dbUrl);
@@ -134,6 +137,27 @@ fs.readdirSync(route_path).forEach(function(route) {
 var signinoutup = require('./signinoutup/passport'); // our passport configuration
 
 signinoutup();
+
+// // make the server use HTTPS
+// if(process.env.NODE_SECURE === 'secure') {
+	// // load TLS key, certificate, & CA certificates
+	// var pfx = fs.readFileSync(env.pfxFile);
+	// // load TLS key & certificate
+	// var privateKey = fs.readFileSync(env.tlsKeyFile);
+	// var certificate = fs.readFileSync(env.tlsCertFile);
+	// var tlsProtocol = TLSv1_method;
+	// 
+	// // create HTTPS server
+	// server = https.createServer({
+		// pfx: pfx,
+		// key: privateKey,
+		// cert: certificate,
+		// secureProtocol: tlsProtocol,
+		// honorCipherOrder: true,
+		// requestCert: true,
+		// rejectUnauthorized: true
+	// }, server);
+// }
 
 // listen on port related to environment variable
 server.listen(process.env.SERVER_PORT || 3000);

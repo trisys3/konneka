@@ -6,7 +6,7 @@ var _ = require('lodash');
 module.exports = {
 	port: process.env.SERVER_PORT || 3001, // server port for our app
 	dbUrl: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || ('mongodb://konneka.org:' + (process.env.MONGO_PORT || 27018) + '/konneka'), // our database URL for Mongoose
-	sessionSecret: 'Internet of Things', // secret for our sessions (change this to something more secure ASAP)
+	sessionSecret: ['Internet of Things'], // secret for our sessions (change this to something more secure ASAP)
 	appRoot: 'dist/app', // root for the client-side portions of our app
 
 	// get the main JavaScript pages for our app, minified for production

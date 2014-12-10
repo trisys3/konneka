@@ -11,3 +11,10 @@ exports.qunit = function(req, res) {
 	res.locals.extStyles.push('../app/min-libs/qunit/qunit/qunit.css');
 	res.render('qunit');
 };
+
+exports.jasmine = function(req, res) {
+  res.locals.testFram = 'jasmine';
+  res.locals.testEnv = 'public';
+  res.locals.extScripts.push(env.getModularJs(res.locals.testFram, res.locals.testEnv, 'test.js'));
+  res.render('jasmine');
+};
