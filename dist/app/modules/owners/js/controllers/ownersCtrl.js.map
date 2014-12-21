@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "ownersCtrl.js",
+  "sourceRoot": "../../coffee/controllers/",
+  "sources": [
+    "ownersCtrl.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,uBAAf,EAAwC,EAAxC,CACC,CAAC,UADF,CACa,YADb,EAC2B,CAAC,QAAD,EAAW,SAAC,MAAD,GAAA,CAAX,CAD3B,CAFA,CAAA;AAAA"
+}

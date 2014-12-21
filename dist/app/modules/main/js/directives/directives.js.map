@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "directives.js",
+  "sourceRoot": "../../coffee/directives/",
+  "sources": [
+    "directives.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAKA,OAAO,CAAC,MAAR,CAAe,kBAAf,EAAmC,EAAnC,CACE,CAAC,SADH,CACa,YADb,EAC2B;IAAC,SAAD,EAAY,SAAC,OAAD,GAAA;AACnC,aAAO,SAAC,KAAD,EAAQ,GAAR,EAAa,KAAb,GAAA;eACL,GAAG,CAAC,IAAJ,CAAS,OAAT,EADK;MAAA,CAAP,CADmC;IAAA,CAAZ;GAD3B,CALA,CAAA;AAAA"
+}

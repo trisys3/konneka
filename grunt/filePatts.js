@@ -109,7 +109,7 @@ module.exports = {
 	},
 	// check non-library JavaScript files
 	checkJs: {
-		src: ['package.json', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json', '!app/min-libs/**']
+		src: ['package.json', '.jshintrc', '.csslintrc', 'bower.json', 'app/**/*.js', 'app/**/*.json', '!app/**/*.min.js', '!app/**/*.min.json', '!app/min-libs/**']
 	},
 	// check library JavaScript & JSON files
 	checkLibJs: {

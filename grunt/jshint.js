@@ -59,6 +59,7 @@ module.exports = {
 			// options designed to give more warnings/errors
 			es3: true, // use ECMAScript 3 instead of 5/6
 			strict: false // do not require ECMAScript 5 "use strict" declaration
+
 			// options designed to give fewer warnings/errors
 			// esnext: false, // do not use ECMAScript 6 in code designed for older browsers; uncomment this option if/when I start using ECMAScript 6 for this website
 		}
@@ -72,6 +73,7 @@ module.exports = {
 			// options designed to give more warnings/errors
 			es3: true, // use ECMAScript 3 instead of 5/6
 			strict: false, // do not require ECMAScript 5 "use strict" declaration
+			
 			// options designed to give fewer warnings/errors
 			// esnext: false, // do not use ECMAScript 6 in code designed for older browsers; uncomment this option if/when I start using ECMAScript 6 for this website
 			// options unique to Grunt's version of JSHint
@@ -86,6 +88,7 @@ module.exports = {
 		options: {
 			reporterOutput: 'errs/dev/jsHint.js', // error output file
 			reporter: 'checkstyle', // use "checkstyle" JSHint reporter
+			
 			// extra environment global variables
 			devel: true // allow development global variables, usually for debugging
 		}

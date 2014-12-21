@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "welcomeDirec.js",
+  "sourceRoot": "../../coffee/directives/",
+  "sources": [
+    "welcomeDirec.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,uBAAf,EAAwC,EAAxC,CAFA,CAAA;AAAA"
+}

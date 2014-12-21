@@ -31,6 +31,11 @@
     "time-grunt": "latest",
     "load-grunt-config": "latest",
 
+    "require-dir": "latest",
+
+    "gulp": "latest",
+    "gulp-jshint": "latest",
+
     "phantomjs": "latest",
     "supertest": "latest",
     "buster": "latest",
@@ -43,7 +48,10 @@
     "karma-ie-launcher": "latest",
     "karma-opera-launcher": "latest",
     "karma-safari-launcher": "latest",
-    "should": "latest"
+    "should": "latest",
+
+    "browserify": "latest",
+    "watchify": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",

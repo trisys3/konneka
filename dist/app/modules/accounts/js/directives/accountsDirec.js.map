@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "accountsDirec.js",
+  "sourceRoot": "../../coffee/directives/",
+  "sources": [
+    "accountsDirec.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EAEA,OAAO,CAAC,MAAR,CAAe,wBAAf,EAAyC,EAAzC,CAFA,CAAA;AAAA"
+}
