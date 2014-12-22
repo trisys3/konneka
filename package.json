@@ -35,6 +35,7 @@
 
     "gulp": "latest",
     "gulp-jshint": "latest",
+    "gulp-csslint": "latest",
 
     "phantomjs": "latest",
     "supertest": "latest",

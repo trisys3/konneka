@@ -4,7 +4,7 @@
 module.exports = {
   jshint: {
     dev: {
-      src: 'app/modules/**/*.js'
+      src: ['app/modules/**/*.js', '.jshintrc', '.csslintrc', '.bowerrc', 'bower.json', 'package.json', 'gulpfile.js']
     },
     prod: {
       src: 'dist/app/modules/**/*.min.js'
@@ -24,20 +24,24 @@ module.exports = {
     prod: {
       src: 'dist/app/modules/**/*.min.css'
     },
+  },
 
-    sass: {
-      check: {
-        src: 'app/**/{sass, scss}/**/*.{sass, scss}'
-      },
-      move: {
-        src: 'app/**/{sass, scss}/**/*.{sass, scss}'
-      }
+  sass: {
+    check: {
+      src: 'app/**/?(sass, scss)/**/*.@(sass, scss)'
     },
-
-    stylus: {
-      check: {
-        src: 'app/**/styl/**/*.styl'
+    move: {
+      src: 'app/**/?(sass, scss)/**/*.@(sass, scss)',
+      dest: '.',
+      rename: function(src) {
+        return src.replace('scss', 'css');
       }
+    }
+  },
+
+  stylus: {
+    check: {
+      src: 'app/**/?(styl)/**/*.styl'
     }
   }
 };
