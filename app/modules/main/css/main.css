@@ -1,26 +1,7 @@
-/* app css stylesheet */
-/* line 3, ../scss/main.scss */
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em; }
-  /* line 9, ../scss/main.scss */
-  .menu :before {
-    content: "["; }
-  /* line 13, ../scss/main.scss */
-  .menu :after {
-    content: "]"; }
-  /* line 17, ../scss/main.scss */
-  .menu > li {
-    display: inline; }
-    /* line 21, ../scss/main.scss */
-    .menu > li :before {
-      content: "|";
-      padding-right: 0.3em; }
-    /* line 26, ../scss/main.scss */
-    .menu > li :nth-child(1):before {
-      content: "";
-      padding: 0; }
+/* AngularUI Bootstrap fix for empty hrefs */
+/* line 3, c:/repos/konneka/app/modules/main/scss/main.scss */
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer; }
 
-/*# sourceMappingURL=main.css.map */
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhDQUE2QztBQUM3QywrREFBOEQ7QUFDOUQ7RUFDRSxpQkFBZ0IsRUFBRSIsImZpbGUiOiJhcHAvbW9kdWxlcy9tYWluL2Nzcy9tYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEFuZ3VsYXJVSSBCb290c3RyYXAgZml4IGZvciBlbXB0eSBocmVmcyAqL1xuLyogbGluZSAzLCBjOi9yZXBvcy9rb25uZWthL2FwcC9tb2R1bGVzL21haW4vc2Nzcy9tYWluLnNjc3MgKi9cbi5uYXYsIC5wYWdpbmF0aW9uLCAuY2Fyb3VzZWwsIC5wYW5lbC10aXRsZSBhIHtcbiAgY3Vyc29yOiBwb2ludGVyOyB9XG5cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */

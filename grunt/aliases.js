@@ -37,6 +37,9 @@ module.exports = {
 	// special test-watching task for Karma
 	testWatch: ['newer:concurrent:testWatch'],
 
+	// Protractor test
+	testE2e: ['selenium_phantom_hub', 'env:dev', 'shell:mongod', 'express:dev', 'protractor', 'selenium_stop'],
+
 
 	// make "scss" & "sass" the same task (because SCSS is just a newer version of Sass)
 

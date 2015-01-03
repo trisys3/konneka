@@ -7,6 +7,8 @@
     "email": "sean_r_moran@msn.com"
   },
   "devDependencies": {
+    "jshint-stylus": "latest",
+
     "grunt": "latest",
     "grunt-buster": "latest",
     "grunt-coffeelint": "latest",
@@ -28,14 +30,26 @@
     "grunt-karma": "latest",
     "grunt-newer": "latest",
     "grunt-shell-spawn": "latest",
+    "grunt-selenium-webdriver": "latest",
+    "grunt-protractor-runner": "latest",
+    "grunt-protractor-webdriver": "latest",
     "time-grunt": "latest",
     "load-grunt-config": "latest",
 
     "require-dir": "latest",
+    "lazypipe": "latest",
 
     "gulp": "latest",
+    "gulp-util": "latest",
     "gulp-jshint": "latest",
     "gulp-csslint": "latest",
+    "gulp-sass": "latest",
+    "gulp-coffee": "latest",
+    "gulp-coffeelint": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-cache": "latest",
+    "gulp-rename": "latest",
+    "gulp-autoprefixer": "latest",
 
     "phantomjs": "latest",
     "supertest": "latest",

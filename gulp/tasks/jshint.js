@@ -4,6 +4,7 @@ var patterns = require('../config/patterns');
 
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
+var cache = require('gulp-cache');
 
 gulp.task('jshint:dev', function() {
   return gulp.src(patterns.jshint.dev.src)
@@ -13,7 +14,10 @@ gulp.task('jshint:dev', function() {
 
 gulp.task('jshint:prod', function() {
   return gulp.src(patterns.jshint.prod.src)
-    .pipe(jshint())
+    .pipe(cache(jshint('.jshintrc'), {
+      cacheFile: new cache.Cache({cacheDirName: '.cache'}),
+      name: 'js'
+    }))
     .pipe(jshint.reporter('jshint-stylish', {verbose: true}));
 });
 

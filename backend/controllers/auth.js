@@ -49,13 +49,14 @@ exports.login = function(req, res, next) {
 	})(req, res, next);
 };
 
-exports.loginPage = function(req, res) {
+exports.loginPage = function(req, res, next) {
 	res.locals.module = ['accounts'];
-	res.locals.module.forEach(function(val) {
-		res.locals.extScripts = _.union(res.locals.extScripts, env.getModularJs(val));
-		res.locals.extStyles = _.union(res.locals.extStyles, env.getModularCss(val));
-	});
-	res.render('layout');
+	// res.locals.module.forEach(function(val) {
+	// 	res.locals.extScripts = _.union(res.locals.extScripts, env.getModularJs(val));
+	// 	res.locals.extStyles = _.union(res.locals.extStyles, env.getModularCss(val));
+	// });
+	// res.render('layout');
+	require('../verbs/' + (req.method || 'get'))(req, res, next);
 };
 
 exports.logout = function(req, res) {

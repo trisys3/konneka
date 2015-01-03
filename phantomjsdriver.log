@@ -1,0 +1,16 @@
+[DEBUG - 2014-12-30T14:12:52.210Z] Config - config.init - {"ip":"127.0.0.1","port":"24799","hub":"127.0.0.1:4444/wd/hub","logFile":"c:\\repos\\konneka\\phantomjsdriver.log","logLevel":"DEBUG","logColor":false}
+[INFO  - 2014-12-30T14:12:52.270Z] GhostDriver - Main - running on port 24799
+[INFO  - 2014-12-30T14:12:52.270Z] GhostDriver - Main - registering to Selenium HUB '127.0.0.1:4444/wd/hub' using '127.0.0.1:24799'
+[ERROR - 2014-12-30T14:12:52.277Z] HUB Register - register - Problem registering with grid 127.0.0.1:4444/wd/hub/: <html><head></head><body></body></html>
+[DEBUG - 2014-12-30T14:14:53.990Z] Config - config.init - {"ip":"127.0.0.1","port":"18737","hub":"127.0.0.1:4444/wd/hub","logFile":"c:\\repos\\konneka\\phantomjsdriver.log","logLevel":"DEBUG","logColor":false}
+[INFO  - 2014-12-30T14:14:54.024Z] GhostDriver - Main - running on port 18737
+[INFO  - 2014-12-30T14:14:54.024Z] GhostDriver - Main - registering to Selenium HUB '127.0.0.1:4444/wd/hub' using '127.0.0.1:18737'
+[ERROR - 2014-12-30T14:14:54.034Z] HUB Register - register - Problem registering with grid 127.0.0.1:4444/wd/hub/: <html><head></head><body></body></html>
+[DEBUG - 2014-12-30T14:16:46.666Z] Config - config.init - {"ip":"127.0.0.1","port":"24157","hub":"127.0.0.1:4444/wd/hub","logFile":"c:\\repos\\konneka\\phantomjsdriver.log","logLevel":"DEBUG","logColor":false}
+[INFO  - 2014-12-30T14:16:46.685Z] GhostDriver - Main - running on port 24157
+[INFO  - 2014-12-30T14:16:46.685Z] GhostDriver - Main - registering to Selenium HUB '127.0.0.1:4444/wd/hub' using '127.0.0.1:24157'
+[ERROR - 2014-12-30T14:16:46.691Z] HUB Register - register - Problem registering with grid 127.0.0.1:4444/wd/hub/: <html><head></head><body></body></html>
+[DEBUG - 2014-12-30T14:19:59.009Z] Config - config.init - {"ip":"127.0.0.1","port":"26464","hub":"127.0.0.1:4444/wd/hub","logFile":"c:\\repos\\konneka\\phantomjsdriver.log","logLevel":"DEBUG","logColor":false}
+[INFO  - 2014-12-30T14:19:59.027Z] GhostDriver - Main - running on port 26464
+[INFO  - 2014-12-30T14:19:59.027Z] GhostDriver - Main - registering to Selenium HUB '127.0.0.1:4444/wd/hub' using '127.0.0.1:26464'
+[ERROR - 2014-12-30T14:19:59.033Z] HUB Register - register - Problem registering with grid 127.0.0.1:4444/wd/hub/: <html><head></head><body></body></html>

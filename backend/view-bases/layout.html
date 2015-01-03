@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="{module}App" data-ng-csp="" data-ng-strict-di="">
+<html lang="en" data-ng-app="{module}App" data-ng-csp="" data-ng-strict-di="" data-ng-cloak="">
 	<head data-ng-controller="HeadCtrl">
 
 		<title>{#title}Loading...{/title}</title>
@@ -21,7 +21,7 @@
 			{>"header.html"/}
 		</header>
 
-		<section class="content" ng-controller="{module}Ctrl">
+		<section class="content" data-ng-controller="{module}Ctrl">
 			{>"{module}.html"/}
 		</section>
 

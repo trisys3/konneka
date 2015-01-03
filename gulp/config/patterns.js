@@ -26,16 +26,30 @@ module.exports = {
     },
   },
 
-  sass: {
+  coffee: {
     check: {
-      src: 'app/**/?(sass, scss)/**/*.@(sass, scss)'
+      src: 'app/modules/**/coffee/**/*.js'
     },
     move: {
-      src: 'app/**/?(sass, scss)/**/*.@(sass, scss)',
-      dest: '.',
-      rename: function(src) {
-        return src.replace('scss', 'css');
-      }
+      src: 'app/modules/**/coffee/**/*.coffee',
+      dest: ''
+    },
+    backCheck: {
+      src: 'backend/**/coffee/**/*.js'
+    },
+    backMove: {
+      src: 'backend/**/coffee/**/*.js',
+      dest: ''
+    }
+  },
+
+  scss: {
+    check: {
+      src: 'app/modules/**/?(sass, scss)/**/*.@(sass, scss)'
+    },
+    move: {
+      src: 'app/modules/**/?(sass|scss)/**/*.@(sass|scss)',
+      dest: ''
     }
   },
 
