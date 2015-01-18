@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'welcomeApp.services', []
+angular = require 'angular'
+
+welcomeServ = angular.module 'welcomeApp.services', []
+
+module.exports = welcomeServ

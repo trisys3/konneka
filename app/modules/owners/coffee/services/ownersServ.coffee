@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'ownersApp.services', []
+angular = require 'angular'
+
+ownersServ = angular.module 'ownersApp.services', []
+
+module.exports = ownersServ

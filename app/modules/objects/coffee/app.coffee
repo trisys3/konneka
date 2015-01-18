@@ -1,6 +1,8 @@
 'use strict'
 
-angular.module 'objectsApp', [
+angular = require 'angular'
+
+module.exports = angular.module 'objectsApp', [
 	'iotApp'
 	'objectsApp.routes'
 	'objectsApp.controllers'

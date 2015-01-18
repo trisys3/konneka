@@ -7,7 +7,7 @@
     "email": "sean_r_moran@msn.com"
   },
   "devDependencies": {
-    "jshint-stylus": "latest",
+    "jshint-stylish": "latest",
 
     "grunt": "latest",
     "grunt-buster": "latest",
@@ -40,6 +40,8 @@
     "lazypipe": "latest",
 
     "gulp": "latest",
+    "vinyl-source-stream": "latest",
+    "vinyl-transform": "latest",
     "gulp-util": "latest",
     "gulp-jshint": "latest",
     "gulp-csslint": "latest",
@@ -66,7 +68,11 @@
     "should": "latest",
 
     "browserify": "latest",
-    "watchify": "latest"
+    "watchify": "latest",
+    "coffeeify": "latest",
+
+    "angular": "latest",
+    "jquery": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",

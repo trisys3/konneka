@@ -1,8 +1,8 @@
 'use strict'
 
-# main module for welcome sub-app
-# pseudo-extends app
-angular.module 'welcomeApp', [
+angular = require 'angular'
+
+module.exports = angular.module 'welcomeApp', [
 	'iotApp'
 	'welcomeApp.routes'
 	'welcomeApp.filters'

@@ -1,7 +1,9 @@
 'use strict'
 
+angular = require 'angular'
+
 # Angular module for accounts
-angular.module 'accountsApp', [
+module.exports = angular.module 'accountsApp', [
 	'iotApp'
 	'accountsApp.routes'
 	'accountsApp.controllers'

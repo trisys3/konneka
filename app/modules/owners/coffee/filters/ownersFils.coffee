@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'ownersApp.filters', []
+angular = require 'angular'
+
+ownersFils = angular.module 'ownersApp.filters', []
+
+module.exports = ownersFils

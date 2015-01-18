@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'welcomeApp.directives', []
+angular = require 'angular'
+
+welcomeDirec = angular.module 'welcomeApp.directives', []
+
+module.exports = welcomeDirec

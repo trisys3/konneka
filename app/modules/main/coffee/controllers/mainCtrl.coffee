@@ -1,6 +1,8 @@
 'use strict'
 
-angular.module 'iotApp.controllers', []
+angular = require 'angular'
+
+mainCtrl = angular.module 'iotApp.controllers', []
 	.controller 'MainCtrl', ['$scope', ($scope) ->
 		
 	]
@@ -8,3 +10,5 @@ angular.module 'iotApp.controllers', []
 	.controller 'HeadCtrl', ['$scope', ($scope) ->
 
 	]
+
+module.exports = mainCtrl

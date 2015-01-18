@@ -1,7 +1,9 @@
-'use strict';
+'use strict'
+
+angular = require 'angular'
 
 # routes for our welcome module
-angular.module 'welcomeApp.routes', ['ui.router']
+welcomeRte = angular.module 'welcomeApp.routes', ['ui.router']
 	.config ['$stateProvider', ($stateProvider) ->
 		$stateProvider
 		.state 'welcome',
@@ -9,3 +11,5 @@ angular.module 'welcomeApp.routes', ['ui.router']
 			controller: 'welcomeCtrl'
 			templateUrl: '/modules/welcome/views/welcome.html'
 	]
+
+module.exports = welcomeRte

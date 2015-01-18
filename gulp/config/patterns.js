@@ -17,6 +17,12 @@ module.exports = {
     }
   },
 
+  eslint: {
+    browDev: {
+      src: 'app/modules/**/*.js'
+    }
+  },
+
   csslint: {
     dev: {
       src: 'app/modules/**/*.css'
@@ -55,7 +61,18 @@ module.exports = {
 
   stylus: {
     check: {
-      src: 'app/**/?(styl)/**/*.styl'
+      src: 'app/modules/**/?(styl)/**/*.styl'
+    },
+    move: {
+      src: 'app/modules/**/?(styl)/**/*.styl',
+      dest: ''
+    }
+  },
+
+  browserify: {
+    bundle: {
+      src: './app/modules/**/js/app.js',
+      dest: ''
     }
   }
 };

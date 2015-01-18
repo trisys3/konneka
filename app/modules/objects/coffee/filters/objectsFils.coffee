@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'objectsApp.filters', []
+angular = require 'angular'
+
+objectsFils = angular.module 'objectsApp.filters', []
+
+module.exports = objectsFils

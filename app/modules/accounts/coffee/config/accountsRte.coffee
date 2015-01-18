@@ -1,5 +1,7 @@
 'use strict';
 
+angular = require 'angular'
+
 # our account module's routes
 angular.module 'accountsApp.routes', ['ui.router']
 	.config ['$stateProvider', ($stateProvider) ->

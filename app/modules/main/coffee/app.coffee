@@ -1,10 +1,12 @@
 'use strict'
 
+angular = require 'angular'
+
 # main Angular module
-angular.module 'iotApp', [
-	'iotApp.routes'
-	'iotApp.filters'
-	'iotApp.services'
-	'iotApp.directives'
-	'iotApp.controllers'
+module.exports = angular.module 'iotApp', [
+	require './config/mainRte'
+	require './filters/mainFils'
+	require './services/mainServ'
+	require './directives/mainDirec'
+	require './controllers/mainCtrl'
 ]

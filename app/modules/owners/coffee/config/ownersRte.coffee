@@ -1,7 +1,9 @@
 'use strict'
 
+angular = require 'angular'
+
 # our owner routes
-angular.module 'ownersApp.routes', ['ui.router']
+ownersRte = angular.module 'ownersApp.routes', ['ui.router']
 	.config ['$stateProvider', ($stateProvider) ->
 		$stateProvider
 			.state 'owners',
@@ -9,3 +11,5 @@ angular.module 'ownersApp.routes', ['ui.router']
 				controller: 'ownersCtrl'
 				templateUrl: ''
 		]
+
+module.exports = ownersRte

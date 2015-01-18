@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'objectsApp.directives', []
+angular = require 'angular'
+
+objectsDirec = angular.module 'objectsApp.directives', []
+
+module.exports = objectsDirec

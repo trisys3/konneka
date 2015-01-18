@@ -1,5 +1,7 @@
 'use strict'
 
+angular = require 'angular'
+
 # account controller(s)
 angular.module 'accountsApp.controllers', []
 	.controller 'accountsCtrl', ['$scope', '$http', '$location', ($scope, $http, $location) ->

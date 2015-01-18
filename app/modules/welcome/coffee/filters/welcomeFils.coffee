@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'welcomeApp.filters', []
+angular = require 'angular'
+
+welcomeFils = angular.module 'welcomeApp.filters', []
+
+module.exports = welcomeFils

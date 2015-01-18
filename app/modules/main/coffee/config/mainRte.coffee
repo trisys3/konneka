@@ -1,7 +1,9 @@
 'use strict';
 
+angular = require 'angular'
+
 # routes for our main module
-angular.module 'iotApp.routes', ['ui.router']
+mainRte = angular.module 'iotApp.routes', ['ui.router']
 	.config ['$stateProvider', ($stateProvider) ->
 		
 	]
@@ -12,3 +14,5 @@ angular.module 'iotApp.routes', ['ui.router']
 			enabled: true
 			requireBase: false # if we need to support IE9, remove this line
 	]
+
+module.exports = mainRte

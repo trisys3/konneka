@@ -1,6 +1,10 @@
 'use strict'
 
-angular.module 'objectsApp.controllers', []
+angular = require 'angular'
+
+objectsCtrl = angular.module 'objectsApp.controllers', []
 	.controller 'ObjectsCtrl', ['$scope', ($scope) ->
 		
 	]
+
+module.exports = objectsCtrl

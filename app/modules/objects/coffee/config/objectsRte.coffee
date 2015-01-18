@@ -1,7 +1,11 @@
 'use strict';
 
+angular = require 'angular'
+
 # routes for our object module
-angular.module 'objectsApp.routes', ['ui.router']
+objectsRte = angular.module 'objectsApp.routes', ['ui.router']
 	.config ['$stateProvider', ($stateProvider) ->
 		
 	]
+
+module.exports = objectsRte

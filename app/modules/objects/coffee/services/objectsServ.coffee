@@ -1,3 +1,7 @@
 'use strict'
 
-angular.module 'objectsApp.services', []
+angular = require 'angular'
+
+objectsServ = angular.module 'objectsApp.services', []
+
+module.exports = objectsServ
