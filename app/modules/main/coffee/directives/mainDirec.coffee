@@ -1,7 +1,7 @@
 'use strict'
 
-angular = require 'angular'
+exports.directive = {}
 
-mainDirec = angular.module 'iotApp.directives', []
-
-module.exports = mainDirec
+# mainDirec = angular.module 'iotApp.directives', []
+#
+# module.exports = mainDirec

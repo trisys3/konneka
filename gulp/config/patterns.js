@@ -69,10 +69,17 @@ module.exports = {
     }
   },
 
+  coffeeify: {
+    bundle: {
+      src: ['./app/modules/main/coffee/app.coffee'],
+      dest: './'
+    }
+  },
+
   browserify: {
     bundle: {
-      src: './app/modules/**/js/app.js',
-      dest: ''
+      src: ['./app/modules/main/js/app.js'],
+      dest: './'
     }
   }
 };

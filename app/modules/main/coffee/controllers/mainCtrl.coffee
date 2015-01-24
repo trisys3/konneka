@@ -1,14 +1,22 @@
 'use strict'
 
-angular = require 'angular'
+exports.MainCtrl = 
+  def: ['$scope', ($scope) ->
 
-mainCtrl = angular.module 'iotApp.controllers', []
-	.controller 'MainCtrl', ['$scope', ($scope) ->
-		
-	]
+  ]
 
-	.controller 'HeadCtrl', ['$scope', ($scope) ->
+exports.HeadCtrl = 
+  def: ['$scope', ($scope) ->
 
-	]
+  ]
 
-module.exports = mainCtrl
+# mainCtrl = angular.module 'iotApp.controllers', []
+# 	.controller 'MainCtrl', ['$scope', ($scope) ->
+#
+# 	]
+#
+# 	.controller 'HeadCtrl', ['$scope', ($scope) ->
+#
+# 	]
+#
+# module.exports = mainCtrl

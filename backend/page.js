@@ -91,8 +91,8 @@ server.use(session({
 	saveUninitialized: true,
 	secret: environ.sessionSecret,
 	store: new mongoStore({
-		mongoose_connection: monServer.connections[0], // specify the database these sessions will be saved into
-		auto_reconnect: true
+		mongooseConnection: monServer.connections[0], // specify the database these sessions will be saved into
+		autoReconnect: true
 	})
 }));
 

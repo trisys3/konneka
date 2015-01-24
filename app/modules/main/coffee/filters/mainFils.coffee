@@ -1,7 +1,7 @@
 'use strict'
 
-angular = require 'angular'
+exports.filter = {}
 
-mainFils = angular.module 'iotApp.filters', []
-
-module.exports = mainFils
+# mainFils = angular.module 'iotApp.filters', []
+#
+# module.exports = mainFils

@@ -44,8 +44,11 @@
     "vinyl-transform": "latest",
     "gulp-util": "latest",
     "gulp-jshint": "latest",
+    "gulp-eslint": "latest",
+    "gulp-uglify": "latest",
     "gulp-csslint": "latest",
     "gulp-sass": "latest",
+    "gulp-stylus": "latest",
     "gulp-coffee": "latest",
     "gulp-coffeelint": "latest",
     "gulp-sourcemaps": "latest",
@@ -72,7 +75,10 @@
     "coffeeify": "latest",
 
     "angular": "latest",
-    "jquery": "latest"
+    "jquery": "latest",
+
+    "nib": "latest",
+    "autoprefixer-stylus": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",

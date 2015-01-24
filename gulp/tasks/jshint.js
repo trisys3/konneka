@@ -8,16 +8,16 @@ var cache = require('gulp-cache');
 
 gulp.task('jshint:dev', function() {
   return gulp.src(patterns.jshint.dev.src)
-    .pipe(jshint())
+    .pipe(jshint('.jshintrc'), {
+      cacheFile: new cache.Cache({cacheDirName: '.cache'}),
+      name: 'js'
+    })
     .pipe(jshint.reporter('jshint-stylish', {verbose: true}));
 });
 
 gulp.task('jshint:prod', function() {
   return gulp.src(patterns.jshint.prod.src)
-    .pipe(cache(jshint('.jshintrc'), {
-      cacheFile: new cache.Cache({cacheDirName: '.cache'}),
-      name: 'js'
-    }))
+    .pipe(cache(jshint()))
     .pipe(jshint.reporter('jshint-stylish', {verbose: true}));
 });
 

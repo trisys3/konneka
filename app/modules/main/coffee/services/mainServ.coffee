@@ -1,8 +1,8 @@
 'use strict'
 
-angular = require 'angular'
+exports.service = {}
 
-# Includes or references all root services
-mainServ = angular.module 'iotApp.services', []
-
-module.exports = mainServ
+# # Includes or references all root services
+# mainServ = angular.module 'iotApp.services', []
+#
+# module.exports = mainServ

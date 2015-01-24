@@ -1,7 +1,3 @@
 /* AngularUI Bootstrap fix for empty hrefs */
-/* line 3, c:/repos/konneka/app/modules/main/scss/main.scss */
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer; }
-
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhDQUE2QztBQUM3QywrREFBOEQ7QUFDOUQ7RUFDRSxpQkFBZ0IsRUFBRSIsImZpbGUiOiJhcHAvbW9kdWxlcy9tYWluL2Nzcy9tYWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEFuZ3VsYXJVSSBCb290c3RyYXAgZml4IGZvciBlbXB0eSBocmVmcyAqL1xuLyogbGluZSAzLCBjOi9yZXBvcy9rb25uZWthL2FwcC9tb2R1bGVzL21haW4vc2Nzcy9tYWluLnNjc3MgKi9cbi5uYXYsIC5wYWdpbmF0aW9uLCAuY2Fyb3VzZWwsIC5wYW5lbC10aXRsZSBhIHtcbiAgY3Vyc29yOiBwb2ludGVyOyB9XG5cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */

@@ -7,11 +7,7 @@ var eslint = require('gulp-eslint');
 
 gulp.task('eslint:browDev', function() {
   return gulp.src(patterns.eslint.browDev.src)
-    .pipe(eslint({
-      envs: [
-        'browser'
-      ]
-    }))
+    .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError())
 });
