@@ -1,12 +1,13 @@
 'use strict';
 
-var patterns = require('../config/patterns');
+var patterns = require('../config/patterns').css;
 
 var gulp = require('gulp');
-var csslint = require('gulp-csslint');
+
+var cssStreams = require('../streams/csslint');
 
 gulp.task('csslint:dev', function() {
-  return gulp.src(patterns.csslint.dev.src)
-    .pipe(csslint('.csslintrc'))
-    .pipe(csslint.reporter());
+  return gulp.src(patterns.dev.src)
+    .pipe(cssStreams.check())
+    .pipe(gulp.dest(patterns.dev.dest));
 });

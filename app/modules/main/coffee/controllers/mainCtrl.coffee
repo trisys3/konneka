@@ -1,11 +1,11 @@
 'use strict'
 
-exports.MainCtrl = 
+exports.MainCtrl =
   def: ['$scope', ($scope) ->
 
   ]
 
-exports.HeadCtrl = 
+exports.HeadCtrl =
   def: ['$scope', ($scope) ->
 
   ]

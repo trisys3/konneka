@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 exports.routes = {
   deps: 'ui.router'
@@ -7,7 +7,7 @@ exports.routes = {
   ]
 }
 
-exports.location = 
+exports.location =
   def: ['$locationProvider', ($locationProvider) ->
     # make URL's comply with HTML5 rules
     $locationProvider.html5Mode
@@ -18,7 +18,7 @@ exports.location =
 # # routes for our main module
 # mainRte = angular.module 'iotApp.routes', ['ui.router']
 # 	.config ['$stateProvider', ($stateProvider) ->
-#		
+#
 # 	]
 #
 # 	.config ['$locationProvider', ($locationProvider) ->

@@ -23,28 +23,24 @@ module.exports = {
     }
   },
 
-  csslint: {
+  css: {
     dev: {
-      src: 'app/modules/**/*.css'
+      src: 'app/modules/**/*.css',
+      dest: ''
     },
     prod: {
-      src: 'dist/app/modules/**/*.min.css'
+      src: 'dist/app/modules/**/*.min.css',
+      dest: ''
     },
   },
 
   coffee: {
-    check: {
-      src: 'app/modules/**/coffee/**/*.js'
-    },
-    move: {
+    front: {
       src: 'app/modules/**/coffee/**/*.coffee',
       dest: ''
     },
-    backCheck: {
-      src: 'backend/**/coffee/**/*.js'
-    },
-    backMove: {
-      src: 'backend/**/coffee/**/*.js',
+    back: {
+      src: 'backend/**/coffee/**/*.coffee',
       dest: ''
     }
   },
