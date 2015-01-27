@@ -6,7 +6,7 @@
 app/.cache/ # app cache
 
 ############ node ############
-##################
+##############################
 node_modules/ # modules folder
 npm-debug.log # npm debug log
 
@@ -14,3 +14,12 @@ npm-debug.log # npm debug log
 ##############################
 app/min-libs/ # development libraries
 dist/min-libs/ # production libraries
+
+######## built files #########
+##############################
+dist/
+app/modules/*/css/
+app/modules/*/js/
+
+######## temp files ##########
+.temp/

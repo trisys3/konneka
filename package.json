@@ -55,6 +55,7 @@
     "gulp-cache": "latest",
     "gulp-rename": "latest",
     "gulp-autoprefixer": "latest",
+    "gulp-minify-css": "latest",
 
     "phantomjs": "latest",
     "supertest": "latest",

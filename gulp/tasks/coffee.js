@@ -16,3 +16,15 @@ gulp.task('coffee:move', function() {
     .pipe(coffeeStreams.move())
     .pipe(gulp.dest(patterns.front.dest));
 });
+
+gulp.task('coffee:front', function() {
+  return gulp.src(patterns.front.src, {base: './'})
+    .pipe(coffeeStreams.check())
+    .pipe(coffeeStreams.move())
+    .pipe(gulp.dest(patterns.front.dest));
+});
+
+gulp.task('coffee:back', function() {
+  return gulp.src(patterns.back.src)
+    .pipe(coffeeStreams.back());
+});

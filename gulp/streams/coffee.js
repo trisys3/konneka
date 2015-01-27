@@ -13,9 +13,14 @@ exports.check = lazypipe()
     .pipe(coffeelint.reporter, 'fail');
 
 exports.move = lazypipe()
-    .pipe(sourcemaps.init)
-      .pipe(coffee)
-      .pipe(rename, function(path) {
-        path.dirname = path.dirname.replace(/(\/|\\|^)coffee(\/|\\|$)/g, '/js/')
-      })
-    .pipe(sourcemaps.write);
+  .pipe(sourcemaps.init)
+    .pipe(coffee)
+    .pipe(rename, function(path) {
+      path.dirname = path.dirname.replace(/(\/|\\|^)coffee(\/|\\|$)/g, '/js/')
+    })
+  .pipe(sourcemaps.write);
+
+exports.back = lazypipe()
+  .pipe(coffeelint)
+  .pipe(coffeelint.reporter)
+  .pipe(coffeelint.reporter, 'fail');

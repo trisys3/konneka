@@ -58,7 +58,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'app/modules',
-			src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**', '!**/coffee/**', '../index.php'],
+			src: ['**', '!**/*.js', '!**/*.css', '!**/sass/**', '!**/scss/**', '!**/coffee/**'],
 			dest: 'dist/app/modules'
 		}]
 	},
@@ -67,7 +67,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'app/modules',
-			src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/sass/**', '!**/scss/**', '!**/coffee/**', '../index.php'],
+			src: ['**', '!**/*.js', '!**/*.css', '**/*.min.js', '**/*.min.css', '!**/sass/**', '!**/scss/**', '!**/coffee/**'],
 			dest: 'dist/app/modules'
 		}]
 	},

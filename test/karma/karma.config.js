@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../',
 
 
     // frameworks to use
@@ -15,16 +15,15 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../jasmine/**/*.js',
-      '../angular-mocks.js',
-      '../../app/min-libs/angular-mocks/angular-mocks.js',
-      '!../jasmine/**/directives/**.js' // leave out directives by default to test them with QUnit
+      // '../lib/angular/angular.js',
+      // '../lib/angular-mocks/angular-mocks.js',
+      // '../jasmine/**/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+      '!../jasmine/**/directives/**.js' // leave out directives by default to test them with QUnit
     ],
 
 
@@ -45,7 +44,7 @@ module.exports = function(config) {
     port: 9876,
 
 
-    // enable / disable colors in the output (reporters and logs)
+    // enable colors in the output (reporters and logs)
     colors: true,
 
 
@@ -60,7 +59,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'ChromeCanary', 'Firefox', 'PhantomJS'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

@@ -2,36 +2,24 @@
 
 // file patterns for our gulp tasks
 module.exports = {
-  jshint: {
-    dev: {
-      src: ['app/modules/**/*.js', '.jshintrc', '.csslintrc', '.bowerrc', 'bower.json', 'package.json', 'gulpfile.js']
+  js: {
+    front: {
+      src: 'app/modules/**/*.js',
+      dest: 'dist/app/modules/'
     },
-    prod: {
-      src: 'dist/app/modules/**/*.min.js'
-    },
-    node: {
-      src: ['backend/**/*.js', 'gulp/**/*.js']
+    back: {
+      src: 'backend/**/*.js'
     },
     test: {
-      src: ['test/**/*.js']
-    }
-  },
-
-  eslint: {
-    browDev: {
-      src: 'app/modules/**/*.js'
+      src: 'test/**/*.js'
     }
   },
 
   css: {
     dev: {
       src: 'app/modules/**/*.css',
-      dest: ''
-    },
-    prod: {
-      src: 'dist/app/modules/**/*.min.css',
-      dest: ''
-    },
+      dest: 'dist/app/modules/'
+    }
   },
 
   coffee: {
@@ -45,22 +33,13 @@ module.exports = {
     }
   },
 
-  scss: {
-    check: {
-      src: 'app/modules/**/?(sass, scss)/**/*.@(sass, scss)'
-    },
-    move: {
-      src: 'app/modules/**/?(sass|scss)/**/*.@(sass|scss)',
+  preCss: {
+    scss: {
+      src: 'app/modules/**/?(scss)/**/*.scss',
       dest: ''
-    }
-  },
-
-  stylus: {
-    check: {
-      src: 'app/modules/**/?(styl)/**/*.styl'
     },
-    move: {
-      src: 'app/modules/**/?(styl)/**/*.styl',
+    stylus: {
+      src: 'app/modules/**/?(stylus)/**/*.styl',
       dest: ''
     }
   },
