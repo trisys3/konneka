@@ -17,7 +17,7 @@ gulp.task('jsCoffee', function() {
     .pipe(coffeeStreams.move())
     .pipe(jsStreams.check())
     .pipe(jsStreams.min())
-    .pipe(gulp.dest(patterns.js.dev.dest));
+    .pipe(gulp.dest(patterns.js.front.dest));
 });
 
 gulp.task('cssAll', function() {
@@ -25,5 +25,6 @@ gulp.task('cssAll', function() {
     .pipe(preCssStreams.stylus())
     .pipe(cssStreams.check())
     .pipe(cssStreams.move())
-    .pipe(gulp.dest(patterns.css.dev.dest));
+    .pipe(cssStreams.concat(patterns.css.outFile))
+    .pipe(gulp.dest(patterns.css.concatFolder));
 });

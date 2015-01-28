@@ -20,6 +20,14 @@ dist/min-libs/ # production libraries
 dist/
 app/modules/*/css/
 app/modules/*/js/
+app/index*.js
+app/app*.js
 
 ######## temp files ##########
 .temp/
+
+######### log files ##########
+log/
+app/log/
+dist/log/
+phantomjsdriver.log

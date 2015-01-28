@@ -9,41 +9,43 @@ var gutil = require('gulp-util');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var coffeeify = require('coffeeify');
+var browserCss = require('browserify-css');
 
 var source = require('vinyl-source-stream');
 var transform = require('vinyl-transform');
 
-gulp.task('coffeeify', function() {
+exports.coffeeify = function(inFile, outFile) {
   // return gulp.src(patterns.coffeeify.bundle.src, {base: './'})
   // .pipe(transform(function(filename) {
   return browserify({
-    // entries: patterns.coffeeify.bundle.src,
+    // entries: inFile,
     debug: true,
     basedir: './',
     // transform: ['coffeeify'],
     extensions: ['.coffee']
   })
   // .pipe(gutil.log(filename))
-  .add(patterns.coffeeify.bundle.src)
-  .transform(coffeeify)
+  .add(inFile)
+  .transform(coffeeify, {
+    autoInject: false
+  })
+  .transform(browserCss)
   .bundle()
+  .pipe(source(outFile));
   // }))
   // .pipe(rename(function(path) {
   //   path.dirname = '',
   //   path.basename = 'index',
   //   path.ext = '.js'
   // }))
-  .pipe(source('index.js'))
-  .pipe(gulp.dest(patterns.coffeeify.bundle.dest));
-});
+};
 
-gulp.task('browserify', function() {
+exports.browserify = function(inFile, outFile) {
   return browserify({
     debug: true,
-    basedir: './',
+    basedir: './'
   })
-  .add(patterns.browserify.bundle.src)
+  .add(inFile)
   .bundle()
-  .pipe(source('index.js'))
-  .pipe(gulp.dest(patterns.browserify.bundle.dest));
-});
+  .pipe(source(outFile));
+};

@@ -61,7 +61,7 @@ module.exports = {
 			'/min-libs/jquery-ui/themes/base/all' + getMin + '.css',
 
 			// Angular CSP stylesheet
-			'/min-libs/angular/angular-csp' + getMin + '.css'
+			// '/min-libs/angular/angular-csp' + getMin + '.css'
 		];
 
 		return styles;

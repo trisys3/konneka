@@ -16,10 +16,11 @@ module.exports = {
   },
 
   css: {
-    dev: {
-      src: 'app/modules/**/*.css',
-      dest: 'dist/app/modules/'
-    }
+    src: 'app/modules/**/*.css',
+    dest: 'dist/app/modules/',
+    concatStart: 'dist/app/modules/**/*.min.css',
+    outFile: 'app.min.css',
+    concatFolder: 'dist/app/modules/'
   },
 
   coffee: {
@@ -44,17 +45,21 @@ module.exports = {
     }
   },
 
-  coffeeify: {
-    bundle: {
-      src: ['./app/modules/main/coffee/app.coffee'],
-      dest: './'
-    }
-  },
-
   browserify: {
+    js: {
+      inFile: ['./app/modules/main/js/app.js']
+    },
+    coffee: {
+      inFile: ['./app/modules/main/coffee/app.coffee']
+    },
+    dev: {
+      dest: 'app',
+    },
+    prod: {
+      dest: 'dist/app/'
+    },
     bundle: {
-      src: ['./app/modules/main/js/app.js'],
-      dest: './'
+      outFile: 'index.js'
     }
   }
 };

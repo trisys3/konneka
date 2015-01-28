@@ -2,6 +2,7 @@
 
 var eslint = require('gulp-eslint');
 var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 
 var lazypipe = require('lazypipe');
 
@@ -11,3 +12,6 @@ exports.check = lazypipe()
 
 exports.min = lazypipe()
   .pipe(uglify)
+  .pipe(rename, function(path) {
+    path.extname = '.min' + path.extname;
+  });

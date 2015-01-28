@@ -38,6 +38,7 @@
 
     "require-dir": "latest",
     "lazypipe": "latest",
+    "browser-sync": "latest",
 
     "gulp": "latest",
     "vinyl-source-stream": "latest",
@@ -56,6 +57,7 @@
     "gulp-rename": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-minify-css": "latest",
+    "gulp-concat": "latest",
 
     "phantomjs": "latest",
     "supertest": "latest",
@@ -74,12 +76,12 @@
     "browserify": "latest",
     "watchify": "latest",
     "coffeeify": "latest",
+    "browserify-css": "latest",
 
     "angular": "latest",
     "jquery": "latest",
 
-    "nib": "latest",
-    "autoprefixer-stylus": "latest"
+    "nib": "latest"
   },
   "description": "A sample website to test AJAX; maybe one day something more",
   "main": "Gruntfile.js",
