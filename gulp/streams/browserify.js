@@ -9,6 +9,7 @@ var gutil = require('gulp-util');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var coffeeify = require('coffeeify');
+var minifyify = require('minifyify');
 var browserCss = require('browserify-css');
 
 var source = require('vinyl-source-stream');
@@ -26,10 +27,10 @@ exports.coffeeify = function(inFile, outFile) {
   })
   // .pipe(gutil.log(filename))
   .add(inFile)
-  .transform(coffeeify, {
-    autoInject: false
+  .transform(coffeeify)
+  .plugin(minifyify, {
+    output: outFile + '.map'
   })
-  .transform(browserCss)
   .bundle()
   .pipe(source(outFile));
   // }))
