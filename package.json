@@ -77,6 +77,7 @@
     "watchify": "latest",
     "coffeeify": "latest",
     "browserify-css": "latest",
+    "minifyify": "latest",
 
     "angular": "latest",
     "jquery": "latest",

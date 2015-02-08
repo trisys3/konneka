@@ -3,15 +3,12 @@
 // Protractor E2E tests, run with Selenium
 module.exports = {
   options: {
-    configFile: 'test/e2e/protractor.conf.js',
-    noColor: false,
+    configFile: 'test\\e2e\\protractor.conf.js',
     keepAlive: true,
     // debug: true,
     args: {
       specs: [
-        'app/min-libs/angular-mocks/angular-mocks.js',
-        'test/e2e/**/*-e2e.js',
-        'app/min-libs/jquery/dist/jquery.js'
+        'test\\e2e\\**\\*-e2e.js'
       ]
     }
   },

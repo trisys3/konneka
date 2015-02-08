@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var GroupSchema = require('./groups.js');
 var Schema = mongoose.Schema;
-var scrypt = require('scrypt');
+var scrypt = require('scryptsy');
 
 // schema for user collection/table
 var UserSchema = new Schema({

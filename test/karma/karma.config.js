@@ -23,7 +23,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      '!../jasmine/**/directives/**.js' // leave out directives by default to test them with QUnit
+      '../jasmine/**/directives/**.js' // leave out directives by default to test them with QUnit
     ],
 
 
