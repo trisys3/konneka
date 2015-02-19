@@ -1,12 +1,12 @@
 'use strict'
 
-angular = require 'angular'
+angular = require 'angular/angular.js'
 
-mainRtes = require './config/mainRte'
-mainFils = require './filters/mainFils'
-mainServs = require './services/mainServ'
-mainDirecs = require './directives/mainDirec'
-mainCtrls = require './controllers/mainCtrl'
+mainRtes = require './config/mainRte.coffee'
+mainFils = require './filters/mainFils.coffee'
+mainServs = require './services/mainServ.coffee'
+mainDirecs = require './directives/mainDirec.coffee'
+mainCtrls = require './controllers/mainCtrl.coffee'
 
 # # main Angular module
 # module.exports = angular.module 'iotApp', [
@@ -44,3 +44,5 @@ for own name, directive of mainDirecs
 for own name, controller of mainCtrls
   iotApp.module 'iotApp.controllers', [controller.deps]
     .controller name [controller.def]
+
+module.exports = iotApp
