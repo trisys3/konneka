@@ -8,13 +8,16 @@ exports.config = {
     silent: false,
     showTiming: true
   },
+  specs: [
+    '*-e2e.js'
+  ],
   capabilities: {
-    browserName: 'phantomjs',
+    browserName: 'chrome',
     'phantomjs.binary.path': require('phantomjs').path,
     'phantomjs.cli.args': ['--debug=true', '--webdriver-logfile=log/phantom.log', '--webdriver-loglevel=DEBUG', '--webdriver=127.0.0.1:4444', '--webdriver-selenium-grid-hub=127.0.0.1:4444/wd/hub'],
     // browserName: 'chrome',
     version: '',
     platform: 'ANY'
   },
-  baseUrl: 'localhost:3000'
+  baseUrl: 'konneka.org:3000'
 };

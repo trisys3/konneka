@@ -3,11 +3,11 @@
 describe('title', function() {
   
   beforeEach(function() {
-    module('ngMockE2E');
+    module('ngMock');
   });
 
   it('should have a title', function() {
-    browser.get('http://localhost:9001');
+    browser.get('/login');
 
     expect(browser.getTitle()).toBeUndefined();
   });
